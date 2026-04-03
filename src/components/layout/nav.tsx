@@ -11,8 +11,14 @@ export function Nav() {
         </span>
       </Link>
       
-      <div className="flex items-center gap-4">
-        <Button variant="outline" size="sm" className="hidden sm:flex border-border text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors font-mono uppercase text-xs tracking-wider">
+      <div className="flex items-center gap-6">
+        <div className="hidden md:flex items-center gap-6 font-mono text-xs uppercase tracking-wider mr-2">
+          <Link href="/verticals/wine-and-spirits" className="text-muted-foreground hover:text-primary transition-colors">
+            [Wine&Spirits]
+          </Link>
+          <span className="text-border">|</span>
+        </div>
+        <Button variant="outline" size="sm" className="hidden sm:flex border-border text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors font-mono uppercase text-[10px] tracking-wider h-8">
           System Status: Nominal
         </Button>
         <Button size="sm" className="font-mono text-xs uppercase tracking-wider bg-foreground text-background hover:bg-primary transition-all duration-300 rounded-none border border-foreground hover:border-primary shadow-[0_0_0_rgba(16,185,129,0)] hover:shadow-[0_0_15px_rgba(16,185,129,0.4)]">
