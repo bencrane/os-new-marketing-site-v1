@@ -62,6 +62,9 @@ export interface VerticalConfig {
   };
 }
 
+// ------------------------------------------
+// 1. WINE & SPIRITS
+// ------------------------------------------
 export const wineAndSpiritsConfig: VerticalConfig = {
   slug: "wine-and-spirits",
   metaTitle: "Outbound Solutions | Target: Wine & Spirits",
@@ -175,5 +178,364 @@ export const wineAndSpiritsConfig: VerticalConfig = {
   
   gate: {
     scarcityText: "We take on one spirits brand per quarter. Apply."
+  }
+};
+
+// ------------------------------------------
+// 2. INSURANCE
+// ------------------------------------------
+export const insuranceConfig: VerticalConfig = {
+  slug: "insurance",
+  metaTitle: "Outbound Solutions | Target: Insurance",
+  metaDescription: "Proprietary pipeline infrastructure configured for the commercial insurance agency market.",
+  
+  hero: {
+    classification: "TARGET: INSURANCE",
+    tension: "The carrier needs coverage.\nThe agency doesn't know yet.",
+    subtext: "Every day, motor carriers lose insurance coverage, file new authority, or expand their fleets. The agencies that should be writing those policies find out weeks too late — or never. We detect these moments in real time and route them to agencies before the competition knows they exist."
+  },
+  
+  marketMap: {
+    totalDMCount: "4,212",
+    statesCovered: ["Texas", "Florida", "California", "Georgia", "Ohio", "Illinois", "Pennsylvania"],
+    titlesTargeted: [
+      "Agency Owner",
+      "Commercial Lines Producer",
+      "Underwriter",
+      "VP of Business Development",
+      "Account Executive"
+    ]
+  },
+  
+  signals: {
+    intro: "These are the structural conditions where outreach converts.\nNot random emails. Timed to exact inflection points in the market.",
+    feed: [
+      {
+        source: "INSURANCE_LAPSE",
+        type: "COVERAGE_GAP",
+        event: "Carrier BIPD coverage lapsed 14 days ago, no replacement filing on record",
+        implication: "Authority revocation risk, needs new policy immediately"
+      },
+      {
+        source: "NEW_AUTHORITY",
+        type: "GREENFIELD_CARRIER",
+        event: "New MC authority granted last week, zero inspections",
+        implication: "Brand new carrier needs 13 vendors on day one including insurance"
+      },
+      {
+        source: "FLEET_EXPANSION",
+        type: "POWER_UNIT_INCREASE",
+        event: "Fleet grew from 12 to 38 power units in 90 days",
+        implication: "More trucks means higher premiums and new policy requirements"
+      },
+      {
+        source: "SAFETY_SCORE",
+        type: "BASIC_DETERIORATION",
+        event: "Unsafe Driving BASIC jumped from 42% to 71% in 6 months",
+        implication: "Current insurer likely to non-renew, carrier shopping for coverage"
+      },
+      {
+        source: "DRIVER_ATTRITION",
+        type: "WORKFORCE_SIGNAL",
+        event: "Driver count down 18% in 90 days, no fleet reduction filed",
+        implication: "Staffing instability signals insurance gaps incoming"
+      },
+      {
+        source: "AUTHORITY_EXPANSION",
+        type: "INTERSTATE_FILING",
+        event: "Carrier files operating authority in 3 new states",
+        implication: "Expanding operations require new coverage territories"
+      }
+    ]
+  },
+  
+  system: {
+    intro: "Insurance agencies don't find carriers by scrolling LinkedIn. They find them through data — FMCSA filings, DOT registrations, and coverage lapse records. We ingest those feeds daily, detect the carriers who need coverage now, and route them through direct mail, inbound IVR, and live transfer to the agencies positioned to write the policy.",
+    stages: [
+      {
+        name: "01 // DATA INGESTION: FMCSA_FEED",
+        description: "Ingesting DOT registrations, authority filings, insurance coverage records, and safety scores daily.",
+        channel: "DATA_LAYER"
+      },
+      {
+        name: "02 // DIRECT MAIL TRIGGER: PHYSICAL_OUTREACH",
+        description: "Programmatic mailers sent to carriers showing coverage gaps or new authority, carrying agency-branded collateral with tracking.",
+        channel: "PHYSICAL_INFRASTRUCTURE"
+      },
+      {
+        name: "03 // INBOUND IVR: CALL_CAPTURE",
+        description: "AI-powered inbound phone system qualifying carriers who respond to mail and routing to the right agent.",
+        channel: "VOICE_RECON"
+      },
+      {
+        name: "04 // LIVE TRANSFER: WARM_HANDOFF",
+        description: "Qualified carriers transferred directly to agency producers in real time during business hours.",
+        channel: "HUMAN_DIALERS"
+      }
+    ]
+  },
+  
+  terrain: {
+    intro: "We operate inside federal motor carrier regulatory infrastructure.",
+    description: "Commercial trucking insurance is governed by FMCSA requirements, state-level filing obligations, and carrier safety scoring systems. We map which carriers are required to maintain coverage, which are at risk of losing it, and which just entered the market needing it for the first time. Outreach is timed to regulatory deadlines — not arbitrary cadences.",
+    items: [
+      { id: "SYS_01", name: "FMCSA COMPLIANCE", description: "Mapping coverage requirements directly to carrier authority type and fleet size." },
+      { id: "SYS_02", name: "FILING DEADLINE TRIGGERS", description: "Timing outreach to the 30-day coverage replacement window before authority revocation." },
+      { id: "SYS_03", name: "STATE FILING VARIATION", description: "Navigating per-state insurance filing requirements and minimum coverage thresholds." }
+    ]
+  },
+  
+  outcome: {
+    intro: "A single commercial trucking policy generates $8,000 to $40,000 in annual premium for the writing agency. Fleet accounts with 20+ power units can exceed $200,000. We generate the leads. You write the policies.",
+    dashboardMock: [
+      { metric: "ACTIVE_PIPELINE_VALUE", value: "$2.1M", status: "nominal" },
+      { metric: "LIVE_TRANSFERS_COMPLETED", value: "47", status: "nominal" },
+      { metric: "COST_PER_TRANSFER", value: "-8.2%", status: "nominal" },
+      { metric: "POLICIES_QUOTED", value: "112", status: "nominal" }
+    ]
+  },
+  
+  gate: {
+    scarcityText: "We partner with two agencies per state. If you have binding authority and the capacity to quote same-day, apply."
+  }
+};
+
+// ------------------------------------------
+// 3. FACTORING
+// ------------------------------------------
+export const factoringConfig: VerticalConfig = {
+  slug: "factoring",
+  metaTitle: "Outbound Solutions | Target: Factoring",
+  metaDescription: "Proprietary pipeline infrastructure configured for the commercial factoring and alternative lending market.",
+  
+  hero: {
+    classification: "TARGET: FACTORING",
+    tension: "The contract is awarded Tuesday.\nBy Friday, it's too late.",
+    subtext: "When a company wins a government contract or files new business formation documents, they need working capital within weeks. The factoring companies, DCAA CPA firms, and lenders who reach them first win the relationship. We detect these moments the day they happen."
+  },
+  
+  marketMap: {
+    totalDMCount: "2,634",
+    statesCovered: ["Nationwide", "Federal", "DOD", "GSA", "SBA", "SAM.gov", "USASpending"],
+    titlesTargeted: [
+      "CFO",
+      "Controller",
+      "VP of Finance",
+      "Owner",
+      "Director of Operations",
+      "Accounts Receivable Manager"
+    ]
+  },
+  
+  signals: {
+    intro: "These are the structural conditions where outreach converts.\nNot random emails. Timed to exact inflection points in the market.",
+    feed: [
+      {
+        source: "SAM_GOV",
+        type: "CONTRACT_AWARD",
+        event: "New DOD logistics contract awarded, $2.4M value",
+        implication: "Immediate cash flow gap, needs factoring or line of credit"
+      },
+      {
+        source: "USASPENDING",
+        type: "FIRST_TIME_AWARDEE",
+        event: "Company receives first federal contract, no prior government revenue",
+        implication: "No infrastructure for government AR cycles, prime factoring candidate"
+      },
+      {
+        source: "STATE_SOS",
+        type: "NEW_ENTITY_FORMATION",
+        event: "New LLC filed in Delaware with government contracting NAICS codes",
+        implication: "Early-stage company likely undercapitalized"
+      },
+      {
+        source: "SBA",
+        type: "LOAN_DISBURSEMENT",
+        event: "SBA 7(a) loan disbursed, $890K",
+        implication: "Growth capital deployed, may need additional working capital for operations"
+      },
+      {
+        source: "UCC",
+        type: "FILING_DETECTED",
+        event: "UCC-1 filed against $180K equipment purchase",
+        implication: "Capital expenditure signals growing operations and potential cash flow strain"
+      },
+      {
+        source: "LINKEDIN",
+        type: "EXECUTIVE_HIRE",
+        event: "VP of Operations hired at 60-person government services firm",
+        implication: "Scaling operations, likely expanding contract portfolio"
+      }
+    ]
+  },
+  
+  system: {
+    intro: "Factoring prospects don't respond to generic financial services outreach. They respond when you reference the specific contract they just won or the filing they just made. We time every communication to a concrete business event the recipient recognizes.",
+    stages: [
+      {
+        name: "01 // DATA INGESTION: GOV_FEED",
+        description: "Ingesting SAM.gov, USASpending, SBA, UCC filings, and state SOS records daily.",
+        channel: "DATA_LAYER"
+      },
+      {
+        name: "02 // ISOLATED SEQUENCE: EMAIL_INFRASTRUCTURE",
+        description: "High-deliverability email referencing the specific contract, filing, or event detected.",
+        channel: "EMAIL_INFRASTRUCTURE"
+      },
+      {
+        name: "03 // DIRECT INTERVENTION: HUMAN_DIALERS",
+        description: "Phone team calling within 48 hours of signal detection to reach decision maker while the need is acute.",
+        channel: "HUMAN_DIALERS"
+      },
+      {
+        name: "04 // PHYSICAL TRIGGER: DIRECT_MAIL",
+        description: "Programmatic direct mail to non-responsive tier-1 targets carrying personalized collateral.",
+        channel: "DIRECT_MAIL"
+      }
+    ]
+  },
+  
+  terrain: {
+    intro: "We operate inside federal procurement and commercial lending infrastructure.",
+    description: "Government contracting follows structured procurement cycles with predictable cash flow gaps. We map the entire pipeline — from contract award to first invoice — and identify the exact window where working capital becomes critical. Outreach is anchored to federal spending data, not purchased lists.",
+    items: [
+      { id: "SYS_01", name: "FEDERAL PROCUREMENT MAPPING", description: "Tracking contract awards from obligation through disbursement to identify cash flow gaps." },
+      { id: "SYS_02", name: "NAICS-BASED TARGETING", description: "Isolating industries with the highest factoring propensity based on contract type and payment terms." },
+      { id: "SYS_03", name: "MULTI-BUYER ROUTING", description: "The same signal can route to factoring companies, DCAA CPAs, cybersecurity/CMMC firms, staffing agencies, and insurance brokers depending on the buyer type." }
+    ]
+  },
+  
+  outcome: {
+    intro: "A single factoring client with a $2M government contract generates $40,000 to $120,000 in annual factoring fees. First-time awardees with no existing banking relationships convert at the highest rates. We surface them on day one.",
+    dashboardMock: [
+      { metric: "ACTIVE_PIPELINE_VALUE", value: "$3.8M", status: "nominal" },
+      { metric: "QUALIFIED_MEETINGS_BOOKED", value: "23", status: "nominal" },
+      { metric: "COST_PER_MEETING", value: "-15.1%", status: "nominal" },
+      { metric: "CONTRACTS_DETECTED_THIS_MONTH", value: "847", status: "nominal" }
+    ]
+  },
+  
+  gate: {
+    scarcityText: "We deploy one factoring partner per NAICS cluster. If you have the capital to fund within 72 hours of approval, apply."
+  }
+};
+
+// ------------------------------------------
+// 4. SAAS
+// ------------------------------------------
+export const saasConfig: VerticalConfig = {
+  slug: "saas",
+  metaTitle: "Outbound Solutions | Target: SaaS",
+  metaDescription: "Proprietary pipeline infrastructure configured for high-velocity SaaS outbound sales.",
+  
+  hero: {
+    classification: "TARGET: SAAS",
+    tension: "Your ICP just changed their stack.\nThe window is 90 days.",
+    subtext: "When a company hires a new VP of Ops, rips out their CRM, closes a funding round, or crosses a headcount threshold, they enter a buying window. Most sales teams find out six months later. We detect these shifts the week they happen and deploy outbound before the window closes."
+  },
+  
+  marketMap: {
+    totalDMCount: "8,419",
+    statesCovered: ["United States", "United Kingdom", "Canada"],
+    titlesTargeted: [
+      "VP of Operations",
+      "Head of Engineering",
+      "CTO",
+      "Director of IT",
+      "VP of Sales",
+      "Chief Revenue Officer"
+    ]
+  },
+  
+  signals: {
+    intro: "These are the structural conditions where outreach converts.\nNot random emails. Timed to exact inflection points in the market.",
+    feed: [
+      {
+        source: "LINKEDIN",
+        type: "EXECUTIVE_HIRE",
+        event: "New VP of Engineering hired at Series B fintech",
+        implication: "New leadership initiates vendor review within first 90 days"
+      },
+      {
+        source: "TECH_STACK",
+        type: "PLATFORM_REMOVAL",
+        event: "Company removes Salesforce from DNS headers",
+        implication: "Stack transition underway, evaluating replacements"
+      },
+      {
+        source: "FUNDING",
+        type: "SERIES_B_CLOSE",
+        event: "$18M Series B closed, announced on Crunchbase",
+        implication: "Capital deployed, hiring and tooling decisions accelerating"
+      },
+      {
+        source: "HEADCOUNT",
+        type: "THRESHOLD_CROSSED",
+        event: "Company crosses 50 employees per LinkedIn data",
+        implication: "Compliance, HR, and infrastructure tools become mandatory"
+      },
+      {
+        source: "JOB_POSTING",
+        type: "ROLE_SIGNAL",
+        event: "Company posts for first-ever Data Engineer role",
+        implication: "Building data infrastructure from scratch, evaluating tooling"
+      },
+      {
+        source: "G2",
+        type: "CATEGORY_SEARCH_SPIKE",
+        event: "Spike in G2 category research activity from target account",
+        implication: "Active evaluation phase, decision timeline compressed"
+      }
+    ]
+  },
+  
+  system: {
+    intro: "SaaS buyers are overwhelmed with outbound. Generic sequences get archived. Signal-timed outreach that references a specific change in their business gets read. We deploy email and LinkedIn in precise sequence, timed to structural shifts detected in real time.",
+    stages: [
+      {
+        name: "01 // DATA INGESTION: SIGNAL_LAYER",
+        description: "Monitoring LinkedIn, job boards, DNS records, funding databases, and review platforms continuously.",
+        channel: "DATA_LAYER"
+      },
+      {
+        name: "02 // ISOLATED SEQUENCE: EMAIL_INFRASTRUCTURE",
+        description: "High-deliverability email referencing the specific hiring, funding, or tech stack change detected.",
+        channel: "EMAIL_INFRASTRUCTURE"
+      },
+      {
+        name: "03 // LINKEDIN SEQUENCE: SOCIAL_LAYER",
+        description: "Automated connection requests and messages sequenced with conditional logic based on response behavior.",
+        channel: "SOCIAL_LAYER"
+      },
+      {
+        name: "04 // DIRECT INTERVENTION: HUMAN_DIALERS",
+        description: "Phone team engaging non-responsive tier-1 accounts to map org chart and locate the actual decision maker.",
+        channel: "HUMAN_DIALERS"
+      }
+    ]
+  },
+  
+  terrain: {
+    intro: "We operate inside the modern B2B buying cycle.",
+    description: "SaaS purchasing has shifted from top-down mandates to committee-based evaluation. The average B2B deal now involves 6-10 stakeholders. We map the buying committee at each target account, identify the champion and the economic buyer, and sequence outreach to both. Timing is anchored to structural change signals — not calendar-based cadences.",
+    items: [
+      { id: "SYS_01", name: "BUYING COMMITTEE MAPPING", description: "Identifying champions, economic buyers, and technical evaluators within each account." },
+      { id: "SYS_02", name: "TECH STACK INTELLIGENCE", description: "Monitoring DNS, script tags, and job postings to detect platform changes before they're announced." },
+      { id: "SYS_03", name: "MULTI-THREAD SEQUENCING", description: "Running parallel outreach to multiple stakeholders within the same account, coordinated to avoid collision." }
+    ]
+  },
+  
+  outcome: {
+    intro: "The average SaaS contract value for mid-market accounts ranges from $30,000 to $150,000 annually. One booked meeting with a qualified account in active evaluation can generate pipeline worth 50-100x the cost of the meeting. We engineer the timing. You run the demo.",
+    dashboardMock: [
+      { metric: "ACTIVE_PIPELINE_VALUE", value: "$4.2M", status: "nominal" },
+      { metric: "QUALIFIED_MEETINGS_BOOKED", value: "31", status: "nominal" },
+      { metric: "COST_PER_MEETING", value: "-11.7%", status: "nominal" },
+      { metric: "SIGNAL_EVENTS_PROCESSED_THIS_MONTH", value: "2,847", status: "nominal" }
+    ]
+  },
+  
+  gate: {
+    scarcityText: "We onboard one SaaS company per ICP cluster per quarter. If you have product-market fit and a sales team ready to close, apply."
   }
 };

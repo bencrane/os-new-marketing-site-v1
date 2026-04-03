@@ -10,7 +10,7 @@ export function VerticalHero({ data }: { data: VerticalConfig["hero"] }) {
             {data.classification}
           </span>
         </div>
-        <h1 className="text-5xl md:text-7xl lg:text-8xl font-heading leading-[1.1] text-foreground mb-8 whitespace-pre-line">
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading leading-[1.1] text-foreground mb-8 whitespace-pre-line">
           {data.tension}
         </h1>
         <p className="font-mono text-muted-foreground text-sm md:text-base max-w-2xl leading-relaxed">

@@ -1,6 +1,6 @@
 import { SignalFeed } from "@/components/ui/signal-feed";
 import { ArchitectureDiagram } from "@/components/ui/architecture-diagram";
-import { Button } from "@/components/ui/button";
+import { SignalTicker } from "@/components/ui/signal-ticker";
 
 export default function Home() {
   return (
@@ -23,20 +23,26 @@ export default function Home() {
         </div>
       </section>
 
+      <SignalTicker />
+
       {/* 2. THE REALITY */}
       <section className="px-6 md:px-12 lg:px-24 py-24 border-b border-border/50 bg-secondary/20">
         <div className="max-w-3xl">
           <h2 className="text-3xl md:text-4xl font-heading mb-12">
             Off-the-shelf tools fail in complex markets.
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-8 font-mono text-sm text-muted-foreground">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-x-12 gap-y-8 font-mono text-sm text-muted-foreground leading-relaxed">
             <div>
-              <span className="text-primary block mb-2 font-bold">[01] The Data Problem</span>
+              <span className="text-primary block mb-2 font-bold tracking-wide">[01] The Data Problem</span>
               Standard databases do not capture niche inflection points. They sell stale lists. We ingest unformatted public, private, and governmental records to map relationships dynamically.
             </div>
             <div>
-              <span className="text-primary block mb-2 font-bold">[02] The Reach Problem</span>
+              <span className="text-primary block mb-2 font-bold tracking-wide">[02] The Reach Problem</span>
               Shared IP pools and generic sequences burn domain reputation. We build single-tenant, cryptographically authenticated sending nodes isolated from negative network effects.
+            </div>
+            <div>
+              <span className="text-primary block mb-2 font-bold tracking-wide">[03] The Timing Problem</span>
+              Calendar-based cadences ignore market reality. We trigger outreach at the moment of structural change — when a decision maker's circumstances shift faster than their existing vendor relationships.
             </div>
           </div>
         </div>
@@ -49,7 +55,7 @@ export default function Home() {
             A pipeline engine built like a trading desk.
           </h2>
           <p className="font-mono text-sm text-muted-foreground mb-16 max-w-xl">
-            This is not a marketing agency. This is a technical system deployed to capture market share.
+            Signal detection. Isolated infrastructure. Coordinated execution.
           </p>
           <ArchitectureDiagram />
         </div>
@@ -139,14 +145,17 @@ export default function Home() {
       <section className="px-6 md:px-12 lg:px-24 py-32 bg-black flex flex-col items-center justify-center text-center">
         <div className="w-4 h-4 bg-primary mb-8 shadow-[0_0_15px_rgba(16,185,129,0.5)] animate-pulse" />
         <h2 className="text-4xl md:text-5xl lg:text-7xl font-heading mb-8">
-          Access the infrastructure.
+          Own Your Market.
         </h2>
-        <p className="font-mono text-muted-foreground text-sm max-w-md mx-auto mb-10">
-          This system is not for every company. It is expensive. It requires commitment. If you have the operational capacity to close qualified pipeline, apply for access.
+        <p className="font-mono text-muted-foreground text-sm max-w-md mx-auto mb-10 leading-relaxed">
+          Built for companies with a defined market and the sales capacity to close what we generate.
         </p>
-        <Button size="lg" className="h-14 px-8 font-mono text-sm uppercase tracking-widest bg-foreground text-background hover:bg-primary hover:text-black transition-all duration-300 rounded-none shadow-[0_0_0_rgba(16,185,129,0)] hover:shadow-[0_0_20px_rgba(16,185,129,0.4)]">
+        <a 
+          href="mailto:team@outboundsolutions.com"
+          className="inline-flex items-center justify-center font-medium whitespace-nowrap h-14 px-8 font-mono text-sm uppercase tracking-widest bg-foreground text-background hover:bg-primary hover:text-black transition-all duration-300 rounded-none shadow-[0_0_0_rgba(16,185,129,0)] hover:shadow-[0_0_20px_rgba(16,185,129,0.4)]"
+        >
           Request Access
-        </Button>
+        </a>
       </section>
 
       <footer className="px-6 md:px-12 py-8 border-t border-border flex flex-col sm:flex-row justify-between items-center font-mono text-[10px] text-muted-foreground tracking-widest uppercase">

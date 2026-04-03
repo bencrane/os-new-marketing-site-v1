@@ -12,18 +12,31 @@ export function Nav() {
       </Link>
       
       <div className="flex items-center gap-6">
-        <div className="hidden md:flex items-center gap-6 font-mono text-xs uppercase tracking-wider mr-2">
+        <div className="hidden lg:flex items-center gap-4 font-mono text-[10px] uppercase tracking-wider mr-2">
           <Link href="/verticals/wine-and-spirits" className="text-muted-foreground hover:text-primary transition-colors">
             [Wine&Spirits]
           </Link>
-          <span className="text-border">|</span>
+          <Link href="/verticals/insurance" className="text-muted-foreground hover:text-primary transition-colors">
+            [Insurance]
+          </Link>
+          <Link href="/verticals/factoring" className="text-muted-foreground hover:text-primary transition-colors">
+            [Factoring]
+          </Link>
+          <Link href="/verticals/saas" className="text-muted-foreground hover:text-primary transition-colors">
+            [SaaS]
+          </Link>
+          <span className="text-border ml-2">|</span>
         </div>
-        <Button variant="outline" size="sm" className="hidden sm:flex border-border text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors font-mono uppercase text-[10px] tracking-wider h-8">
-          System Status: Nominal
-        </Button>
-        <Button size="sm" className="font-mono text-xs uppercase tracking-wider bg-foreground text-background hover:bg-primary transition-all duration-300 rounded-none border border-foreground hover:border-primary shadow-[0_0_0_rgba(16,185,129,0)] hover:shadow-[0_0_15px_rgba(16,185,129,0.4)]">
+        <div className="hidden sm:flex items-center gap-2 border border-border bg-background/50 px-3 h-8 rounded text-muted-foreground font-mono uppercase text-[10px] tracking-wider relative group">
+          <div className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse shadow-[0_0_8px_rgba(16,185,129,0.5)]" />
+          <span>LIVE</span>
+        </div>
+        <a 
+          href="mailto:team@outboundsolutions.com"
+          className="inline-flex items-center justify-center font-medium whitespace-nowrap h-8 px-3 font-mono text-xs uppercase tracking-wider bg-foreground text-background hover:bg-primary transition-all duration-300 rounded-none border border-foreground hover:border-primary shadow-[0_0_0_rgba(16,185,129,0)] hover:shadow-[0_0_15px_rgba(16,185,129,0.4)]"
+        >
           Request Access
-        </Button>
+        </a>
       </div>
     </header>
   );

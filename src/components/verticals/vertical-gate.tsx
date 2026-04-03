@@ -1,5 +1,4 @@
 import { VerticalConfig } from "@/config/verticals";
-import { Button } from "@/components/ui/button";
 
 export function VerticalGate({ data }: { data: VerticalConfig["gate"] }) {
   return (
@@ -12,9 +11,12 @@ export function VerticalGate({ data }: { data: VerticalConfig["gate"] }) {
       <p className="font-mono text-muted-foreground text-sm max-w-lg mx-auto mb-10 leading-relaxed">
         {data.scarcityText}
       </p>
-      <Button size="lg" className="h-14 px-8 font-mono text-sm uppercase tracking-widest bg-foreground text-background hover:bg-primary hover:text-black transition-all duration-300 rounded-none shadow-[0_0_0_rgba(16,185,129,0)] hover:shadow-[0_0_20px_rgba(16,185,129,0.4)]">
+      <a 
+        href="mailto:team@outboundsolutions.com"
+        className="inline-flex items-center justify-center font-medium whitespace-nowrap h-14 px-8 font-mono text-sm uppercase tracking-widest bg-foreground text-background hover:bg-primary hover:text-black transition-all duration-300 rounded-none shadow-[0_0_0_rgba(16,185,129,0)] hover:shadow-[0_0_20px_rgba(16,185,129,0.4)]"
+      >
         Request Access
-      </Button>
+      </a>
     </section>
   );
 }
