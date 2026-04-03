@@ -26,6 +26,9 @@ export function Nav() {
         <Link href="/verticals/private-equity" className="text-muted-foreground hover:text-primary transition-colors">
           [PRIVATE EQUITY]
         </Link>
+        <Link href="/verticals/real-estate" className="text-muted-foreground hover:text-primary transition-colors">
+          [REAL ESTATE]
+        </Link>
       </div>
       
       <div className="flex items-center z-10">

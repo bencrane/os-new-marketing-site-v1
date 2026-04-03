@@ -660,3 +660,144 @@ export const privateEquityConfig: VerticalConfig = {
     scarcityText: "We deploy one PE firm per rollup vertical. If you have a defined thesis and a deal team ready to move, apply."
   }
 };
+
+export const realEstateConfig: VerticalConfig = {
+  slug: "real-estate",
+  metaTitle: "Outbound Solutions | Target: Real Estate Development",
+  metaDescription: "Proprietary pipeline infrastructure configured for the US Real Estate Development market.",
+  
+  hero: {
+    classification: "TARGET: REAL ESTATE DEVELOPMENT",
+    tension: "The best sites never hit the market.",
+    subtext: "Off-market acquisitions define portfolio returns. But most developers find deals the same way — waiting for brokers to send listings that every other buyer has already seen. We monitor public records for signals that an owner is ready to sell before they've made a single phone call."
+  },
+  
+  marketMap: {
+    totalDMCount: "11,847",
+    statesCovered: ["New York City (Brooklyn, Queens, Bronx, Manhattan)", "Nassau County", "Westchester County", "Jersey City", "Newark"],
+    titlesTargeted: [
+      "Property Owner", 
+      "LLC Managing Member", 
+      "Registered Agent", 
+      "Executor", 
+      "Trustee", 
+      "Building Owner"
+    ]
+  },
+  
+  signals: {
+    intro: "We monitor public records for signals that an owner is ready to sell before they've made a single phone call.",
+    feed: [
+      {
+        source: "ACRIS",
+        type: "LONG_HOLD_NO_TRANSFER",
+        event: "Property deeded to current owner 19 years ago, no subsequent transfer recorded, single-entity LLC",
+        implication: "Long-term holder likely sitting on significant equity, no succession plan visible"
+      },
+      {
+        source: "DOB",
+        type: "EXPIRED_PERMIT",
+        event: "Alteration permit pulled in 2023, no subsequent inspection, no C of O issued",
+        implication: "Owner started a project and ran out of capital or abandoned it"
+      },
+      {
+        source: "DOB",
+        type: "VIOLATION_STACKING",
+        event: "6 open DOB violations accumulated over 14 months, no corrections filed",
+        implication: "Owner has disengaged from maintaining the property"
+      },
+      {
+        source: "DOF",
+        type: "TAX_ARREARS",
+        event: "24 months of property tax arrears on R6-zoned parcel, no payment plan filed",
+        implication: "Distressed owner, likely motivated to sell"
+      },
+      {
+        source: "ACRIS",
+        type: "LIS_PENDENS_FILED",
+        event: "Lis pendens recorded 18 days ago, no satisfaction filed",
+        implication: "Pre-foreclosure, owner has a closing window before bank action"
+      },
+      {
+        source: "ACRIS",
+        type: "UCC_TERMINATION",
+        event: "UCC-1 filing on $400K equipment loan terminated last month",
+        implication: "Debt cleared, clean balance sheet, owner may be preparing to exit"
+      },
+      {
+        source: "NYDOS",
+        type: "LLC_DISSOLUTION",
+        event: "LLC holding title to 4-unit multifamily filed dissolution with Secretary of State",
+        implication: "Entity winding down, property must be transferred or sold"
+      },
+      {
+        source: "DOB",
+        type: "ADJACENT_DEMO_PERMIT",
+        event: "Demolition permit issued for parcel directly adjacent to target lot",
+        implication: "Block is turning over, neighboring owners likely receiving unsolicited interest"
+      }
+    ]
+  },
+  
+  system: {
+    intro: "Property owners who are ready to sell don't list with a broker first. They get a letter in the mail from someone who already knows about their building. We monitor city records daily, identify the owners showing exit signals, and put your offer in their hands before any broker enters the picture.",
+    stages: [
+      {
+        name: "01 // DATA INGESTION: PUBLIC_RECORDS",
+        description: "Ingesting ACRIS deed transfers, DOB permits and violations, DOF tax rolls and arrears, lis pendens filings, UCC records, and Secretary of State entity filings. Updated daily.",
+        channel: "DATA_LAYER"
+      },
+      {
+        name: "02 // SIGNAL SCORING: DISTRESS_ANALYSIS",
+        description: "Each property is scored against multiple distress and exit indicators. Long hold period, violation count, tax arrears depth, permit status, lien activity, entity dissolution — weighted and ranked by likelihood of seller motivation.",
+        channel: "SCORING_ENGINE"
+      },
+      {
+        name: "03 // OWNER ENRICHMENT: CONTACT_LAYER",
+        description: "Resolving property ownership through LLC records, registered agent filings, and deed party names. Enriching with mailing addresses, phone numbers, and entity relationships to reach the actual decision maker.",
+        channel: "ENRICHMENT_API"
+      },
+      {
+        name: "04 // DIRECT OUTREACH: PHYSICAL_TRIGGER",
+        description: "Personalized direct mail to property owners referencing their specific building, its condition signals, and a clear offer to have a conversation. Followed by phone outreach for non-responsive high-priority targets.",
+        channel: "MULTI_CHANNEL"
+      }
+    ]
+  },
+  
+  terrain: {
+    intro: "We operate inside New York City's property record infrastructure.",
+    description: "New York City publishes more structured property data than almost any other market in the country. ACRIS records every deed, mortgage, and lien. DOB tracks every permit, violation, and complaint. DOF publishes tax assessments, market values, and arrears. Most developers never look at this data systematically. We ingest all of it, cross-reference it against target acquisition criteria, and surface the properties where multiple signals converge — creating a ranked pipeline of off-market opportunities that no broker is showing anyone.",
+    items: [
+      {
+        id: "SYS_01",
+        name: "ZONING & LOT ANALYSIS",
+        description: "Filtering the entire city by zoning designation, lot size, FAR utilization, and buildable square footage to match your specific development criteria."
+      },
+      {
+        id: "SYS_02",
+        name: "OWNERSHIP CHAIN RESOLUTION",
+        description: "Tracing property ownership through layers of LLCs, trusts, and estate filings to identify the actual human decision maker behind the entity."
+      },
+      {
+        id: "SYS_03",
+        name: "NEIGHBORHOOD VELOCITY TRACKING",
+        description: "Monitoring demolition permits, new building permits, and deed transfer frequency block by block to identify areas where turnover is accelerating."
+      }
+    ]
+  },
+  
+  outcome: {
+    intro: "One off-market acquisition at a better basis saves $200K to $500K in avoided broker fees alone on a mid-size deal. A $5M site acquired without competition closes at a materially lower price than the same site run through a marketed process. The system generates owner conversations. Your deal team structures the acquisition.",
+    dashboardMock: [
+      { metric: "ACTIVE_PIPELINE_VALUE", value: "$42M", status: "nominal" },
+      { metric: "OWNER_CONVERSATIONS_BOOKED", value: "18", status: "nominal" },
+      { metric: "PARCELS_MONITORED", value: "4,847", status: "nominal" },
+      { metric: "OFF-MARKET_ACQ_RATE", value: "91%", status: "nominal" }
+    ]
+  },
+  
+  gate: {
+    scarcityText: "We deploy one developer per target submarket. If you have a defined buy box and the capital to close, apply."
+  }
+};

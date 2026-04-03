@@ -194,15 +194,9 @@ export default function Home() {
         <h2 className="text-5xl md:text-7xl font-heading mb-8">
           Own Your Market.
         </h2>
-        <p className="font-mono text-muted-foreground text-sm md:text-base max-w-2xl mx-auto mb-12 leading-relaxed">
+        <p className="font-mono text-muted-foreground text-sm md:text-base max-w-2xl mx-auto leading-relaxed">
           Built for companies with a defined market and the sales capacity to close what we generate.
         </p>
-         <a 
-          href="mailto:team@outboundsolutions.com"
-          className="inline-flex items-center justify-center whitespace-nowrap h-12 px-8 font-mono text-sm uppercase bg-white text-black hover:bg-gray-200 transition-colors duration-200 rounded-none border border-transparent"
-        >
-          Request Access
-        </a>
       </section>
 
       {/* Footer */}
