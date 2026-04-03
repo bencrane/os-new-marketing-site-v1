@@ -1,0 +1,364 @@
+"use client";
+
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+
+export function InteractiveChannels() {
+  return (
+    <div className="w-full">
+      <Tabs defaultValue="email" className="w-full">
+        <TabsList className="bg-transparent border-b border-border/50 rounded-none w-full justify-start h-auto p-0 mb-8 overflow-x-auto flex-nowrap">
+          <TabsTrigger 
+            value="email" 
+            className="rounded-none border-b-2 border-transparent data-[state=active]:border-primary data-[state=active]:text-foreground text-muted-foreground font-mono text-sm px-6 py-4"
+          >
+            Email
+          </TabsTrigger>
+          <TabsTrigger 
+            value="voice" 
+            className="rounded-none border-b-2 border-transparent data-[state=active]:border-primary data-[state=active]:text-foreground text-muted-foreground font-mono text-sm px-6 py-4"
+          >
+            Voice
+          </TabsTrigger>
+          <TabsTrigger 
+            value="direct-mail" 
+            className="rounded-none border-b-2 border-transparent data-[state=active]:border-primary data-[state=active]:text-foreground text-muted-foreground font-mono text-sm px-6 py-4"
+          >
+            Direct Mail
+          </TabsTrigger>
+          <TabsTrigger 
+            value="linkedin" 
+            className="rounded-none border-b-2 border-transparent data-[state=active]:border-primary data-[state=active]:text-foreground text-muted-foreground font-mono text-sm px-6 py-4"
+          >
+            LinkedIn
+          </TabsTrigger>
+        </TabsList>
+
+        {/* --- EMAIL TAB --- */}
+        <TabsContent value="email" className="outline-none m-0 data-[state=inactive]:hidden min-h-[400px]">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+            {/* Left: Email Client Mock */}
+            <div className="bg-[#111] border border-border/50 rounded-lg overflow-hidden flex flex-col h-full">
+              <div className="border-b border-border/50 px-4 py-3 bg-[#0a0a0a] flex items-center gap-2">
+                <div className="w-3 h-3 rounded-full bg-red-500/20 border border-red-500/50" />
+                <div className="w-3 h-3 rounded-full bg-yellow-500/20 border border-yellow-500/50" />
+                <div className="w-3 h-3 rounded-full bg-green-500/20 border border-green-500/50" />
+              </div>
+              <div className="p-6 font-sans text-sm flex-grow">
+                <div className="mb-6 pb-6 border-b border-border/50">
+                  <div className="flex gap-4 mb-2">
+                    <span className="text-muted-foreground w-16">From:</span>
+                    <span className="text-foreground">james@outbound-cayeya.com</span>
+                  </div>
+                  <div className="flex gap-4">
+                    <span className="text-muted-foreground w-16">Subject:</span>
+                    <span className="text-foreground font-medium">Cayéya — open slot in your portfolio?</span>
+                  </div>
+                </div>
+                <div className="text-muted-foreground leading-relaxed whitespace-pre-wrap">
+                  {`Hi Sarah — I noticed Atlas Beverage recently dropped [competitor brand] from your spirits portfolio.\n\nCayéya is a single-barrel tequila out of Jalisco with retail presence in 8 states and growing. Would it make sense to send samples and a one-pager to your category team?\n\nHappy to work around your timeline.`}
+                </div>
+              </div>
+              <div className="bg-[#0a0a0a] border-t border-border/50 p-4 flex gap-6 font-mono text-xs uppercase tracking-wider text-muted-foreground">
+                <div className="flex items-center gap-2">
+                  <span>VARIANT A</span>
+                  <span className="text-primary">34% OPEN / 8.2% REPLY</span>
+                </div>
+                <div className="flex items-center gap-2 opacity-50">
+                  <span>VARIANT B</span>
+                  <span>41% OPEN / 6.7% REPLY</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Right: Deliverability Dashboard */}
+            <div className="bg-[#0a0a0a] border border-border/50 rounded-lg p-6 font-mono text-sm flex flex-col h-full">
+              <h3 className="text-muted-foreground uppercase tracking-wider text-xs mb-6 flex items-center gap-2">
+                <div className="w-2 h-2 bg-primary rounded-full" />
+                Deliverability Telemetry
+              </h3>
+              
+              <div className="grid grid-cols-2 gap-4 mb-8">
+                <div className="p-4 bg-[#111] border border-border/50 rounded">
+                  <div className="text-muted-foreground text-xs uppercase tracking-wider mb-2">Inbox Placement</div>
+                  <div className="text-2xl text-foreground">94.2%</div>
+                </div>
+                <div className="p-4 bg-[#111] border border-border/50 rounded">
+                  <div className="text-muted-foreground text-xs uppercase tracking-wider mb-2">Warmup Score</div>
+                  <div className="text-2xl text-foreground">88/100</div>
+                </div>
+                <div className="p-4 bg-[#111] border border-border/50 rounded">
+                  <div className="text-muted-foreground text-xs uppercase tracking-wider mb-2">Bounce Rate</div>
+                  <div className="text-2xl text-foreground">0.4%</div>
+                </div>
+                <div className="p-4 bg-[#111] border border-border/50 rounded">
+                  <div className="text-muted-foreground text-xs uppercase tracking-wider mb-2">Domain Health</div>
+                  <div className="text-2xl text-primary">NOMINAL</div>
+                </div>
+              </div>
+
+              <div className="flex-grow">
+                <div className="text-xs text-muted-foreground uppercase tracking-wider mb-4 border-b border-border/50 pb-2">Active Infrastructure Nodes</div>
+                <div className="space-y-3 text-xs">
+                  <div className="flex justify-between items-center bg-[#111] p-2 rounded">
+                    <span>mx-01.outbound-cayeya.com</span>
+                    <span className="text-primary flex items-center gap-2"><div className="w-1.5 h-1.5 bg-primary rounded-full"/> ACTIVE</span>
+                  </div>
+                  <div className="flex justify-between items-center bg-[#111] p-2 rounded">
+                    <span>mx-02.outbound-cayeya.com</span>
+                    <span className="text-primary flex items-center gap-2"><div className="w-1.5 h-1.5 bg-primary rounded-full"/> ACTIVE</span>
+                  </div>
+                  <div className="flex justify-between items-center bg-[#111] p-2 rounded">
+                    <span>mx-03.outbound-cayeya.com</span>
+                    <span className="text-yellow-500 flex items-center gap-2"><div className="w-1.5 h-1.5 bg-yellow-500 rounded-full animate-pulse"/> WARMING</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </TabsContent>
+
+        {/* --- VOICE TAB --- */}
+        <TabsContent value="voice" className="outline-none m-0 data-[state=inactive]:hidden min-h-[400px]">
+          <div className="flex flex-col gap-8 h-full">
+            {/* Top: Outbound Terminal */}
+            <div className="bg-[#0a0a0a] border border-border/50 rounded-lg p-6 font-mono text-xs sm:text-sm flex-1">
+              <h3 className="text-muted-foreground uppercase tracking-wider text-xs mb-6 flex items-center gap-2">
+                <div className="w-2 h-2 bg-primary rounded-full" />
+                Distributed Calling Subsystem
+              </h3>
+              <div className="space-y-4">
+                <div className="flex items-start sm:items-center gap-3">
+                  <span className="text-muted-foreground min-w-[45px]">15:04</span>
+                  <span className="text-primary hidden sm:inline">Jordan K.</span>
+                  <span className="text-muted-foreground hidden sm:inline">→</span>
+                  <span className="text-foreground">Sara Chen, Category Mgr, Atlas Beverage</span>
+                  <span className="text-muted-foreground hidden sm:inline">→</span>
+                  <span className="text-primary">CONNECTED 3:42</span>
+                  <span className="text-muted-foreground hidden sm:inline">→</span>
+                  <span className="text-foreground bg-primary/10 px-2 py-0.5 rounded">CALLBACK FRIDAY 2PM</span>
+                </div>
+                <div className="flex items-start sm:items-center gap-3 opacity-70">
+                  <span className="text-muted-foreground min-w-[45px]">14:51</span>
+                  <span className="text-primary hidden sm:inline">Marcus R.</span>
+                  <span className="text-muted-foreground hidden sm:inline">→</span>
+                  <span className="text-foreground">David Park, VP Purchasing, Meridian Dist</span>
+                  <span className="text-muted-foreground hidden sm:inline">→</span>
+                  <span className="text-yellow-500">VOICEMAIL</span>
+                  <span className="text-muted-foreground hidden sm:inline">→</span>
+                  <span className="text-muted-foreground">RETRY QUEUED TUE</span>
+                </div>
+                <div className="flex items-start sm:items-center gap-3">
+                  <span className="text-muted-foreground min-w-[45px]">14:38</span>
+                  <span className="text-primary hidden sm:inline">Jordan K.</span>
+                  <span className="text-muted-foreground hidden sm:inline">→</span>
+                  <span className="text-foreground">Carlos Vega, Portfolio Mgr, Empire Spirits</span>
+                  <span className="text-muted-foreground hidden sm:inline">→</span>
+                  <span className="text-primary">LIVE_TRANSFER_COMPLETED</span>
+                  <span className="text-muted-foreground hidden sm:inline">→</span>
+                  <span className="text-foreground">4:18 duration</span>
+                </div>
+                <div className="flex items-start sm:items-center gap-3">
+                  <span className="text-muted-foreground min-w-[45px]">14:22</span>
+                  <span className="text-primary hidden sm:inline">Priya S.</span>
+                  <span className="text-muted-foreground hidden sm:inline">→</span>
+                  <span className="text-foreground">Lisa Monroe, Supplier Relations, Coastal Bev</span>
+                  <span className="text-muted-foreground hidden sm:inline">→</span>
+                  <span className="text-primary">CONNECTED 2:05</span>
+                  <span className="text-muted-foreground hidden sm:inline">→</span>
+                  <span className="text-foreground bg-primary/10 px-2 py-0.5 rounded">MEETING BOOKED THU 3PM</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Bottom: Inbound IVR */}
+            <div className="bg-[#111] border border-border/50 rounded-lg p-6 font-mono flex-1 flex flex-col justify-center">
+              <h3 className="text-muted-foreground uppercase tracking-wider text-xs mb-6 flex items-center gap-2">
+                <div className="w-2 h-2 bg-primary rounded-full animate-pulse" />
+                Inbound IVR & Routing
+              </h3>
+              <div className="flex flex-wrap items-center gap-2 sm:gap-4 text-xs mb-8">
+                <div className="bg-[#0a0a0a] border border-border/50 px-3 py-2 rounded text-foreground">INBOUND CALL</div>
+                <span className="text-primary">→</span>
+                <div className="bg-[#0a0a0a] border border-primary/50 text-primary px-3 py-2 rounded">AI QUALIFICATION</div>
+                <span className="text-primary">→</span>
+                <div className="bg-[#0a0a0a] border border-border/50 px-3 py-2 rounded text-foreground">ROUTING</div>
+                <span className="text-primary">→</span>
+                <div className="bg-primary text-background px-3 py-2 rounded font-semibold">LIVE TRANSFER</div>
+              </div>
+              <div className="bg-[#0a0a0a] p-4 rounded border border-border/50 text-xs sm:text-sm">
+                <div className="flex flex-col sm:flex-row gap-4 sm:gap-8">
+                  <div>
+                    <span className="text-muted-foreground">Caller: </span>
+                    <span className="text-foreground">Mike Torres, Fleet Owner, 22 trucks</span>
+                  </div>
+                  <div>
+                    <span className="text-muted-foreground">Qualified: </span>
+                    <span className="text-primary">YES</span>
+                  </div>
+                  <div>
+                    <span className="text-muted-foreground">Transferred to: </span>
+                    <span className="text-foreground">Apex Insurance Group</span>
+                  </div>
+                  <div className="mt-2 sm:mt-0 sm:ml-auto">
+                    <span className="text-primary font-bold">CONNECTED 2:14</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </TabsContent>
+
+        {/* --- DIRECT MAIL TAB --- */}
+        <TabsContent value="direct-mail" className="outline-none m-0 data-[state=inactive]:hidden min-h-[400px]">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 h-full items-stretch">
+            {/* Left: Mockup */}
+            <div className="bg-[#111] border border-border/50 rounded-lg p-8 flex flex-col items-center justify-center gap-8 h-full">
+              {/* Front */}
+              <div className="w-full max-w-[320px] aspect-[1.5/1] bg-[#0a0a0a] border border-border/50 rounded shadow-2xl relative overflow-hidden flex flex-col justify-between p-6">
+                <div className="w-16 h-1 bg-primary mb-4" />
+                <div className="font-heading text-2xl text-foreground">Cayéya Tequila</div>
+                <div className="mt-auto flex justify-between items-end">
+                  <div className="font-mono text-[10px] text-muted-foreground uppercase">
+                    Specially prepared for:<br/>
+                    <span className="text-foreground text-xs mt-1 block">Sarah Jenkins<br/>Atlas Beverage</span>
+                  </div>
+                  <div className="w-12 h-12 bg-white flex items-center justify-center p-1">
+                    {/* Mock QR */}
+                    <div className="w-full h-full bg-[repeating-linear-gradient(45deg,#000_0,#000_2px,#fff_0,#fff_4px)] opacity-80" />
+                  </div>
+                </div>
+              </div>
+              {/* Back Mock Text */}
+              <div className="font-mono text-xs text-muted-foreground text-center">
+                Front side visual. Delivery payload includes personalized URLs mapped to specific CRM records.
+              </div>
+            </div>
+
+            {/* Right: Tracking Table */}
+            <div className="bg-[#0a0a0a] border border-border/50 rounded-lg p-6 font-mono text-xs flex flex-col h-full">
+              <h3 className="text-muted-foreground uppercase tracking-wider text-xs mb-6 flex items-center gap-2">
+                <div className="w-2 h-2 bg-primary rounded-full" />
+                Fulfillment Telemetry
+              </h3>
+              
+              <div className="overflow-x-auto flex-grow">
+                <table className="w-full text-left border-collapse">
+                  <thead>
+                    <tr className="border-b border-border/50 text-muted-foreground">
+                      <th className="pb-3 font-normal px-2">Recipient</th>
+                      <th className="pb-3 font-normal px-2">Company</th>
+                      <th className="pb-3 font-normal px-2">Status</th>
+                    </tr>
+                  </thead>
+                  <tbody className="text-foreground">
+                    <tr className="border-b border-border/50">
+                      <td className="py-3 px-2">Sarah J.</td>
+                      <td className="py-3 px-2 text-muted-foreground">Atlas Beverage</td>
+                      <td className="py-3 px-2 text-primary font-bold">QR_SCANNED [14:02]</td>
+                    </tr>
+                    <tr className="border-b border-border/50">
+                      <td className="py-3 px-2">Marcus V.</td>
+                      <td className="py-3 px-2 text-muted-foreground">Empire Spirits</td>
+                      <td className="py-3 px-2 text-foreground">DELIVERED</td>
+                    </tr>
+                    <tr className="border-b border-border/50">
+                      <td className="py-3 px-2">Elena R.</td>
+                      <td className="py-3 px-2 text-muted-foreground">Meridian Dist</td>
+                      <td className="py-3 px-2 text-foreground">DELIVERED</td>
+                    </tr>
+                    <tr className="border-b border-border/50 opacity-60">
+                      <td className="py-3 px-2">David P.</td>
+                      <td className="py-3 px-2 text-muted-foreground">Coastal Bev</td>
+                      <td className="py-3 px-2 text-yellow-500">IN_TRANSIT</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div className="mt-8 pt-6 border-t border-border/50 grid grid-cols-3 gap-4">
+                <div>
+                  <div className="text-muted-foreground uppercase text-[10px] mb-1">Sent (MTD)</div>
+                  <div className="text-xl">847</div>
+                </div>
+                <div>
+                  <div className="text-muted-foreground uppercase text-[10px] mb-1">Delivery Rate</div>
+                  <div className="text-xl">96.2%</div>
+                </div>
+                <div>
+                  <div className="text-muted-foreground uppercase text-[10px] mb-1">QR Scan Rate</div>
+                  <div className="text-xl text-primary">12.4%</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </TabsContent>
+
+        {/* --- LINKEDIN TAB --- */}
+        <TabsContent value="linkedin" className="outline-none m-0 data-[state=inactive]:hidden min-h-[400px]">
+          <div className="bg-[#0a0a0a] border border-border/50 rounded-lg p-6 lg:p-10 flex flex-col h-full font-mono text-sm">
+            <h3 className="text-muted-foreground uppercase tracking-wider text-xs mb-10 flex items-center gap-2">
+              <div className="w-2 h-2 bg-primary rounded-full" />
+              Automated Relationship Sequencing
+            </h3>
+            
+            <div className="flex-grow max-w-3xl border-l-2 border-border/50 pl-6 lg:pl-10 space-y-10 relative">
+              
+              {/* Step 1 */}
+              <div className="relative">
+                <div className="absolute -left-[2.1rem] lg:-left-[3.1rem] top-1 w-4 h-4 rounded-full bg-primary" />
+                <div className="flex items-center gap-4 mb-2">
+                  <span className="text-foreground font-bold">Step 1: Connection Request</span>
+                  <span className="text-primary text-xs border border-primary/50 bg-primary/10 px-2 py-0.5 rounded">ACCEPTED</span>
+                </div>
+                <div className="bg-[#111] border border-border/50 p-4 rounded text-muted-foreground text-xs leading-relaxed">
+                  "Sarah - saw Atlas recently shifted parts of the agave portfolio. We're an independent Jalisco brand growing fast in the state. Would love to connect."
+                </div>
+              </div>
+
+              {/* Step 2 */}
+              <div className="relative">
+                <div className="absolute -left-[2.1rem] lg:-left-[3.1rem] top-1 w-4 h-4 rounded-full bg-primary" />
+                <div className="flex items-center gap-4 mb-2">
+                  <span className="text-foreground font-bold">Step 2: First Message</span>
+                  <span className="text-muted-foreground text-xs border border-border/50 bg-background px-2 py-0.5 rounded">SENT (DAY 2)</span>
+                </div>
+                <div className="bg-[#111] border border-border/50 p-4 rounded text-muted-foreground text-xs leading-relaxed">
+                  "Thanks for connecting. Are you open to reviewing a new single-barrel reposado? We have unallocated supply and margin built for distribution partners."
+                </div>
+              </div>
+
+              {/* Step 3 */}
+              <div className="relative">
+                <div className="absolute -left-[2.1rem] lg:-left-[3.1rem] top-1 w-4 h-4 rounded-full bg-primary" />
+                <div className="flex items-center gap-4 mb-2">
+                  <span className="text-foreground font-bold">Step 3: Follow-up</span>
+                  <span className="text-primary text-xs border border-primary/50 bg-primary/10 px-2 py-0.5 rounded">REPLIED (DAY 5)</span>
+                </div>
+                <div className="bg-[#111] border border-border/50 p-4 rounded text-muted-foreground text-xs leading-relaxed">
+                  "Bringing this to the top of your inbox. We're finalizing terms with a few accounts in your region next week. Worth a quick chat?"
+                </div>
+              </div>
+
+            </div>
+
+            <div className="mt-10 pt-6 border-t border-border/50 flex flex-wrap gap-8 text-xs">
+              <div>
+                <span className="text-muted-foreground uppercase block mb-1">Connection Rate</span>
+                <span className="text-xl">38.4%</span>
+              </div>
+              <div>
+                <span className="text-muted-foreground uppercase block mb-1">Reply Rate</span>
+                <span className="text-xl text-primary">12.1%</span>
+              </div>
+              <div>
+                <span className="text-muted-foreground uppercase block mb-1">Pipeline Yield</span>
+                <span className="text-xl text-foreground">6 Meetings MTD</span>
+              </div>
+            </div>
+          </div>
+        </TabsContent>
+
+      </Tabs>
+    </div>
+  );
+}

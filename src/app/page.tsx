@@ -1,11 +1,13 @@
-import { SignalFeed } from "@/components/ui/signal-feed";
-import { ArchitectureDiagram } from "@/components/ui/architecture-diagram";
 import { SignalTicker } from "@/components/ui/signal-ticker";
+import { InteractiveChannels } from "@/components/ui/interactive-channels";
+import { LiveTerminal } from "@/components/ui/live-terminal";
+import Link from "next/link";
 
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen text-foreground bg-background selection:bg-primary/30">
-      {/* 1. HERO */}
+      
+      {/* SECTION 1 — Hero */}
       <section className="px-6 md:px-12 lg:px-24 pt-32 pb-24 border-b border-border/50">
         <div className="max-w-4xl">
           <div className="flex items-center gap-3 mb-8">
@@ -18,151 +20,200 @@ export default function Home() {
             Engineering applied to pipeline generation.
           </h1>
           <p className="font-mono text-muted-foreground text-sm md:text-base max-w-2xl leading-relaxed">
-            Infrastructure-as-a-service for reaching strict target markets. We build proprietary data pipelines, signal detection engines, and isolated sending infrastructure. Pure execution. No retainers for effort.
+            We build proprietary data pipelines, signal detection engines, and multi-channel sending infrastructure. Meetings booked. Pipeline attributed. No retainers for effort.
           </p>
         </div>
       </section>
 
+      {/* SECTION 2 — Signal Ticker Ribbon */}
       <SignalTicker />
 
-      {/* 2. THE REALITY */}
-      <section className="px-6 md:px-12 lg:px-24 py-24 border-b border-border/50 bg-secondary/20">
-        <div className="max-w-3xl">
-          <h2 className="text-3xl md:text-4xl font-heading mb-12">
-            Off-the-shelf tools fail in complex markets.
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-x-12 gap-y-8 font-mono text-sm text-muted-foreground leading-relaxed">
-            <div>
-              <span className="text-primary block mb-2 font-bold tracking-wide">[01] The Data Problem</span>
-              Standard databases do not capture niche inflection points. They sell stale lists. We ingest unformatted public, private, and governmental records to map relationships dynamically.
-            </div>
-            <div>
-              <span className="text-primary block mb-2 font-bold tracking-wide">[02] The Reach Problem</span>
-              Shared IP pools and generic sequences burn domain reputation. We build single-tenant, cryptographically authenticated sending nodes isolated from negative network effects.
-            </div>
-            <div>
-              <span className="text-primary block mb-2 font-bold tracking-wide">[03] The Timing Problem</span>
-              Calendar-based cadences ignore market reality. We trigger outreach at the moment of structural change — when a decision maker's circumstances shift faster than their existing vendor relationships.
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 3. CAPABILITIES / ARCHITECTURE */}
-      <section className="px-6 md:px-12 lg:px-24 py-24 border-b border-border/50">
-        <div className="w-full">
-          <h2 className="text-3xl md:text-4xl font-heading mb-6 max-w-2xl">
-            A pipeline engine built like a trading desk.
-          </h2>
-          <p className="font-mono text-sm text-muted-foreground mb-16 max-w-xl">
-            Signal detection. Isolated infrastructure. Coordinated execution.
-          </p>
-          <ArchitectureDiagram />
-        </div>
-      </section>
-
-      {/* 4. VERTICALS */}
-      <section className="px-6 md:px-12 lg:px-24 py-24 border-b border-border/50 bg-secondary/10">
-        <h2 className="text-3xl md:text-4xl font-heading mb-16">
-          Operational deployment zones.
+      {/* SECTION 3 — The Three Problems */}
+      <section className="px-6 md:px-12 lg:px-24 py-24 border-b border-border/50 bg-[#0a0a0a]">
+        <h2 className="text-3xl md:text-5xl font-heading mb-16 max-w-3xl">
+          Off-the-shelf tools fail in complex markets.
         </h2>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-px bg-border max-w-5xl">
-          {/* V1 */}
-          <div className="bg-background p-8 lg:p-12">
-            <div className="font-mono text-primary text-xs tracking-widest uppercase mb-4">Target: Wine & Spirits</div>
-            <p className="font-heading text-xl text-foreground mb-6">Reaching distributors and category managers across heavily regulated states.</p>
-            <ul className="space-y-3 font-mono text-sm text-muted-foreground">
-              <li className="flex gap-2"><span className="text-foreground">›</span> Cross-referencing tier-3 licensing databases.</li>
-              <li className="flex gap-2"><span className="text-foreground">›</span> Mapping portfolio manager jurisdictions.</li>
-              <li className="flex gap-2"><span className="text-foreground">›</span> Signal detection on wholesale allocation updates.</li>
-            </ul>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
+          {/* Card 1 */}
+          <div className="flex flex-col bg-[#111] border border-border/50 p-8 rounded-lg">
+            <span className="font-mono text-primary text-sm tracking-widest mb-6 border border-primary/30 bg-primary/10 w-fit px-3 py-1 rounded inline-block">
+              [01] The Data Problem
+            </span>
+            <p className="font-mono text-sm text-muted-foreground leading-relaxed">
+              Standard databases do not capture niche inflection points. They sell stale lists. We ingest unformatted public, private, and governmental records to map relationships dynamically.
+            </p>
           </div>
-          {/* V2 */}
-          <div className="bg-background p-8 lg:p-12">
-            <div className="font-mono text-primary text-xs tracking-widest uppercase mb-4">Target: Insurance</div>
-            <p className="font-heading text-xl text-foreground mb-6">Routing carriers with immediate coverage needs to independent agencies.</p>
-            <ul className="space-y-3 font-mono text-sm text-muted-foreground">
-              <li className="flex gap-2"><span className="text-foreground">›</span> Continuous monitoring of DOT and fleet registrations.</li>
-              <li className="flex gap-2"><span className="text-foreground">›</span> Live inbound transfers from proprietary web assets.</li>
-              <li className="flex gap-2"><span className="text-foreground">›</span> Programmatic direct mail triggered by renewals.</li>
-            </ul>
+          {/* Card 2 */}
+          <div className="flex flex-col bg-[#111] border border-border/50 p-8 rounded-lg">
+            <span className="font-mono text-primary text-sm tracking-widest mb-6 border border-primary/30 bg-primary/10 w-fit px-3 py-1 rounded inline-block">
+              [02] The Reach Problem
+            </span>
+            <p className="font-mono text-sm text-muted-foreground leading-relaxed">
+              Shared IP pools and generic sequences burn domain reputation. We build single-tenant, cryptographically authenticated sending nodes isolated from negative network effects.
+            </p>
           </div>
-          {/* V3 */}
-          <div className="bg-background p-8 lg:p-12">
-            <div className="font-mono text-primary text-xs tracking-widest uppercase mb-4">Target: Factoring</div>
-            <p className="font-heading text-xl text-foreground mb-6">Detecting capital requirements at the exact moment of contract award.</p>
-            <ul className="space-y-3 font-mono text-sm text-muted-foreground">
-              <li className="flex gap-2"><span className="text-foreground">›</span> Instant ingestion of governmental award feeds (SAM.gov).</li>
-              <li className="flex gap-2"><span className="text-foreground">›</span> UCC lien tracking and corporate entity formation alerts.</li>
-              <li className="flex gap-2"><span className="text-foreground">›</span> Sub-second routing to human dialing teams.</li>
-            </ul>
-          </div>
-          {/* V4 */}
-          <div className="bg-background p-8 lg:p-12">
-            <div className="font-mono text-primary text-xs tracking-widest uppercase mb-4">Target: SaaS</div>
-            <p className="font-heading text-xl text-foreground mb-6">Timing outbound communications to strict ICP accounts undergoing structural change.</p>
-            <ul className="space-y-3 font-mono text-sm text-muted-foreground">
-              <li className="flex gap-2"><span className="text-foreground">›</span> Monitoring tech stack delta via DNS/header analysis.</li>
-              <li className="flex gap-2"><span className="text-foreground">›</span> Executive hiring pattern detection.</li>
-              <li className="flex gap-2"><span className="text-foreground">›</span> Funding event ingestion mapped to operational decay.</li>
-            </ul>
+          {/* Card 3 */}
+          <div className="flex flex-col bg-[#111] border border-border/50 p-8 rounded-lg">
+            <span className="font-mono text-primary text-sm tracking-widest mb-6 border border-primary/30 bg-primary/10 w-fit px-3 py-1 rounded inline-block">
+              [03] The Timing Problem
+            </span>
+            <p className="font-mono text-sm text-muted-foreground leading-relaxed">
+              Calendar-based cadences ignore market reality. We trigger outreach at the moment of structural change — when a decision maker's circumstances shift faster than their existing vendor relationships.
+            </p>
           </div>
         </div>
       </section>
 
-      {/* 5. TELEMETRY / OUTPUT */}
+      {/* SECTION 4 — The Engine */}
+      <section className="px-6 md:px-12 lg:px-24 py-24 border-b border-border/50">
+        <h2 className="text-3xl md:text-5xl font-heading mb-6 max-w-3xl">
+          A pipeline engine built like a trading desk.
+        </h2>
+        <p className="font-mono text-muted-foreground text-sm mb-16">
+          Signal detection. Isolated infrastructure. Coordinated execution.
+        </p>
+
+        <div className="grid grid-cols-1 lg:grid-cols-4 border border-border/50 rounded-lg overflow-hidden lg:divide-x lg:divide-y-0 divide-y divide-border/50 bg-[#111]">
+          {/* Node 1 */}
+          <div className="p-8 relative group">
+            <div className="flex items-center justify-between mb-8">
+              <span className="font-mono text-foreground tracking-widest text-sm">01 INGESTION</span>
+              <div className="flex items-center gap-2 font-mono text-[10px] text-primary">
+                <div className="w-1.5 h-1.5 bg-primary rounded-full animate-pulse" />
+                ACTIVE
+              </div>
+            </div>
+            <p className="font-mono text-xs text-muted-foreground leading-relaxed">
+              Proprietary pipelines gathering 40+ million unstructured public records daily.
+            </p>
+          </div>
+          
+           {/* Node 2 */}
+          <div className="p-8 relative group">
+            <div className="flex items-center justify-between mb-8">
+              <span className="font-mono text-foreground tracking-widest text-sm">02 SIGNAL</span>
+              <div className="flex items-center gap-2 font-mono text-[10px] text-primary">
+                <div className="w-1.5 h-1.5 bg-primary rounded-full animate-pulse shadow-[0_0_8px_rgba(16,185,129,0.5)]" />
+                ACTIVE
+              </div>
+            </div>
+            <p className="font-mono text-xs text-muted-foreground leading-relaxed">
+              Behavioral detection algorithms flagging structural shifts and inflection points.
+            </p>
+          </div>
+
+          {/* Node 3 */}
+          <div className="p-8 relative group">
+            <div className="flex items-center justify-between mb-8">
+              <span className="font-mono text-foreground tracking-widest text-sm">03 INFRASTRUCTURE</span>
+              <div className="flex items-center gap-2 font-mono text-[10px] text-muted-foreground">
+                <div className="w-1.5 h-1.5 bg-gray-500 rounded-full" />
+                STANDBY
+              </div>
+            </div>
+            <p className="font-mono text-xs text-muted-foreground leading-relaxed">
+              Isolated sending nodes with automated IP warmup and algorithmic rotation.
+            </p>
+          </div>
+
+          {/* Node 4 */}
+          <div className="p-8 relative group">
+            <div className="flex items-center justify-between mb-8">
+              <span className="font-mono text-foreground tracking-widest text-sm">04 OUTPUT</span>
+              <div className="flex items-center gap-2 font-mono text-[10px] text-red-500">
+                <div className="w-1.5 h-1.5 bg-red-500 rounded-full" />
+                LOCKED
+              </div>
+            </div>
+            <p className="font-mono text-xs text-muted-foreground leading-relaxed">
+               Live qualification transfers and booked sequences placed directly on calendar.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 5 — The Channels */}
+      <section className="px-6 md:px-12 lg:px-24 py-24 border-b border-border/50 bg-[#0a0a0a]">
+        <div className="flex items-center gap-3 mb-8">
+          <div className="h-px w-8 bg-primary" />
+          <span className="font-mono text-primary text-xs tracking-widest uppercase">
+            The Channels
+          </span>
+        </div>
+        <h2 className="text-3xl md:text-5xl font-heading mb-6">
+          We reach them <span className="text-primary italic">where they are.</span>
+        </h2>
+        <p className="font-mono text-muted-foreground text-sm max-w-2xl leading-relaxed mb-16">
+          Each channel is infrastructure we've built — not tools we use. Signal data flows through, personalized messages flow out.
+        </p>
+        
+        <InteractiveChannels />
+      </section>
+
+      {/* SECTION 6 — Total System Visibility */}
       <section className="px-6 md:px-12 lg:px-24 py-24 border-b border-border/50">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          <div>
-            <h2 className="text-3xl md:text-4xl font-heading mb-6">
+          <div className="max-w-xl">
+            <h2 className="text-3xl md:text-5xl font-heading mb-8">
               Total system visibility.
             </h2>
-            <p className="font-mono text-sm text-muted-foreground mb-8 leading-relaxed">
-              We do not provide aesthetic reports or vanity metrics. Client dashboards display strict operational telemetry: total signal yield, message delivery rates, localized conversion metrics, and hard pipeline booked. You buy a terminal that displays compounding revenue.
+            <p className="font-mono text-sm text-muted-foreground leading-relaxed mb-12">
+              Client dashboards display strict operational telemetry: total signal yield, message delivery rates, localized conversion metrics, and hard pipeline booked.
             </p>
-            <div className="space-y-4">
-              <div className="flex justify-between border-b border-border/50 pb-2 font-mono text-sm">
+            
+            <div className="space-y-6">
+              <div className="flex justify-between items-center border-b border-border/50 pb-4 font-mono text-sm">
                 <span className="text-muted-foreground">Cost per meeting</span>
-                <span className="text-foreground">Tracked Live</span>
+                <span className="text-foreground border border-border/50 bg-[#111] px-3 py-1 rounded">Tracked Live</span>
               </div>
-              <div className="flex justify-between border-b border-border/50 pb-2 font-mono text-sm">
+              <div className="flex justify-between items-center border-b border-border/50 pb-4 font-mono text-sm">
                 <span className="text-muted-foreground">Pipeline generated</span>
-                <span className="text-foreground">Attributed M/M</span>
+                <span className="text-foreground border border-border/50 bg-[#111] px-3 py-1 rounded">Attributed M/M</span>
               </div>
-              <div className="flex justify-between border-b border-border/50 pb-2 font-mono text-sm">
+              <div className="flex justify-between items-center border-b border-border/50 pb-4 font-mono text-sm">
                 <span className="text-muted-foreground">Active delivery nodes</span>
-                <span className="text-primary">100% HEALTH</span>
+                <span className="text-primary tracking-widest flex items-center gap-2">
+                  <div className="w-2 h-2 bg-primary rounded-full animate-pulse shadow-[0_0_8px_rgba(16,185,129,0.5)]" />
+                  100% HEALTH
+                </span>
               </div>
             </div>
           </div>
-          <div className="w-full">
-            <SignalFeed />
+          
+          <div className="w-full relative">
+            {/* Ambient terminal glow */}
+            <div className="absolute inset-0 bg-primary/5 blur-[100px] pointer-events-none" />
+            <LiveTerminal />
           </div>
         </div>
       </section>
 
-      {/* 6. THE GATE / CTA */}
-      <section className="px-6 md:px-12 lg:px-24 py-32 bg-black flex flex-col items-center justify-center text-center">
-        <div className="w-4 h-4 bg-primary mb-8 shadow-[0_0_15px_rgba(16,185,129,0.5)] animate-pulse" />
-        <h2 className="text-4xl md:text-5xl lg:text-7xl font-heading mb-8">
+      {/* SECTION 7 — CTA / The Gate */}
+      <section className="px-6 md:px-12 lg:px-24 py-32 flex flex-col items-center justify-center text-center bg-[#050505]">
+        <div className="w-4 h-4 bg-primary mb-8" />
+        <h2 className="text-5xl md:text-7xl font-heading mb-8">
           Own Your Market.
         </h2>
-        <p className="font-mono text-muted-foreground text-sm max-w-md mx-auto mb-10 leading-relaxed">
+        <p className="font-mono text-muted-foreground text-sm md:text-base max-w-2xl mx-auto mb-12 leading-relaxed">
           Built for companies with a defined market and the sales capacity to close what we generate.
         </p>
-        <a 
+         <a 
           href="mailto:team@outboundsolutions.com"
-          className="inline-flex items-center justify-center font-medium whitespace-nowrap h-14 px-8 font-mono text-sm uppercase tracking-widest bg-foreground text-background hover:bg-primary hover:text-black transition-all duration-300 rounded-none shadow-[0_0_0_rgba(16,185,129,0)] hover:shadow-[0_0_20px_rgba(16,185,129,0.4)]"
+          className="inline-flex items-center justify-center whitespace-nowrap h-12 px-8 font-mono text-sm uppercase bg-white text-black hover:bg-gray-200 transition-colors duration-200 rounded-none border border-transparent"
         >
           Request Access
         </a>
       </section>
 
-      <footer className="px-6 md:px-12 py-8 border-t border-border flex flex-col sm:flex-row justify-between items-center font-mono text-[10px] text-muted-foreground tracking-widest uppercase">
-        <div>© {new Date().getFullYear()} Outbound Solutions. All processes engineered internally.</div>
-        <div className="flex gap-6 mt-4 sm:mt-0">
-          <span className="hover:text-primary cursor-pointer transition-colors">Privacy</span>
-          <span className="hover:text-primary cursor-pointer transition-colors">Terms of Service</span>
+      {/* Footer */}
+      <footer className="px-6 md:px-12 py-8 border-t border-border flex flex-col md:flex-row justify-between items-center font-mono text-xs text-muted-foreground uppercase tracking-widest">
+        <div className="flex items-center gap-3 mb-6 md:mb-0">
+          <div className="w-2 h-2 bg-primary rounded-full" />
+          <span>© 2026 OUTBOUND SOLUTIONS. ALL PROCESSES ENGINEERED INTERNALLY.</span>
+        </div>
+        <div className="flex gap-8">
+          <Link href="#" className="hover:text-primary transition-colors">Privacy</Link>
+          <Link href="#" className="hover:text-primary transition-colors">Terms of Service</Link>
         </div>
       </footer>
     </div>
