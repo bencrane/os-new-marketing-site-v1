@@ -1,7 +1,7 @@
 import { SignalTicker } from "@/components/ui/signal-ticker";
 import { InteractiveChannels } from "@/components/ui/interactive-channels";
 import { LiveTerminal } from "@/components/ui/live-terminal";
-import Link from "next/link";
+import { Footer } from "@/components/layout/footer";
 
 export default function Home() {
   return (
@@ -206,16 +206,7 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="px-6 md:px-12 py-8 border-t border-border flex flex-col md:flex-row justify-between items-center font-mono text-xs text-muted-foreground uppercase tracking-widest">
-        <div className="flex items-center gap-3 mb-6 md:mb-0">
-          <div className="w-2 h-2 bg-primary rounded-full" />
-          <span>© 2026 OUTBOUND SOLUTIONS. ALL PROCESSES ENGINEERED INTERNALLY.</span>
-        </div>
-        <div className="flex gap-8">
-          <Link href="#" className="hover:text-primary transition-colors">Privacy</Link>
-          <Link href="#" className="hover:text-primary transition-colors">Terms of Service</Link>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

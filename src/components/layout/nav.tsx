@@ -12,7 +12,7 @@ export function Nav() {
       
       <div className="hidden lg:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 items-center gap-6 font-mono text-[10px] uppercase tracking-wider">
         <Link href="/verticals/wine-and-spirits" className="text-muted-foreground hover:text-primary transition-colors">
-          [WINE&SPIRITS]
+          [WINE&thinsp;&amp;&thinsp;SPIRITS]
         </Link>
         <Link href="/verticals/insurance" className="text-muted-foreground hover:text-primary transition-colors">
           [INSURANCE]
@@ -22,6 +22,9 @@ export function Nav() {
         </Link>
         <Link href="/verticals/software" className="text-muted-foreground hover:text-primary transition-colors">
           [SOFTWARE]
+        </Link>
+        <Link href="/verticals/private-equity" className="text-muted-foreground hover:text-primary transition-colors">
+          [PRIVATE EQUITY]
         </Link>
       </div>
       

@@ -539,3 +539,124 @@ export const softwareConfig: VerticalConfig = {
     scarcityText: "We onboard one software company per ICP cluster per quarter. If you have product-market fit and a sales team ready to close, apply."
   }
 };
+
+// ------------------------------------------
+// 5. PRIVATE EQUITY
+// ------------------------------------------
+export const privateEquityConfig: VerticalConfig = {
+  slug: "private-equity",
+  metaTitle: "Outbound Solutions | Target: Private Equity",
+  metaDescription: "Proprietary pipeline infrastructure configured for Private Equity deal sourcing.",
+  
+  hero: {
+    classification: "TARGET: PRIVATE EQUITY",
+    tension: "The deal is sourced before the banker calls.",
+    subtext: "Private equity firms spend millions on deal sourcing. Bankers send the same decks to the same buyers. Proprietary deal flow means reaching business owners directly — at the exact moment their circumstances signal readiness to transact. We build the infrastructure that finds them first."
+  },
+  
+  marketMap: {
+    totalDMCount: "14,209",
+    statesCovered: ["Nationwide", "Dental", "Veterinary", "Behavioral Health", "Home Services", "Construction", "Staffing", "Trucking", "HVAC", "Plumbing", "Electrical", "Waste Management", "Auto Body", "Dermatology", "Med Spa"],
+    titlesTargeted: [
+      "Founder",
+      "Owner",
+      "CEO",
+      "President",
+      "Managing Partner",
+      "CFO",
+      "Director of Operations"
+    ]
+  },
+  
+  signals: {
+    intro: "These are the structural conditions where outreach converts.\nNot random emails. Timed to exact inflection points in the market.",
+    feed: [
+      {
+        source: "STATE_SOS",
+        type: "ENTITY_AGE_THRESHOLD",
+        event: "Business incorporated 20+ years ago, owner aged 58-67",
+        implication: "Prime succession planning window, likely no formal exit strategy"
+      },
+      {
+        source: "UCC",
+        type: "EQUIPMENT_LOAN_PAYOFF",
+        event: "UCC filing terminated on $400K equipment loan",
+        implication: "Debt-free balance sheet, attractive acquisition target"
+      },
+      {
+        source: "LINKEDIN",
+        type: "FOUNDER_ACTIVITY_DROP",
+        event: "Owner posting frequency dropped 80% over 6 months",
+        implication: "Possible burnout or quiet preparation to exit"
+      },
+      {
+        source: "SBA",
+        type: "LOAN_MATURITY",
+        event: "SBA 7(a) loan maturing in next 90 days",
+        implication: "Refinancing decision point, open to conversations about liquidity"
+      },
+      {
+        source: "LICENSE",
+        type: "NEW_LOCATION_FILING",
+        event: "Competitor in same DMA files second location permit",
+        implication: "Market consolidation accelerating, owners feeling competitive pressure"
+      },
+      {
+        source: "INDEED",
+        type: "KEY_ROLE_POSTED",
+        event: "Owner-operator posts for first-ever GM or operations manager",
+        implication: "Attempting to step back from day-to-day, early exit signal"
+      }
+    ]
+  },
+  
+  system: {
+    intro: "Business owners who are ready to sell don't announce it. They don't list on BizBuySell. The best deals are sourced through direct outreach timed to life and business signals that indicate readiness. We deploy multi-channel campaigns that reach owners with the right message at the right moment — before a banker or broker enters the picture.",
+    stages: [
+      {
+        name: "01 // SIGNAL INGESTION: OWNER_INTELLIGENCE",
+        description: "Monitoring state filings, UCC records, SBA loan data, LinkedIn activity patterns, and hiring signals to identify owners approaching transition.",
+        channel: "DATA_LAYER"
+      },
+      {
+        name: "02 // ISOLATED SEQUENCE: EMAIL_INFRASTRUCTURE",
+        description: "High-deliverability email referencing the specific business, its market position, and the PE firm's thesis. Personalized at the individual level, not templated.",
+        channel: "EMAIL_INFRASTRUCTURE"
+      },
+      {
+        name: "03 // DIRECT INTERVENTION: HUMAN_DIALERS",
+        description: "Trained callers having real conversations with business owners. Not scripted SDR calls — consultative outreach from people who understand the owner's world.",
+        channel: "HUMAN_DIALERS"
+      },
+      {
+        name: "04 // PHYSICAL TRIGGER: DIRECT_MAIL",
+        description: "Personalized letters and branded collateral mailed to business owners. Physical mail carries authority that email cannot. QR-tracked to custom landing pages.",
+        channel: "DIRECT_MAIL"
+      }
+    ]
+  },
+  
+  terrain: {
+    intro: "We operate inside the private equity deal sourcing lifecycle.",
+    description: "Proprietary deal flow is the single highest-value capability in private equity. We map entire verticals — every owner, every location, every signal of transition readiness — and deploy outreach that positions our clients as the first credible conversation an owner has about their future. This is not lead generation. This is market coverage at the thesis level.",
+    items: [
+      { id: "SYS_01", name: "THESIS-LEVEL TARGETING", description: "Building total addressable universes mapped to specific rollup theses across 14+ verticals." },
+      { id: "SYS_02", name: "OWNER LIFECYCLE MAPPING", description: "Tracking business age, owner tenure, debt maturity, hiring patterns, and competitive pressure to score exit readiness." },
+      { id: "SYS_03", name: "MULTI-FIRM ISOLATION", description: "Each PE client's outreach runs on completely isolated infrastructure. No shared domains, no signal leakage between competing firms." }
+    ]
+  },
+  
+  outcome: {
+    intro: "A single proprietary deal sourced through direct outreach can represent $5M to $50M in enterprise value. Platform add-ons sourced through the same system compound portfolio value over the life of the hold. The system generates owner conversations. Your deal team closes them.",
+    dashboardMock: [
+      { metric: "ACTIVE_PIPELINE_VALUE", value: "$84M", status: "nominal" },
+      { metric: "OWNER_CONVERSATIONS_BOOKED", value: "31", status: "nominal" },
+      { metric: "VERTICALS_COVERED", value: "6", status: "nominal" },
+      { metric: "PROPRIETARY_DEAL_RATE", value: "94%", status: "nominal" }
+    ]
+  },
+  
+  gate: {
+    scarcityText: "We deploy one PE firm per rollup vertical. If you have a defined thesis and a deal team ready to move, apply."
+  }
+};
