@@ -20,15 +20,15 @@ export function Nav() {
         <Link href="/verticals/factoring" className="text-muted-foreground hover:text-primary transition-colors">
           [FACTORING]
         </Link>
-        <Link href="/verticals/saas" className="text-muted-foreground hover:text-primary transition-colors">
-          [SAAS]
+        <Link href="/verticals/software" className="text-muted-foreground hover:text-primary transition-colors">
+          [SOFTWARE]
         </Link>
       </div>
       
       <div className="flex items-center z-10">
         <div className="hidden sm:flex items-center gap-2 border border-border bg-background/50 px-3 h-8 rounded text-muted-foreground font-mono uppercase text-[10px] tracking-wider">
           <div className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse shadow-[0_0_8px_rgba(16,185,129,0.5)]" />
-          <span>SYSTEM STATUS: LIVE</span>
+          <span>LIVE</span>
         </div>
       </div>
     </header>

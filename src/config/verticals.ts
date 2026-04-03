@@ -421,15 +421,15 @@ export const factoringConfig: VerticalConfig = {
 };
 
 // ------------------------------------------
-// 4. SAAS
+// 4. SOFTWARE
 // ------------------------------------------
-export const saasConfig: VerticalConfig = {
-  slug: "saas",
-  metaTitle: "Outbound Solutions | Target: SaaS",
-  metaDescription: "Proprietary pipeline infrastructure configured for high-velocity SaaS outbound sales.",
+export const softwareConfig: VerticalConfig = {
+  slug: "software",
+  metaTitle: "Outbound Solutions | Target: Software",
+  metaDescription: "Proprietary pipeline infrastructure configured for high-velocity Software outbound sales.",
   
   hero: {
-    classification: "TARGET: SAAS",
+    classification: "TARGET: SOFTWARE",
     tension: "Your ICP just changed their stack.\nThe window is 90 days.",
     subtext: "When a company hires a new VP of Ops, rips out their CRM, closes a funding round, or crosses a headcount threshold, they enter a buying window. Most sales teams find out six months later. We detect these shifts the week they happen and deploy outbound before the window closes."
   },
@@ -490,7 +490,7 @@ export const saasConfig: VerticalConfig = {
   },
   
   system: {
-    intro: "SaaS buyers are overwhelmed with outbound. Generic sequences get archived. Signal-timed outreach that references a specific change in their business gets read. We deploy email and LinkedIn in precise sequence, timed to structural shifts detected in real time.",
+    intro: "Software buyers are overwhelmed with outbound. Generic sequences get archived. Signal-timed outreach that references a specific change in their business gets read. We deploy email and LinkedIn in precise sequence, timed to structural shifts detected in real time.",
     stages: [
       {
         name: "01 // DATA INGESTION: SIGNAL_LAYER",
@@ -517,7 +517,7 @@ export const saasConfig: VerticalConfig = {
   
   terrain: {
     intro: "We operate inside the modern B2B buying cycle.",
-    description: "SaaS purchasing has shifted from top-down mandates to committee-based evaluation. The average B2B deal now involves 6-10 stakeholders. We map the buying committee at each target account, identify the champion and the economic buyer, and sequence outreach to both. Timing is anchored to structural change signals — not calendar-based cadences.",
+    description: "Software purchasing has shifted from top-down mandates to committee-based evaluation. The average B2B deal now involves 6-10 stakeholders. We map the buying committee at each target account, identify the champion and the economic buyer, and sequence outreach to both. Timing is anchored to structural change signals — not calendar-based cadences.",
     items: [
       { id: "SYS_01", name: "BUYING COMMITTEE MAPPING", description: "Identifying champions, economic buyers, and technical evaluators within each account." },
       { id: "SYS_02", name: "TECH STACK INTELLIGENCE", description: "Monitoring DNS, script tags, and job postings to detect platform changes before they're announced." },
@@ -526,7 +526,7 @@ export const saasConfig: VerticalConfig = {
   },
   
   outcome: {
-    intro: "The average SaaS contract value for mid-market accounts ranges from $30,000 to $150,000 annually. One booked meeting with a qualified account in active evaluation can generate pipeline worth 50-100x the cost of the meeting. We engineer the timing. You run the demo.",
+    intro: "The average Software contract value for mid-market accounts ranges from $30,000 to $150,000 annually. One booked meeting with a qualified account in active evaluation can generate pipeline worth 50-100x the cost of the meeting. We engineer the timing. You run the demo.",
     dashboardMock: [
       { metric: "ACTIVE_PIPELINE_VALUE", value: "$4.2M", status: "nominal" },
       { metric: "QUALIFIED_MEETINGS_BOOKED", value: "31", status: "nominal" },
@@ -536,6 +536,6 @@ export const saasConfig: VerticalConfig = {
   },
   
   gate: {
-    scarcityText: "We onboard one SaaS company per ICP cluster per quarter. If you have product-market fit and a sales team ready to close, apply."
+    scarcityText: "We onboard one software company per ICP cluster per quarter. If you have product-market fit and a sales team ready to close, apply."
   }
 };
