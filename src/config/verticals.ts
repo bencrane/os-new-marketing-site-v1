@@ -668,7 +668,7 @@ export const realEstateConfig: VerticalConfig = {
   
   hero: {
     classification: "TARGET: REAL ESTATE DEVELOPMENT",
-    tension: "The best sites never hit the market.",
+    tension: "The best properties never hit the market.",
     subtext: "Off-market acquisitions define portfolio returns. But most developers find deals the same way — waiting for brokers to send listings that every other buyer has already seen. We monitor public records for signals that an owner is ready to sell before they've made a single phone call."
   },
   
