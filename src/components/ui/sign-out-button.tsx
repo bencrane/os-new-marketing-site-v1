@@ -1,11 +1,13 @@
 "use client";
 
 export function SignOutButton() {
-  const handleSignOut = () => {
-    // A standard trick to clear Basic Auth in the browser
-    const protocol = window.location.protocol;
-    const host = window.location.host;
-    window.location.href = `${protocol}//logout:logout@${host}/`;
+  const handleSignOut = async () => {
+    try {
+      await fetch("/api/sign-out", { credentials: "include" });
+    } catch {
+      // 401 is expected — it clears the cached credentials
+    }
+    window.location.href = "/";
   };
 
   return (
