@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Outbound Solutions | Privacy Policy",
+  title: "GTM Command Center | Privacy Policy",
 };
 
 export default function PrivacyPolicy() {
@@ -32,7 +32,7 @@ export default function PrivacyPolicy() {
 
         <section>
           <h2 className="text-white font-bold mb-4 uppercase tracking-wider">Data We Process on Behalf of Clients</h2>
-          <p>Outbound Solutions processes business contact data (names, titles, emails, phone numbers, company information) as part of operating outbound campaigns on behalf of clients. This data is sourced from publicly available records, licensed data providers, and client-provided lists. We act as a data processor on behalf of our clients, who remain the data controllers.</p>
+          <p>GTM Command Center processes business contact data (names, titles, emails, phone numbers, company information) as part of operating outbound campaigns on behalf of clients. This data is sourced from publicly available records, licensed data providers, and client-provided lists. We act as a data processor on behalf of our clients, who remain the data controllers.</p>
         </section>
 
         <section>
@@ -57,7 +57,7 @@ export default function PrivacyPolicy() {
 
         <section>
           <h2 className="text-white font-bold mb-4 uppercase tracking-wider">Contact</h2>
-          <p>For privacy-related inquiries: privacy@outboundsolutions.com</p>
+          <p>For privacy-related inquiries: privacy@gtmcommandcenter.com</p>
         </section>
       </div>
     </div>

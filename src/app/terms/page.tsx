@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Outbound Solutions | Terms of Service",
+  title: "GTM Command Center | Terms of Service",
 };
 
 export default function TermsOfService() {
@@ -22,7 +22,7 @@ export default function TermsOfService() {
       <div className="w-full max-w-[720px] font-mono text-sm text-muted-foreground leading-relaxed space-y-10 mb-24">
         <section>
           <h2 className="text-white font-bold mb-4 uppercase tracking-wider">Overview</h2>
-          <p>These terms govern your use of the Outbound Solutions website and any services provided through an executed engagement. By accessing this site or submitting a Request Access form, you agree to these terms.</p>
+          <p>These terms govern your use of the GTM Command Center website and any services provided through an executed engagement. By accessing this site or submitting a Request Access form, you agree to these terms.</p>
         </section>
 
         <section>
@@ -32,7 +32,7 @@ export default function TermsOfService() {
 
         <section>
           <h2 className="text-white font-bold mb-4 uppercase tracking-wider">Services Description</h2>
-          <p>Outbound Solutions builds and operates outbound go-to-market infrastructure including but not limited to: email sending systems, direct mail campaigns, cold calling operations, inbound call handling, LinkedIn outreach, audience targeting, signal detection, and campaign management. Specific deliverables are defined per engagement.</p>
+          <p>GTM Command Center builds and operates outbound go-to-market infrastructure including but not limited to: email sending systems, direct mail campaigns, cold calling operations, inbound call handling, LinkedIn outreach, audience targeting, signal detection, and campaign management. Specific deliverables are defined per engagement.</p>
         </section>
 
         <section>
@@ -47,17 +47,17 @@ export default function TermsOfService() {
 
         <section>
           <h2 className="text-white font-bold mb-4 uppercase tracking-wider">Intellectual Property</h2>
-          <p>All systems, processes, infrastructure, and methodologies developed by Outbound Solutions remain the intellectual property of Outbound Solutions. Client-specific campaign data, audience lists generated for the client, and meeting outcomes are the property of the client.</p>
+          <p>All systems, processes, infrastructure, and methodologies developed by GTM Command Center remain the intellectual property of GTM Command Center. Client-specific campaign data, audience lists generated for the client, and meeting outcomes are the property of the client.</p>
         </section>
 
         <section>
           <h2 className="text-white font-bold mb-4 uppercase tracking-wider">Data and Compliance</h2>
-          <p>Outbound Solutions operates in compliance with applicable email sending regulations including CAN-SPAM. Direct mail campaigns comply with USPS regulations. Voice campaigns comply with TCPA regulations. Clients are responsible for ensuring their products and services comply with applicable laws in their industry.</p>
+          <p>GTM Command Center operates in compliance with applicable email sending regulations including CAN-SPAM. Direct mail campaigns comply with USPS regulations. Voice campaigns comply with TCPA regulations. Clients are responsible for ensuring their products and services comply with applicable laws in their industry.</p>
         </section>
 
         <section>
           <h2 className="text-white font-bold mb-4 uppercase tracking-wider">Limitation of Liability</h2>
-          <p>Outbound Solutions provides go-to-market infrastructure and execution. We do not guarantee specific revenue outcomes, close rates, or deal values. Campaign performance is influenced by market conditions, client responsiveness, and product-market fit.</p>
+          <p>GTM Command Center provides go-to-market infrastructure and execution. We do not guarantee specific revenue outcomes, close rates, or deal values. Campaign performance is influenced by market conditions, client responsiveness, and product-market fit.</p>
         </section>
 
         <section>
@@ -72,7 +72,7 @@ export default function TermsOfService() {
 
         <section>
           <h2 className="text-white font-bold mb-4 uppercase tracking-wider">Contact</h2>
-          <p>For questions about these terms: legal@outboundsolutions.com</p>
+          <p>For questions about these terms: legal@gtmcommandcenter.com</p>
         </section>
       </div>
     </div>

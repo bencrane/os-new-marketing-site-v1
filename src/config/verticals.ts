@@ -67,7 +67,7 @@ export interface VerticalConfig {
 // ------------------------------------------
 export const wineAndSpiritsConfig: VerticalConfig = {
   slug: "wine-and-spirits",
-  metaTitle: "Outbound Solutions | Target: Wine & Spirits",
+  metaTitle: "GTM Command Center | Target: Wine & Spirits",
   metaDescription: "Proprietary pipeline infrastructure configured for the US Wine & Spirits wholesale distribution market.",
   
   hero: {
@@ -186,7 +186,7 @@ export const wineAndSpiritsConfig: VerticalConfig = {
 // ------------------------------------------
 export const insuranceConfig: VerticalConfig = {
   slug: "insurance",
-  metaTitle: "Outbound Solutions | Target: Insurance",
+  metaTitle: "GTM Command Center | Target: Insurance",
   metaDescription: "Proprietary pipeline infrastructure configured for the commercial insurance agency market.",
   
   hero: {
@@ -305,7 +305,7 @@ export const insuranceConfig: VerticalConfig = {
 // ------------------------------------------
 export const factoringConfig: VerticalConfig = {
   slug: "factoring",
-  metaTitle: "Outbound Solutions | Target: Factoring",
+  metaTitle: "GTM Command Center | Target: Factoring",
   metaDescription: "Proprietary pipeline infrastructure configured for the commercial factoring and alternative lending market.",
   
   hero: {
@@ -425,7 +425,7 @@ export const factoringConfig: VerticalConfig = {
 // ------------------------------------------
 export const softwareConfig: VerticalConfig = {
   slug: "software",
-  metaTitle: "Outbound Solutions | Target: Software",
+  metaTitle: "GTM Command Center | Target: Software",
   metaDescription: "Proprietary pipeline infrastructure configured for high-velocity Software outbound sales.",
   
   hero: {
@@ -545,7 +545,7 @@ export const softwareConfig: VerticalConfig = {
 // ------------------------------------------
 export const privateEquityConfig: VerticalConfig = {
   slug: "private-equity",
-  metaTitle: "Outbound Solutions | Target: Private Equity",
+  metaTitle: "GTM Command Center | Target: Private Equity",
   metaDescription: "Proprietary pipeline infrastructure configured for Private Equity deal sourcing.",
   
   hero: {
@@ -663,7 +663,7 @@ export const privateEquityConfig: VerticalConfig = {
 
 export const realEstateConfig: VerticalConfig = {
   slug: "real-estate",
-  metaTitle: "Outbound Solutions | Target: Real Estate Development",
+  metaTitle: "GTM Command Center | Target: Real Estate Development",
   metaDescription: "Proprietary pipeline infrastructure configured for the US Real Estate Development market.",
   
   hero: {

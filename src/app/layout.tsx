@@ -16,7 +16,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Outbound Solutions | Infrastructure as a Service",
+  title: "GTM Command Center | Infrastructure as a Service",
   description: "Engineering applied to pipeline generation for complex markets.",
 };
 
