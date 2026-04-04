@@ -4,6 +4,7 @@ import "./globals.css";
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Nav } from "@/components/layout/nav";
+import { SignOutButton } from "@/components/ui/sign-out-button";
 
 const garamond = EB_Garamond({
   variable: "--font-heading",
@@ -36,6 +37,7 @@ export default function RootLayout({
           <main className="flex-1 flex flex-col pt-[72px]">
             {children}
           </main>
+          <SignOutButton />
         </TooltipProvider>
         <Toaster />
       </body>
