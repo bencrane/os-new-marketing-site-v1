@@ -1,13 +1,8 @@
 "use client";
 
 export function SignOutButton() {
-  const handleSignOut = async () => {
-    try {
-      await fetch("/api/sign-out", { credentials: "include" });
-    } catch {
-      // 401 is expected — it clears the cached credentials
-    }
-    window.location.href = "/";
+  const handleSignOut = () => {
+    window.location.href = "/api/sign-out";
   };
 
   return (
