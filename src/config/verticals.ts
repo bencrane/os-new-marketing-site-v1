@@ -73,7 +73,7 @@ export const wineAndSpiritsConfig: VerticalConfig = {
   hero: {
     classification: "TARGET: WINE & SPIRITS",
     tension: "The brand is built.\nThe distribution isn't.",
-    subtext: "Competing for distributor attention is structural warfare. Founders burn cycles acting as the sole sales team, making expansion decisions based on gut feel, and sending expensive sample runs to portfolio managers who never asked for them. We bypass the noise by treating distribution acquisition as an engineering problem."
+    subtext: "Competing for market attention is structural warfare. Founders burn cycles acting as the sole sales team, making expansion decisions based on gut feel, and sending expensive sample runs to portfolio managers who never asked for them. We bypass the noise by treating distribution acquisition as an engineering problem."
   },
   
   marketMap: {
@@ -94,7 +94,7 @@ export const wineAndSpiritsConfig: VerticalConfig = {
       {
         source: "PORTFOLIO_CHANGE",
         type: "COMPETITOR_DROPPED",
-        event: "Distributor drops competing tequila brand from portfolio",
+        event: "Market drops competing tequila brand from portfolio",
         implication: "Open slot for new agave brand"
       },
       {
@@ -107,7 +107,7 @@ export const wineAndSpiritsConfig: VerticalConfig = {
         source: "LICENSE_FILED",
         type: "WHOLESALE_APPROVAL",
         event: "State liquor board approves new wholesale distribution license",
-        implication: "New distributor actively building portfolio"
+        implication: "New market actively building portfolio"
       },
       {
         source: "MENU_SIGNAL",
@@ -118,7 +118,7 @@ export const wineAndSpiritsConfig: VerticalConfig = {
       {
         source: "EXPANSION",
         type: "REGIONAL_GROWTH",
-        event: "Regional distributor files to operate in 2 additional states",
+        event: "Regional market files to operate in 2 additional states",
         implication: "Growing footprint prioritizing new brands"
       },
       {
@@ -158,16 +158,16 @@ export const wineAndSpiritsConfig: VerticalConfig = {
   
   terrain: {
     intro: "We operate strictly inside the US Three-Tier System.",
-    description: "Cold outreach fails when it ignores regulatory structure. We map precisely which states a client is actively licensed to sell in and saturate those territories. Concurrently, we run light reconnaissance into target expansion states to pre-warm distributors, ensuring pipeline waits the moment state permits clear.",
+    description: "Cold outreach fails when it ignores regulatory structure. We map precisely which states a client is actively licensed to sell in and saturate those territories. Concurrently, we run light reconnaissance into target expansion states to pre-warm markets, ensuring pipeline waits the moment state permits clear.",
     items: [
-      { id: "SYS_01", name: "Three-Tier Compliance", description: "Mapping distributor relationships directly to supplier licenses." },
+      { id: "SYS_01", name: "Three-Tier Compliance", description: "Mapping market relationships directly to supplier licenses." },
       { id: "SYS_02", name: "State-by-State Control", description: "Navigating franchise state laws versus open markets." },
       { id: "SYS_03", name: "Control State Routing", description: "Isolating broker models required for state-run jurisdictions." }
     ]
   },
   
   outcome: {
-    intro: "A single regional distributor actively pushing a brand can generate $240K to $1M in annual wholesale revenue. It places a product in 50 to 200 immediate accounts. We engineer the meetings. You close the distribution.",
+    intro: "A single regional market actively pushing a brand can generate $240K to $1M in annual wholesale revenue. It places a product in 50 to 200 immediate accounts. We engineer the meetings. You close the distribution.",
     dashboardMock: [
       { metric: "ACTIVE_PIPELINE_VALUE", value: "$1.4M", status: "nominal" },
       { metric: "TIER_1_MEETINGS_BOOKED", value: "14", status: "nominal" },

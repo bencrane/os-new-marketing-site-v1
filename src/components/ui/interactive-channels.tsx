@@ -61,11 +61,11 @@ export function InteractiveChannels() {
               <div className="bg-[#0a0a0a] border-t border-border/50 p-4 flex gap-6 font-mono text-xs uppercase tracking-wider text-muted-foreground">
                 <div className="flex items-center gap-2">
                   <span>VARIANT A</span>
-                  <span className="text-primary">34% OPEN / 8.2% REPLY</span>
+                  <span className="text-primary">8.2% POSITIVE RESPONSE RATE / 28 MEETINGS BOOKED</span>
                 </div>
                 <div className="flex items-center gap-2 opacity-50">
                   <span>VARIANT B</span>
-                  <span>41% OPEN / 6.7% REPLY</span>
+                  <span>6.7% POSITIVE RESPONSE RATE / 23 MEETINGS BOOKED</span>
                 </div>
               </div>
             </div>

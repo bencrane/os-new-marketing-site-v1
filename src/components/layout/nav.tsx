@@ -1,6 +1,22 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+
+const VERTICALS = [
+  { href: "/verticals/wine-and-spirits", label: <>[WINE&thinsp;&amp;&thinsp;SPIRITS]</>, slug: "wine-and-spirits" },
+  { href: "/verticals/insurance", label: "[INSURANCE]", slug: "insurance" },
+  { href: "/verticals/factoring", label: "[FACTORING]", slug: "factoring" },
+  { href: "/verticals/software", label: "[SOFTWARE]", slug: "software" },
+  { href: "/verticals/private-equity", label: "[PRIVATE EQUITY]", slug: "private-equity" },
+  { href: "/verticals/real-estate", label: "[REAL ESTATE]", slug: "real-estate" },
+];
 
 export function Nav() {
+  const pathname = usePathname();
+  const isVerticalPage = pathname?.startsWith("/verticals/");
+  const currentSlug = isVerticalPage ? pathname?.split("/").pop() : null;
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 bg-background/80 backdrop-blur-sm border-b border-border/50">
       <Link href="/" className="flex items-center gap-2 group z-10">
@@ -11,24 +27,19 @@ export function Nav() {
       </Link>
       
       <div className="hidden lg:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 items-center gap-6 font-mono text-[10px] uppercase tracking-wider">
-        <Link href="/verticals/wine-and-spirits" className="text-muted-foreground hover:text-primary transition-colors">
-          [WINE&thinsp;&amp;&thinsp;SPIRITS]
-        </Link>
-        <Link href="/verticals/insurance" className="text-muted-foreground hover:text-primary transition-colors">
-          [INSURANCE]
-        </Link>
-        <Link href="/verticals/factoring" className="text-muted-foreground hover:text-primary transition-colors">
-          [FACTORING]
-        </Link>
-        <Link href="/verticals/software" className="text-muted-foreground hover:text-primary transition-colors">
-          [SOFTWARE]
-        </Link>
-        <Link href="/verticals/private-equity" className="text-muted-foreground hover:text-primary transition-colors">
-          [PRIVATE EQUITY]
-        </Link>
-        <Link href="/verticals/real-estate" className="text-muted-foreground hover:text-primary transition-colors">
-          [REAL ESTATE]
-        </Link>
+        {isVerticalPage ? (
+          VERTICALS.filter(v => v.slug === currentSlug).map((v) => (
+            <span key={v.slug} className="text-primary font-semibold">
+              {v.label}
+            </span>
+          ))
+        ) : (
+          VERTICALS.map((v) => (
+            <Link key={v.slug} href={v.href} className="text-muted-foreground hover:text-primary transition-colors">
+              {v.label}
+            </Link>
+          ))
+        )}
       </div>
       
       <div className="flex items-center z-10">
