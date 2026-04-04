@@ -18,11 +18,11 @@ export function Nav() {
   const currentSlug = isVerticalPage ? pathname?.split("/").pop() : null;
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 bg-background/80 backdrop-blur-sm border-b border-border/50">
+    <header className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-12 lg:px-24 py-4 bg-background/80 backdrop-blur-sm border-b border-border/50">
       <Link href="/" className="flex items-center gap-2 group z-10">
         <div className="w-3 h-3 bg-primary" />
         <span className="font-heading font-semibold text-lg tracking-tight group-hover:text-primary transition-colors duration-300">
-          GTM Command Center
+          Outbound Solutions
         </span>
       </Link>
       

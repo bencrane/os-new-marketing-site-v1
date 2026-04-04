@@ -13,7 +13,7 @@ export default function Home() {
           <div className="flex items-center gap-3 mb-8">
             <div className="h-px w-8 bg-primary" />
             <span className="font-mono text-primary text-xs tracking-widest uppercase">
-              GTM Command Center
+              Outbound Solutions
             </span>
           </div>
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-heading leading-[1.1] text-foreground mb-8">
