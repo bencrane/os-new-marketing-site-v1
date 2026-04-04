@@ -801,3 +801,122 @@ export const realEstateConfig: VerticalConfig = {
     scarcityText: "We deploy one developer per target submarket. If you have a defined buy box and the capital to close, apply."
   }
 };
+
+// ------------------------------------------
+// 7. VERTICAL SAAS
+// ------------------------------------------
+export const verticalSaasConfig: VerticalConfig = {
+  slug: "vertical-saas",
+  metaTitle: "GTM Command Center | Target: Vertical SaaS",
+  metaDescription: "Proprietary pipeline infrastructure configured for Vertical SaaS companies selling to SMBs.",
+  
+  hero: {
+    classification: "TARGET: VERTICAL SAAS",
+    tension: "The SMB market is massive.\nIt's also deaf to cold email.",
+    subtext: "Selling software to HVAC contractors, dentists, and salon owners requires more than just generic outreach. SMB owners are drowning in operations, not checking their inbox. We bypass the digital noise by leveraging dynamic transaction signals to trigger precision direct mail and targeted cold calls exactly when they are growing, taking on debt, or hitting operational breaking points."
+  },
+  
+  marketMap: {
+    totalDMCount: "1.2M+",
+    statesCovered: ["Nationwide", "Metro Hubs", "Suburban Commercial Zones"],
+    titlesTargeted: [
+      "Owner/Operator",
+      "Managing Partner",
+      "Practice Owner",
+      "General Manager",
+      "President"
+    ]
+  },
+  
+  signals: {
+    intro: "We don't target NAICS codes. We target financial states. We identify precisely when an SMB is experiencing growth friction or cash flow anxiety.",
+    feed: [
+      {
+        source: "TRANSACTION_VELOCITY",
+        type: "GROWTH_FRICTION",
+        event: "Card transaction volume increased 20%+ YoY",
+        implication: "Scaling faster than current operational headcount can handle; desperate for automation"
+      },
+      {
+        source: "UCC_FILING",
+        type: "DEBT_TRIGGER",
+        event: "New UCC filing for equipment financing detected within last 14 days",
+        implication: "New fixed monthly overhead created; immediate need to improve cash flow and efficiency"
+      },
+      {
+        source: "REVENUE_QUALITY",
+        type: "CASH_FLOW_VOLATILITY",
+        event: "Revenue consistency score drops, indicating highly lumpy cash flow",
+        implication: "Stress over billing cycles; prime target for streamlined payment and invoicing software"
+      },
+      {
+        source: "TICKET_SIZE",
+        type: "COMPLEXITY_SHIFT",
+        event: "Average ticket size crossed from $500 to $2000+",
+        implication: "Moving from service calls to large projects/installations; existing systems breaking under complexity"
+      },
+      {
+        source: "EXPANSION",
+        type: "MULTI_LOCATION_TRIGGER",
+        event: "Business registers 3rd physical location",
+        implication: "Centralized management required; manual processes no longer viable"
+      },
+      {
+        source: "HIRING_VELOCITY",
+        type: "STAFFING_STRAIN",
+        event: "Significant spike in job postings for administrative and front-desk roles",
+        implication: "Customer intake is overwhelming current staff; software intervention needed"
+      }
+    ]
+  },
+  
+  system: {
+    intro: "Vertical SaaS sales fail when reps act like they are selling to the Fortune 500. SMB owners don't want a platform; they want a problem solved. We deploy physical triggers and direct conversations timed exactly to their pain points.",
+    stages: [
+      {
+        name: "01 // DATA INGESTION: TRANSACTIONAL SIGNALS",
+        description: "Monitoring actual card revenue data, transaction velocity, UCC filings, and location expansions.",
+        channel: "DATA_LAYER"
+      },
+      {
+        name: "02 // PHYSICAL TRIGGER: DIRECT_MAIL",
+        description: "Programmatic, high-production direct mail sent to the physical location referencing their specific inflection point.",
+        channel: "PHYSICAL_INFRASTRUCTURE"
+      },
+      {
+        name: "03 // DIRECT INTERVENTION: HUMAN_DIALERS",
+        description: "In-house phone reps calling the local branch or HQ, armed with specific hooks about their recent growth or equipment purchases.",
+        channel: "HUMAN_DIALERS"
+      },
+      {
+        name: "04 // WARM HANDOFF: LIVE TRANSFER",
+        description: "Qualified SMB owners transferred directly to your Account Executives while the urgency is high.",
+        channel: "VOICE_RECON"
+      }
+    ]
+  },
+  
+  terrain: {
+    intro: "We operate at the intersection of SMB operations and transaction signaling.",
+    description: "Vertical SaaS champions like meetdandy.com, mura.co, phorest.com, and joinmoxie.com know that local businesses don't buy software the way enterprises do. We map the physical entities, tie DBAs to parent companies for accurate targeting, and prioritize accounts based on the 'Perfect Storm' of high transaction velocity and recent debt, ensuring your reps only speak to owners who need help now.",
+    items: [
+      { id: "SYS_01", name: "Dynamic Financial States", description: "Moving beyond static firmographics to target businesses based on real-time financial distress or hyper-growth." },
+      { id: "SYS_02", name: "Entity Mapping", description: "Linking DBA names to Parent Legal Entities and physical branch locations for precise mail routing." },
+      { id: "SYS_03", name: "Prioritization Heuristics", description: "Tiering outreach targets to ensure Tier 1 leads (High Velocity + Recent Debt + High Ticket) get white-glove treatment." }
+    ]
+  },
+  
+  outcome: {
+    intro: "Selling SaaS to SMBs is a volume game, but the volume must be qualified. One signed contractor or multi-location salon scales your ARR efficiently with low churn. We pinpoint the ready buyers. Your team closes them.",
+    dashboardMock: [
+      { metric: "TIER_1_ACCOUNTS_IDENTIFIED", value: "847", status: "nominal" },
+      { metric: "LIVE_TRANSFERS_COMPLETED", value: "42", status: "nominal" },
+      { metric: "DIRECT_MAIL_CONVERSION", value: "+14.5%", status: "nominal" },
+      { metric: "CAC_REDUCTION", value: "-22.1%", status: "nominal" }
+    ]
+  },
+  
+  gate: {
+    scarcityText: "We partner with one Vertical SaaS firm per sub-industry (e.g., one for HVAC, one for Salons). Apply for exclusivity."
+  }
+};

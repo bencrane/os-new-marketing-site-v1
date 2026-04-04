@@ -8,8 +8,8 @@ export function VerticalMarketMap({ data }: { data: VerticalConfig["marketMap"] 
           <h2 className="font-mono text-primary text-xs tracking-widest uppercase mb-4">
             [01] Total Addressable Market Map
           </h2>
-          <p className="text-3xl md:text-4xl font-heading text-foreground max-w-3xl whitespace-pre-line">
-            The complete market landscape;
+          <p className="text-3xl md:text-4xl font-heading text-foreground max-w-3xl">
+            The complete market landscape;<br />
             defined, enriched and segmented.
           </p>
         </div>

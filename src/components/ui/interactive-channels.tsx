@@ -58,14 +58,14 @@ export function InteractiveChannels() {
                   {`Hi Sarah — I noticed Atlas Beverage recently dropped [competitor brand] from your spirits portfolio.\n\nCayéya is a single-barrel tequila out of Jalisco with retail presence in 8 states and growing. Would it make sense to send samples and a one-pager to your category team?\n\nHappy to work around your timeline.`}
                 </div>
               </div>
-              <div className="bg-[#0a0a0a] border-t border-border/50 p-4 flex gap-6 font-mono text-xs uppercase tracking-wider text-muted-foreground">
-                <div className="flex items-center gap-2">
+              <div className="bg-[#0a0a0a] border-t border-border/50 p-4 flex flex-col xl:flex-row gap-3 xl:gap-6 font-mono text-[11px] uppercase tracking-wider text-muted-foreground overflow-x-auto">
+                <div className="flex items-center gap-2 whitespace-nowrap">
                   <span>VARIANT A</span>
-                  <span className="text-primary">8.2% POSITIVE RESPONSE RATE / 28 MEETINGS BOOKED</span>
+                  <span className="text-primary">8.2% POSITIVE REPLY / 28 MEETINGS BOOKED</span>
                 </div>
-                <div className="flex items-center gap-2 opacity-50">
+                <div className="flex items-center gap-2 opacity-50 whitespace-nowrap">
                   <span>VARIANT B</span>
-                  <span>6.7% POSITIVE RESPONSE RATE / 23 MEETINGS BOOKED</span>
+                  <span>6.7% POSITIVE REPLY / 23 MEETINGS BOOKED</span>
                 </div>
               </div>
             </div>

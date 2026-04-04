@@ -7,7 +7,7 @@ const VERTICALS = [
   { href: "/verticals/wine-and-spirits", label: <>[WINE&thinsp;&amp;&thinsp;SPIRITS]</>, slug: "wine-and-spirits" },
   { href: "/verticals/insurance", label: "[INSURANCE]", slug: "insurance" },
   { href: "/verticals/factoring", label: "[FACTORING]", slug: "factoring" },
-  { href: "/verticals/software", label: "[SOFTWARE]", slug: "software" },
+  { href: "/verticals/vertical-saas", label: "[VERTICAL SAAS]", slug: "vertical-saas" },
   { href: "/verticals/private-equity", label: "[PRIVATE EQUITY]", slug: "private-equity" },
   { href: "/verticals/real-estate", label: "[REAL ESTATE]", slug: "real-estate" },
 ];
@@ -29,13 +29,13 @@ export function Nav() {
       <div className="hidden lg:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 items-center gap-6 font-mono text-[10px] uppercase tracking-wider">
         {isVerticalPage ? (
           VERTICALS.filter(v => v.slug === currentSlug).map((v) => (
-            <span key={v.slug} className="text-primary font-semibold">
+            <span key={v.slug} className="text-primary font-semibold whitespace-nowrap">
               {v.label}
             </span>
           ))
         ) : (
           VERTICALS.map((v) => (
-            <Link key={v.slug} href={v.href} className="text-muted-foreground hover:text-primary transition-colors">
+            <Link key={v.slug} href={v.href} className="text-muted-foreground hover:text-primary transition-colors whitespace-nowrap">
               {v.label}
             </Link>
           ))
