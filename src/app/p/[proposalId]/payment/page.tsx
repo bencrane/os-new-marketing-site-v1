@@ -128,7 +128,7 @@ function CheckoutForm({ proposalId }: { proposalId: string }) {
 export default function ProposalPaymentPage() {
   const params = useParams<{ proposalId: string }>();
   const proposalId = params?.proposalId;
-  const [activeMethod, setActiveMethod] = useState<"card" | "bank" | null>(null);
+  const [activeMethod, setActiveMethod] = useState<"card" | "bank">("card");
   const [copied, setCopied] = useState<string | null>(null);
   const [clientSecret, setClientSecret] = useState<string | null>(null);
   const [publishableKey, setPublishableKey] = useState<string | null>(null);
@@ -256,7 +256,7 @@ export default function ProposalPaymentPage() {
         <div className="grid grid-cols-2 gap-3 mb-0">
           <button
             type="button"
-            onClick={() => setActiveMethod(activeMethod === "card" ? null : "card")}
+            onClick={() => setActiveMethod("card")}
             className={`flex items-center gap-3 px-5 py-4 rounded-lg border cursor-pointer transition-all ${
               activeMethod === "card"
                 ? "border-primary/50 bg-primary/5 ring-1 ring-primary/20"
@@ -291,7 +291,7 @@ export default function ProposalPaymentPage() {
 
           <button
             type="button"
-            onClick={() => setActiveMethod(activeMethod === "bank" ? null : "bank")}
+            onClick={() => setActiveMethod("bank")}
             className={`flex items-center gap-3 px-5 py-4 rounded-lg border cursor-pointer transition-all ${
               activeMethod === "bank"
                 ? "border-primary/50 bg-primary/5 ring-1 ring-primary/20"
@@ -326,16 +326,9 @@ export default function ProposalPaymentPage() {
           </button>
         </div>
 
-        {/* Expanded content panel */}
-        <div
-          className={`grid transition-all duration-200 ease-in-out ${
-            activeMethod
-              ? "grid-rows-[1fr] opacity-100 mt-3"
-              : "grid-rows-[0fr] opacity-0 mt-0"
-          }`}
-        >
-          <div className="overflow-hidden">
-            <div className="border border-border rounded-lg p-6 min-h-[320px]">
+        {/* Content panel — always visible, fixed height */}
+        <div className="mt-3">
+          <div className="border border-border rounded-lg p-6 min-h-[320px]">
               {activeMethod === "card" && (
                 <>
                   {stripeError ? (
@@ -418,7 +411,6 @@ export default function ProposalPaymentPage() {
                 </>
               )}
             </div>
-          </div>
         </div>
       </div>
 
