@@ -26,7 +26,7 @@ export function Nav() {
         </span>
       </Link>
       
-      <div className="hidden lg:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 items-center gap-6 font-mono text-[10px] uppercase tracking-wider">
+      <div className="hidden xl:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 items-center gap-6 font-mono text-[10px] uppercase tracking-wider">
         {isVerticalPage ? (
           VERTICALS.filter(v => v.slug === currentSlug).map((v) => (
             <span key={v.slug} className="text-primary font-semibold whitespace-nowrap">
@@ -34,8 +34,8 @@ export function Nav() {
             </span>
           ))
         ) : (
-          VERTICALS.map((v) => (
-            <Link key={v.slug} href={v.href} className="text-muted-foreground hover:text-primary transition-colors whitespace-nowrap">
+          VERTICALS.map((v, i) => (
+            <Link key={v.slug} href={v.href} className={`text-muted-foreground hover:text-primary transition-colors whitespace-nowrap ${i >= 3 ? "hidden 2xl:inline" : ""}`}>
               {v.label}
             </Link>
           ))
