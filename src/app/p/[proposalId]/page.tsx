@@ -305,7 +305,7 @@ export default function ProposalPage() {
               x
             </span>
             <span className="font-heading text-2xl md:text-4xl font-semibold tracking-tight">
-              Chica Chida
+              Piermont Brands
             </span>
           </div>
         </div>
@@ -330,7 +330,7 @@ export default function ProposalPage() {
           <div className="flex items-center justify-center gap-4 text-sm text-muted-foreground font-mono">
             <span>
               Prepared for{" "}
-              <span className="text-foreground font-medium">Chica Chida</span>
+              <span className="text-foreground font-medium">Piermont Brands</span>
             </span>
             <span className="text-border">|</span>
             <span>April 2026</span>
