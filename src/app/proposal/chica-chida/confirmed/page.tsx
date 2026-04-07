@@ -10,7 +10,6 @@ import {
 } from "@stripe/react-stripe-js";
 
 // ─── Config ───────────────────────────────────────────
-// Update these when service-engine-x endpoint is ready
 const API_BASE = "https://api.serviceengine.xyz";
 const PROPOSAL_ID = "chica-chida";
 
@@ -142,21 +141,29 @@ export default function ProposalConfirmed() {
   };
 
   useEffect(() => {
-    fetch(`${API_BASE}/api/public/proposals/${PROPOSAL_ID}/create-payment-intent`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-    })
-      .then((res) => {
-        if (!res.ok) throw new Error("Failed");
-        return res.json();
-      })
-      .then((data) => {
-        setClientSecret(data.clientSecret);
-        setPublishableKey(data.publishableKey);
-      })
-      .catch(() => {
+    const init = async () => {
+      try {
+        // Step 1: GET proposal data for the Stripe publishable key
+        const proposalRes = await fetch(
+          `${API_BASE}/api/public/proposals/${PROPOSAL_ID}`,
+        );
+        if (!proposalRes.ok) throw new Error("Failed to load proposal");
+        const proposal = await proposalRes.json();
+        setPublishableKey(proposal.stripe_publishable_key);
+
+        // Step 2: POST to create the PaymentIntent
+        const intentRes = await fetch(
+          `${API_BASE}/api/public/proposals/${PROPOSAL_ID}/payment-intent`,
+          { method: "POST" },
+        );
+        if (!intentRes.ok) throw new Error("Failed to create payment intent");
+        const intent = await intentRes.json();
+        setClientSecret(intent.client_secret);
+      } catch {
         setStripeError(true);
-      });
+      }
+    };
+    init();
   }, []);
 
   const stripePromise = useMemo(
