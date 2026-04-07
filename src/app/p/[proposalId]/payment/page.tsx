@@ -328,88 +328,84 @@ export default function ProposalPaymentPage() {
 
         {/* Content panel — always visible, fixed height */}
         <div className="mt-3">
-          <div className="border border-border rounded-lg p-6 min-h-[320px]">
-              {activeMethod === "card" && (
-                <>
-                  {stripeError ? (
-                    <div className="flex flex-col items-center justify-center py-8 text-center">
-                      <p className="text-sm text-muted-foreground mb-1">
-                        Card payment is temporarily unavailable.
-                      </p>
-                      <p className="text-xs text-muted-foreground/60">
-                        Please use bank transfer or try again later.
-                      </p>
-                      <pre className="mt-4 w-full text-left text-xs text-destructive/80 bg-destructive/10 border border-destructive/20 rounded p-3 whitespace-pre-wrap break-all font-mono overflow-auto max-h-48">
-                        {stripeError}
-                      </pre>
+          <div className="border border-border rounded-lg p-6 grid">
+              <div className={`col-start-1 row-start-1 ${activeMethod !== "card" ? "invisible" : ""}`}>
+                {stripeError ? (
+                  <div className="flex flex-col items-center justify-center py-8 text-center">
+                    <p className="text-sm text-muted-foreground mb-1">
+                      Card payment is temporarily unavailable.
+                    </p>
+                    <p className="text-xs text-muted-foreground/60">
+                      Please use bank transfer or try again later.
+                    </p>
+                    <pre className="mt-4 w-full text-left text-xs text-destructive/80 bg-destructive/10 border border-destructive/20 rounded p-3 whitespace-pre-wrap break-all font-mono overflow-auto max-h-48">
+                      {stripeError}
+                    </pre>
+                  </div>
+                ) : clientSecret && stripePromise && proposalId ? (
+                  <Elements
+                    stripe={stripePromise}
+                    options={{ clientSecret, appearance: STRIPE_APPEARANCE }}
+                  >
+                    <CheckoutForm proposalId={proposalId} />
+                  </Elements>
+                ) : (
+                  <div className="flex items-center justify-center py-8">
+                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                      <div className="w-3 h-3 rounded-full border-2 border-muted-foreground/30 border-t-muted-foreground animate-spin" />
+                      Loading payment form...
                     </div>
-                  ) : clientSecret && stripePromise && proposalId ? (
-                    <Elements
-                      stripe={stripePromise}
-                      options={{ clientSecret, appearance: STRIPE_APPEARANCE }}
+                  </div>
+                )}
+              </div>
+
+              <div className={`col-start-1 row-start-1 ${activeMethod !== "bank" ? "invisible" : ""}`}>
+                <p className="text-sm text-muted-foreground mb-5 leading-relaxed">
+                  Send an ACH transfer using the details below. Typically arrives within
+                  1&ndash;3 business days.
+                </p>
+
+                <div className="space-y-0 mb-4">
+                  {BANK_DETAILS.map((row, i) => (
+                    <div
+                      key={row.label}
+                      className={`flex items-center justify-between py-2.5 ${
+                        i < BANK_DETAILS.length - 1 ? "border-b border-border" : ""
+                      }`}
                     >
-                      <CheckoutForm proposalId={proposalId} />
-                    </Elements>
-                  ) : (
-                    <div className="flex items-center justify-center py-8">
-                      <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                        <div className="w-3 h-3 rounded-full border-2 border-muted-foreground/30 border-t-muted-foreground animate-spin" />
-                        Loading payment form...
-                      </div>
+                      <span className="text-xs text-muted-foreground">{row.label}</span>
+                      <span className="text-xs font-medium font-mono flex items-center gap-2">
+                        {row.value}
+                        {row.copyable && (
+                          <button
+                            type="button"
+                            onClick={() => copyText(row.value, row.label)}
+                            className={`text-[10px] px-2 py-0.5 rounded border transition-all cursor-pointer font-mono ${
+                              copied === row.label
+                                ? "bg-primary/10 text-primary border-primary/20"
+                                : "bg-secondary/50 text-muted-foreground border-border hover:bg-secondary hover:text-foreground"
+                            }`}
+                          >
+                            {copied === row.label ? "Copied" : "Copy"}
+                          </button>
+                        )}
+                      </span>
                     </div>
-                  )}
-                </>
-              )}
+                  ))}
+                </div>
 
-              {activeMethod === "bank" && (
-                <>
-                  <p className="text-sm text-muted-foreground mb-5 leading-relaxed">
-                    Send an ACH transfer using the details below. Typically arrives within
-                    1&ndash;3 business days.
-                  </p>
-
-                  <div className="border border-border rounded bg-secondary/20 p-4 mb-4">
-                    <div className="text-[10px] font-mono uppercase tracking-[0.15em] text-muted-foreground mb-3">
-                      Bank
-                    </div>
-                    <div className="text-sm font-medium mb-0.5">
-                      Choice Financial Group
-                    </div>
-                    <div className="text-xs text-muted-foreground">
-                      4501 23rd Avenue S, Fargo, ND 58104
-                    </div>
+                <div className="border border-border rounded bg-secondary/20 p-4">
+                  <div className="text-[10px] font-mono uppercase tracking-[0.15em] text-muted-foreground mb-3">
+                    Bank
                   </div>
-
-                  <div className="space-y-0">
-                    {BANK_DETAILS.map((row, i) => (
-                      <div
-                        key={row.label}
-                        className={`flex items-center justify-between py-2.5 ${
-                          i < BANK_DETAILS.length - 1 ? "border-b border-border" : ""
-                        }`}
-                      >
-                        <span className="text-xs text-muted-foreground">{row.label}</span>
-                        <span className="text-xs font-medium font-mono flex items-center gap-2">
-                          {row.value}
-                          {row.copyable && (
-                            <button
-                              type="button"
-                              onClick={() => copyText(row.value, row.label)}
-                              className={`text-[10px] px-2 py-0.5 rounded border transition-all cursor-pointer font-mono ${
-                                copied === row.label
-                                  ? "bg-primary/10 text-primary border-primary/20"
-                                  : "bg-secondary/50 text-muted-foreground border-border hover:bg-secondary hover:text-foreground"
-                              }`}
-                            >
-                              {copied === row.label ? "Copied" : "Copy"}
-                            </button>
-                          )}
-                        </span>
-                      </div>
-                    ))}
+                  <div className="text-sm font-medium mb-0.5">
+                    Choice Financial Group
                   </div>
-                </>
-              )}
+                  <div className="text-xs text-muted-foreground">
+                    4501 23rd Avenue S, Fargo, ND 58104
+                  </div>
+                </div>
+              </div>
             </div>
         </div>
       </div>
