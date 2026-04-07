@@ -109,15 +109,20 @@ const PROPOSAL_ID = "chica-chida";
 - JetBrains Mono font
 - 4px border radius
 
-**What the backend endpoint needs to return:**
+**Frontend init flow (two sequential calls):**
+
+1. `GET /api/public/proposals/{id}` — returns proposal data including `stripe_publishable_key`
+2. `POST /api/public/proposals/{id}/payment-intent` — no auth, no body. Returns:
 ```json
 {
-  "clientSecret": "pi_xxx_secret_xxx",
-  "publishableKey": "pk_live_xxx"
+  "client_secret": "pi_xxx_secret_xxx",
+  "payment_intent_id": "pi_xxx",
+  "amount": 2750000
 }
 ```
+(`amount` is in cents: 2750000 = $27,500)
 
-The frontend sends nothing in the request body. The proposal ID in the URL is sufficient — the backend looks up the proposal, determines the amount and tenant Stripe keys, and creates the PaymentIntent server-side.
+The frontend uses `stripe_publishable_key` from step 1 to init Stripe, then `client_secret` from step 2 to mount Elements and confirm payment.
 
 ### ACH details (hardcoded)
 
@@ -131,21 +136,27 @@ The frontend sends nothing in the request body. The proposal ID in the URL is su
 
 ## Backend dependency: service-engine-x
 
-service-engine-x is a multitenant API at `api.serviceengine.xyz` that holds Stripe keys per tenant. The required endpoint:
+service-engine-x is a multitenant API at `api.serviceengine.xyz` that holds Stripe keys per tenant. Two endpoints are used:
 
 ```
-POST /api/public/proposals/{proposal_id}/create-payment-intent
-Response: { clientSecret: string, publishableKey: string }
+GET  /api/public/proposals/{proposal_id}
+  → returns proposal data + stripe_publishable_key
+
+POST /api/public/proposals/{proposal_id}/payment-intent
+  → no auth, no body
+  → returns { client_secret, payment_intent_id, amount }
 ```
 
-**Status:** Unknown whether this endpoint exists yet. The frontend is built to call it and handle failure gracefully. The backend agent was asked to confirm whether this work was done and how it works.
+The backend derives everything from the proposal ID — looks up items, sums prices, gets the org's Stripe key, creates the PaymentIntent. No frontend input needed beyond the proposal ID.
+
+**Status:** Backend endpoints exist. Frontend integration is wired up but not yet tested end-to-end (requires a real proposal ID in service-engine-x).
 
 The original proposal system in modern-full-portal had a signing endpoint at `POST /api/public/proposals/e30c2203/sign` which accepted `{ signature, signer_name, signer_email, signed_html }`. We are not using that endpoint. Signing currently has no backend integration.
 
 ## Open items
 
 1. **Content placeholders** — `[X,000]` and `[X]` in multiple sections need real numbers before client delivery.
-2. **Stripe PaymentIntent endpoint** — confirm service-engine-x has the endpoint, verify URL/response shape, test end-to-end.
+2. **Stripe end-to-end test** — frontend is wired to the correct endpoints. Needs a real proposal ID in service-engine-x to test the full flow.
 3. **Signature backend** — currently no API call on sign. Decide whether to POST the signature data somewhere (service-engine-x?) and what payload shape.
 4. **Email on sign** — the signature section says "A copy of this signed agreement will be sent to the email provided." This doesn't happen yet.
 5. **Proposal layout** — the marketing site nav is visible on proposal pages. Consider a `/proposal` layout that hides it for a cleaner client-facing presentation.
