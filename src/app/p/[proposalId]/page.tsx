@@ -185,6 +185,7 @@ export default function ProposalPage() {
   const proposalId = params?.proposalId;
   const proposal = proposalId ? PROPOSALS[proposalId] : undefined;
   const client = proposal?.client ?? "Client";
+  const contentRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [drawing, setDrawing] = useState(false);
   const [hasSigned, setHasSigned] = useState(false);
@@ -285,10 +286,34 @@ export default function ProposalPage() {
 
   const canSubmit = hasSigned && signerName.trim() && signerEmail.trim();
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (!canSubmit || !proposalId) return;
     setIsSubmitting(true);
-    // API call skipped for now
+
+    const signature = canvasRef.current?.toDataURL("image/png") ?? "";
+    const signed_html = contentRef.current?.innerHTML ?? "";
+
+    try {
+      const res = await fetch(
+        `https://api.serviceengine.xyz/api/public/proposals/${proposalId}/sign`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            signed_html,
+            signature,
+            signer_name: signerName.trim(),
+            signer_email: signerEmail.trim(),
+          }),
+        },
+      );
+      if (!res.ok) {
+        console.error("Sign failed:", res.status, await res.text().catch(() => ""));
+      }
+    } catch (err) {
+      console.error("Sign request error:", err);
+    }
+
     router.push(`/p/${proposalId}/payment`);
   };
 
@@ -315,6 +340,7 @@ export default function ProposalPage() {
       )}
 
       <div
+        ref={contentRef}
         className="max-w-3xl mx-auto px-6 py-16 md:py-24 transition-opacity duration-700"
         style={{ opacity: introPhase === "done" ? 1 : 0 }}
       >
