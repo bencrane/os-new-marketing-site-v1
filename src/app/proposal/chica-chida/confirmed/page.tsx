@@ -131,7 +131,7 @@ export default function ProposalConfirmed() {
   const [copied, setCopied] = useState<string | null>(null);
   const [clientSecret, setClientSecret] = useState<string | null>(null);
   const [publishableKey, setPublishableKey] = useState<string | null>(null);
-  const [stripeError, setStripeError] = useState(false);
+  const [stripeError, setStripeError] = useState<string | null>(null);
 
   const copyText = (text: string, label: string) => {
     navigator.clipboard.writeText(text).then(() => {
@@ -147,8 +147,21 @@ export default function ProposalConfirmed() {
         const proposalRes = await fetch(
           `${API_BASE}/api/public/proposals/${PROPOSAL_ID}`,
         );
-        if (!proposalRes.ok) throw new Error("Failed to load proposal");
+        if (!proposalRes.ok) {
+          const body = await proposalRes.text().catch(() => "(no body)");
+          setStripeError(
+            `GET /api/public/proposals/${PROPOSAL_ID} failed\nStatus: ${proposalRes.status} ${proposalRes.statusText}\nBody: ${body}`,
+          );
+          return;
+        }
         const proposal = await proposalRes.json();
+
+        if (!proposal.stripe_publishable_key) {
+          setStripeError(
+            `GET /api/public/proposals/${PROPOSAL_ID} succeeded but stripe_publishable_key is missing\nResponse: ${JSON.stringify(proposal, null, 2)}`,
+          );
+          return;
+        }
         setPublishableKey(proposal.stripe_publishable_key);
 
         // Step 2: POST to create the PaymentIntent
@@ -156,18 +169,41 @@ export default function ProposalConfirmed() {
           `${API_BASE}/api/public/proposals/${PROPOSAL_ID}/payment-intent`,
           { method: "POST" },
         );
-        if (!intentRes.ok) throw new Error("Failed to create payment intent");
+        if (!intentRes.ok) {
+          const body = await intentRes.text().catch(() => "(no body)");
+          setStripeError(
+            `POST /api/public/proposals/${PROPOSAL_ID}/payment-intent failed\nStatus: ${intentRes.status} ${intentRes.statusText}\nBody: ${body}`,
+          );
+          return;
+        }
         const intent = await intentRes.json();
+
+        if (!intent.client_secret) {
+          setStripeError(
+            `POST /api/public/proposals/${PROPOSAL_ID}/payment-intent succeeded but client_secret is missing\nResponse: ${JSON.stringify(intent, null, 2)}`,
+          );
+          return;
+        }
         setClientSecret(intent.client_secret);
-      } catch {
-        setStripeError(true);
+      } catch (err) {
+        setStripeError(
+          `Network/init error: ${err instanceof Error ? err.message : String(err)}`,
+        );
       }
     };
     init();
   }, []);
 
   const stripePromise = useMemo(
-    () => (publishableKey ? loadStripe(publishableKey) : null),
+    () =>
+      publishableKey
+        ? loadStripe(publishableKey).catch((err) => {
+            setStripeError(
+              `loadStripe("${publishableKey.slice(0, 12)}...") failed\nError: ${err instanceof Error ? err.message : String(err)}`,
+            );
+            return null;
+          })
+        : null,
     [publishableKey],
   );
 
@@ -237,6 +273,9 @@ export default function ProposalConfirmed() {
               <p className="text-xs text-muted-foreground/60">
                 Please use bank transfer or try again later.
               </p>
+              <pre className="mt-4 w-full text-left text-xs text-destructive/80 bg-destructive/10 border border-destructive/20 rounded p-3 whitespace-pre-wrap break-all font-mono overflow-auto max-h-48">
+                {stripeError}
+              </pre>
             </div>
           ) : clientSecret && stripePromise ? (
             <Elements
