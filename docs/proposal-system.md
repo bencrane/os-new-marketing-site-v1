@@ -31,7 +31,7 @@ The proposal concept was ported from a different repo (`modern-full-portal`, Vit
 
 ### Content source
 
-All content is hardcoded from `.context/attachments/chica_chida_proposal.json`. The JSON has:
+All content is hardcoded from `docs/chica_chida_proposal.json`. The JSON has:
 
 - `meta`: title, client name, subtitle, preparedBy, date, confidential flag
 - `sections`: 10 content sections (executive summary, opportunity, assessment, approach, market, offer, math, engagement, your role, pricing & terms)
