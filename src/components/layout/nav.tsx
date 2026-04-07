@@ -15,6 +15,7 @@ const VERTICALS = [
 export function Nav() {
   const pathname = usePathname();
   const isVerticalPage = pathname?.startsWith("/verticals/");
+  const isProposalPage = pathname?.startsWith("/p/");
   const currentSlug = isVerticalPage ? pathname?.split("/").pop() : null;
 
   return (
@@ -26,7 +27,7 @@ export function Nav() {
         </span>
       </Link>
       
-      <div className="hidden xl:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 items-center gap-6 font-mono text-[10px] uppercase tracking-wider">
+      {!isProposalPage && <div className="hidden xl:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 items-center gap-6 font-mono text-[10px] uppercase tracking-wider">
         {isVerticalPage ? (
           VERTICALS.filter(v => v.slug === currentSlug).map((v) => (
             <span key={v.slug} className="text-primary font-semibold whitespace-nowrap">
@@ -40,7 +41,7 @@ export function Nav() {
             </Link>
           ))
         )}
-      </div>
+      </div>}
       
       <div className="flex items-center z-10">
         <div className="hidden sm:flex items-center gap-2 border border-border bg-background/50 px-3 h-8 rounded text-muted-foreground font-mono uppercase text-[10px] tracking-wider">
