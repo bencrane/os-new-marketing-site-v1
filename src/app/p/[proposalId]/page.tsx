@@ -8,6 +8,7 @@ import {
   AccordionTrigger,
   AccordionContent,
 } from "@/components/ui/accordion";
+import { PROPOSALS } from "@/data/proposals";
 
 // ─── Static data ──────────────────────────────────────
 
@@ -182,6 +183,8 @@ const PROJECTION = [
 export default function ProposalPage() {
   const params = useParams<{ proposalId: string }>();
   const proposalId = params?.proposalId;
+  const proposal = proposalId ? PROPOSALS[proposalId] : undefined;
+  const client = proposal?.client ?? "Client";
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [drawing, setDrawing] = useState(false);
   const [hasSigned, setHasSigned] = useState(false);
@@ -305,7 +308,7 @@ export default function ProposalPage() {
               x
             </span>
             <span className="font-heading text-2xl md:text-4xl font-semibold tracking-tight">
-              Piermont Brands
+              {client}
             </span>
           </div>
         </div>
@@ -330,7 +333,7 @@ export default function ProposalPage() {
           <div className="flex items-center justify-center gap-4 text-sm text-muted-foreground font-mono">
             <span>
               Prepared for{" "}
-              <span className="text-foreground font-medium">Piermont Brands</span>
+              <span className="text-foreground font-medium">{client}</span>
             </span>
             <span className="text-border">|</span>
             <span>April 2026</span>
@@ -340,12 +343,12 @@ export default function ProposalPage() {
         {/* ─── 01 Executive Summary ─── */}
         <Section number="01" title="Executive Summary">
           <p>
-            This proposal outlines the GTM strategy to put Chica Chida in front
+            This proposal outlines the GTM strategy to put {client} in front
             of thousands of on-premise decision makers each month, growing the
             brand&apos;s footprint across net-new accounts in a way that is
             scaleable, cost-efficient, and difficult for competitors to imitate.{" "}
             <strong className="text-foreground font-medium">
-              The goal is to put Chica Chida on the bar in every market you enter.
+              The goal is to put {client} on the bar in every market you enter.
             </strong>
           </p>
         </Section>
@@ -353,9 +356,9 @@ export default function ProposalPage() {
         {/* ─── 02 The Opportunity ─── */}
         <Section number="02" title="The Opportunity">
           <p>
-            Chica Chida is approaching one million bottles sold this year. The
+            {client} is approaching one million bottles sold this year. The
             product sells itself once someone tastes it. The tequila espresso
-            martini made with Chica Chida has gone viral on TikTok and Instagram.
+            martini made with {client} has gone viral on TikTok and Instagram.
             Caleb Pressley gives the brand reach that most spirits companies at
             your stage do not have.{" "}
             <strong className="text-foreground font-medium">
@@ -413,7 +416,7 @@ export default function ProposalPage() {
         {/* ─── 05 The Market ─── */}
         <Section number="05" title="The Market">
           <p>
-            The people who matter for Chica Chida on-premise are the ones who
+            The people who matter for {client} on-premise are the ones who
             decide what goes on the bar and what goes on the menu. At regional
             chains and independent venues, that is usually the same person &mdash;
             and they are reachable by email.
@@ -481,7 +484,7 @@ export default function ProposalPage() {
             The system accommodates multiple campaign types running in parallel
             &mdash; different offers, different segments, different asks. The best
             version of this is one where every conversation ends with a new
-            account eager to carry Chica Chida on premise. Getting the product
+            account eager to carry {client} on premise. Getting the product
             into their hands before that conversation happens makes that outcome
             more likely. Our job is to make that possible at scale and at a cost
             that makes sense. Over time, as we develop greater insight into which
