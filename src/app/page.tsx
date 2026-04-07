@@ -33,9 +33,9 @@ export default function Home() {
         <h2 className="text-3xl md:text-5xl font-heading mb-16 max-w-3xl">
           Off-the-shelf tools fail in complex markets.
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
+        <div className="flex gap-6 overflow-x-auto snap-x snap-mandatory scrollbar-hide lg:grid lg:grid-cols-3 lg:gap-12 lg:overflow-visible">
           {/* Card 1 */}
-          <div className="flex flex-col bg-[#111] border border-border/50 p-8 rounded-lg">
+          <div className="min-w-[85%] sm:min-w-[70%] shrink-0 snap-center lg:min-w-0 lg:shrink flex flex-col bg-[#111] border border-border/50 p-8 rounded-lg">
             <span className="font-mono text-primary text-sm tracking-widest mb-6 border border-primary/30 bg-primary/10 w-fit px-3 py-1 rounded inline-block">
               [01] The Data Problem
             </span>
@@ -44,7 +44,7 @@ export default function Home() {
             </p>
           </div>
           {/* Card 2 */}
-          <div className="flex flex-col bg-[#111] border border-border/50 p-8 rounded-lg">
+          <div className="min-w-[85%] sm:min-w-[70%] shrink-0 snap-center lg:min-w-0 lg:shrink flex flex-col bg-[#111] border border-border/50 p-8 rounded-lg">
             <span className="font-mono text-primary text-sm tracking-widest mb-6 border border-primary/30 bg-primary/10 w-fit px-3 py-1 rounded inline-block">
               [02] The Reach Problem
             </span>
@@ -53,7 +53,7 @@ export default function Home() {
             </p>
           </div>
           {/* Card 3 */}
-          <div className="flex flex-col bg-[#111] border border-border/50 p-8 rounded-lg">
+          <div className="min-w-[85%] sm:min-w-[70%] shrink-0 snap-center lg:min-w-0 lg:shrink flex flex-col bg-[#111] border border-border/50 p-8 rounded-lg">
             <span className="font-mono text-primary text-sm tracking-widest mb-6 border border-primary/30 bg-primary/10 w-fit px-3 py-1 rounded inline-block">
               [03] The Timing Problem
             </span>
