@@ -335,7 +335,7 @@ export default function ProposalPaymentPage() {
           }`}
         >
           <div className="overflow-hidden">
-            <div className="border border-border rounded-lg p-6">
+            <div className="border border-border rounded-lg p-6 min-h-[320px]">
               {activeMethod === "card" && (
                 <>
                   {stripeError ? (
