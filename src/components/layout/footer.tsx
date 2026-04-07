@@ -8,11 +8,11 @@ export function Footer() {
         <span>© {new Date().getFullYear()} OUTBOUND SOLUTIONS</span>
       </div>
       
-      <div className="text-center text-primary/80">
+      <div className="hidden lg:block text-center text-primary/80">
         ALL PROCESSES ENGINEERED INTERNALLY.
       </div>
 
-      <div className="flex justify-center lg:justify-end gap-8">
+      <div className="hidden lg:flex justify-center lg:justify-end gap-8">
         <Link href="/privacy" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">Privacy</Link>
         <Link href="/terms" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">Terms of Service</Link>
       </div>
