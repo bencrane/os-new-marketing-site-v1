@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useMemo } from "react";
+import { useParams } from "next/navigation";
 import { loadStripe } from "@stripe/stripe-js";
 import {
   Elements,
@@ -11,7 +12,6 @@ import {
 
 // ─── Config ───────────────────────────────────────────
 const API_BASE = "https://api.serviceengine.xyz";
-const PROPOSAL_ID = "9d5bb180";
 
 const STRIPE_APPEARANCE = {
   theme: "night" as const,
@@ -50,7 +50,7 @@ const BANK_DETAILS = [
 
 // ─── Checkout form (inside Elements provider) ─────────
 
-function CheckoutForm() {
+function CheckoutForm({ proposalId }: { proposalId: string }) {
   const stripe = useStripe();
   const elements = useElements();
   const [processing, setProcessing] = useState(false);
@@ -67,7 +67,7 @@ function CheckoutForm() {
     const result = await stripe.confirmPayment({
       elements,
       confirmParams: {
-        return_url: `${window.location.origin}/p/9d5bb180?status=success`,
+        return_url: `${window.location.origin}/p/${proposalId}?status=success`,
       },
       redirect: "if_required",
     });
@@ -128,6 +128,8 @@ function CheckoutForm() {
 // ─── Page ─────────────────────────────────────────────
 
 export default function ProposalConfirmed() {
+  const params = useParams<{ proposalId: string }>();
+  const proposalId = params?.proposalId;
   const [copied, setCopied] = useState<string | null>(null);
   const [clientSecret, setClientSecret] = useState<string | null>(null);
   const [publishableKey, setPublishableKey] = useState<string | null>(null);
@@ -142,15 +144,20 @@ export default function ProposalConfirmed() {
 
   useEffect(() => {
     const init = async () => {
+      if (!proposalId) {
+        setStripeError("Missing proposal ID in URL.");
+        return;
+      }
+
       try {
         // Step 1: GET proposal data for the Stripe publishable key
         const proposalRes = await fetch(
-          `${API_BASE}/api/public/proposals/${PROPOSAL_ID}`,
+          `${API_BASE}/api/public/proposals/${proposalId}`,
         );
         if (!proposalRes.ok) {
           const body = await proposalRes.text().catch(() => "(no body)");
           setStripeError(
-            `GET /api/public/proposals/${PROPOSAL_ID} failed\nStatus: ${proposalRes.status} ${proposalRes.statusText}\nBody: ${body}`,
+            `GET /api/public/proposals/${proposalId} failed\nStatus: ${proposalRes.status} ${proposalRes.statusText}\nBody: ${body}`,
           );
           return;
         }
@@ -158,7 +165,7 @@ export default function ProposalConfirmed() {
 
         if (!proposal.stripe_publishable_key) {
           setStripeError(
-            `GET /api/public/proposals/${PROPOSAL_ID} succeeded but stripe_publishable_key is missing\nResponse: ${JSON.stringify(proposal, null, 2)}`,
+            `GET /api/public/proposals/${proposalId} succeeded but stripe_publishable_key is missing\nResponse: ${JSON.stringify(proposal, null, 2)}`,
           );
           return;
         }
@@ -166,13 +173,13 @@ export default function ProposalConfirmed() {
 
         // Step 2: POST to create the PaymentIntent
         const intentRes = await fetch(
-          `${API_BASE}/api/public/proposals/${PROPOSAL_ID}/payment-intent`,
+          `${API_BASE}/api/public/proposals/${proposalId}/payment-intent`,
           { method: "POST" },
         );
         if (!intentRes.ok) {
           const body = await intentRes.text().catch(() => "(no body)");
           setStripeError(
-            `POST /api/public/proposals/${PROPOSAL_ID}/payment-intent failed\nStatus: ${intentRes.status} ${intentRes.statusText}\nBody: ${body}`,
+            `POST /api/public/proposals/${proposalId}/payment-intent failed\nStatus: ${intentRes.status} ${intentRes.statusText}\nBody: ${body}`,
           );
           return;
         }
@@ -180,7 +187,7 @@ export default function ProposalConfirmed() {
 
         if (!intent.client_secret) {
           setStripeError(
-            `POST /api/public/proposals/${PROPOSAL_ID}/payment-intent succeeded but client_secret is missing\nResponse: ${JSON.stringify(intent, null, 2)}`,
+            `POST /api/public/proposals/${proposalId}/payment-intent succeeded but client_secret is missing\nResponse: ${JSON.stringify(intent, null, 2)}`,
           );
           return;
         }
@@ -192,7 +199,7 @@ export default function ProposalConfirmed() {
       }
     };
     init();
-  }, []);
+  }, [proposalId]);
 
   const stripePromise = useMemo(
     () =>
@@ -277,12 +284,12 @@ export default function ProposalConfirmed() {
                 {stripeError}
               </pre>
             </div>
-          ) : clientSecret && stripePromise ? (
+          ) : clientSecret && stripePromise && proposalId ? (
             <Elements
               stripe={stripePromise}
               options={{ clientSecret, appearance: STRIPE_APPEARANCE }}
             >
-              <CheckoutForm />
+              <CheckoutForm proposalId={proposalId} />
             </Elements>
           ) : (
             <div className="flex-1 flex items-center justify-center py-8">
