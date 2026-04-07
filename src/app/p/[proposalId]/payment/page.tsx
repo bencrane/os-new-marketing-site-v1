@@ -128,7 +128,7 @@ function CheckoutForm({ proposalId }: { proposalId: string }) {
 export default function ProposalPaymentPage() {
   const params = useParams<{ proposalId: string }>();
   const proposalId = params?.proposalId;
-  const [activeMethod, setActiveMethod] = useState<"card" | "bank" | null>("card");
+  const [activeMethod, setActiveMethod] = useState<"card" | "bank">("card");
   const [copied, setCopied] = useState<string | null>(null);
   const [clientSecret, setClientSecret] = useState<string | null>(null);
   const [publishableKey, setPublishableKey] = useState<string | null>(null);
@@ -246,42 +246,23 @@ export default function ProposalPaymentPage() {
         </div>
       </div>
 
-      {/* ─── Payment options (accordion drawers) ─── */}
-      <div className="flex flex-col gap-3 mb-10">
-        {/* Card / Stripe Elements */}
-        <div className="border border-border rounded-lg overflow-hidden">
+      {/* ─── Payment method tabs ─── */}
+      <div className="mb-10">
+        {/* Tab headers */}
+        <div className="grid grid-cols-2 gap-0">
           <button
             type="button"
-            onClick={() => setActiveMethod(activeMethod === "card" ? null : "card")}
-            className={`w-full flex items-center justify-between px-6 py-4 cursor-pointer transition-colors ${
+            onClick={() => setActiveMethod("card")}
+            className={`flex items-center justify-center gap-2.5 px-4 py-4 cursor-pointer transition-colors border border-border rounded-tl-lg ${
               activeMethod === "card"
-                ? "bg-secondary/30"
-                : "hover:bg-secondary/10"
+                ? "bg-secondary/30 border-b-transparent"
+                : "bg-transparent text-muted-foreground hover:bg-secondary/10 border-b-border"
             }`}
           >
-            <div className="flex items-center gap-2.5">
-              <svg
-                className={`shrink-0 transition-colors ${activeMethod === "card" ? "text-primary" : "text-muted-foreground"}`}
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <rect width="20" height="14" x="2" y="5" rx="2" />
-                <line x1="2" x2="22" y1="10" y2="10" />
-              </svg>
-              <span className="text-sm font-mono font-medium uppercase tracking-wider">
-                Pay by Card
-              </span>
-            </div>
             <svg
-              className={`text-muted-foreground shrink-0 transition-transform duration-200 ${activeMethod === "card" ? "rotate-180" : ""}`}
-              width="16"
-              height="16"
+              className={`shrink-0 transition-colors ${activeMethod === "card" ? "text-primary" : "text-muted-foreground"}`}
+              width="18"
+              height="18"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
@@ -289,156 +270,126 @@ export default function ProposalPaymentPage() {
               strokeLinecap="round"
               strokeLinejoin="round"
             >
-              <polyline points="6 9 12 15 18 9" />
+              <rect width="20" height="14" x="2" y="5" rx="2" />
+              <line x1="2" x2="22" y1="10" y2="10" />
             </svg>
+            <span className="text-sm font-mono font-medium uppercase tracking-wider">
+              Pay by Card
+            </span>
           </button>
-
-          <div
-            className={`grid transition-all duration-200 ease-in-out ${
-              activeMethod === "card"
-                ? "grid-rows-[1fr] opacity-100"
-                : "grid-rows-[0fr] opacity-0"
-            }`}
+          <button
+            type="button"
+            onClick={() => setActiveMethod("bank")}
+            className={`flex items-center justify-center gap-2.5 px-4 py-4 cursor-pointer transition-colors border border-border rounded-tr-lg ${
+              activeMethod === "bank"
+                ? "bg-secondary/30 border-b-transparent"
+                : "bg-transparent text-muted-foreground hover:bg-secondary/10 border-b-border"
+            } -ml-px`}
           >
-            <div className="overflow-hidden">
-              <div className="px-6 pb-6 pt-2">
-                {stripeError ? (
-                  <div className="flex flex-col items-center justify-center py-8 text-center">
-                    <p className="text-sm text-muted-foreground mb-1">
-                      Card payment is temporarily unavailable.
-                    </p>
-                    <p className="text-xs text-muted-foreground/60">
-                      Please use bank transfer or try again later.
-                    </p>
-                    <pre className="mt-4 w-full text-left text-xs text-destructive/80 bg-destructive/10 border border-destructive/20 rounded p-3 whitespace-pre-wrap break-all font-mono overflow-auto max-h-48">
-                      {stripeError}
-                    </pre>
-                  </div>
-                ) : clientSecret && stripePromise && proposalId ? (
-                  <Elements
-                    stripe={stripePromise}
-                    options={{ clientSecret, appearance: STRIPE_APPEARANCE }}
-                  >
-                    <CheckoutForm proposalId={proposalId} />
-                  </Elements>
-                ) : (
-                  <div className="flex items-center justify-center py-8">
-                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                      <div className="w-3 h-3 rounded-full border-2 border-muted-foreground/30 border-t-muted-foreground animate-spin" />
-                      Loading payment form...
-                    </div>
-                  </div>
-                )}
-              </div>
-            </div>
-          </div>
+            <svg
+              className={`shrink-0 transition-colors ${activeMethod === "bank" ? "text-primary" : "text-muted-foreground"}`}
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M21 12V7H5a2 2 0 0 1 0-4h14v4" />
+              <path d="M3 5v14a2 2 0 0 0 2 2h16v-5" />
+              <path d="M18 12a2 2 0 0 0 0 4h4v-4Z" />
+            </svg>
+            <span className="text-sm font-mono font-medium uppercase tracking-wider">
+              Bank Transfer
+            </span>
+          </button>
         </div>
 
-        {/* ACH / Bank Transfer */}
-        <div className="border border-border rounded-lg overflow-hidden">
-          <button
-            type="button"
-            onClick={() => setActiveMethod(activeMethod === "bank" ? null : "bank")}
-            className={`w-full flex items-center justify-between px-6 py-4 cursor-pointer transition-colors ${
-              activeMethod === "bank"
-                ? "bg-secondary/30"
-                : "hover:bg-secondary/10"
-            }`}
-          >
-            <div className="flex items-center gap-2.5">
-              <svg
-                className={`shrink-0 transition-colors ${activeMethod === "bank" ? "text-primary" : "text-muted-foreground"}`}
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M21 12V7H5a2 2 0 0 1 0-4h14v4" />
-                <path d="M3 5v14a2 2 0 0 0 2 2h16v-5" />
-                <path d="M18 12a2 2 0 0 0 0 4h4v-4Z" />
-              </svg>
-              <span className="text-sm font-mono font-medium uppercase tracking-wider">
-                Pay by Bank Transfer
-              </span>
-            </div>
-            <svg
-              className={`text-muted-foreground shrink-0 transition-transform duration-200 ${activeMethod === "bank" ? "rotate-180" : ""}`}
-              width="16"
-              height="16"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <polyline points="6 9 12 15 18 9" />
-            </svg>
-          </button>
-
-          <div
-            className={`grid transition-all duration-200 ease-in-out ${
-              activeMethod === "bank"
-                ? "grid-rows-[1fr] opacity-100"
-                : "grid-rows-[0fr] opacity-0"
-            }`}
-          >
-            <div className="overflow-hidden">
-              <div className="px-6 pb-6 pt-2">
-                <p className="text-sm text-muted-foreground mb-5 leading-relaxed">
-                  Send an ACH transfer using the details below. Typically arrives within
-                  1&ndash;3 business days.
-                </p>
-
-                {/* Bank info */}
-                <div className="border border-border rounded bg-secondary/20 p-4 mb-4">
-                  <div className="text-[10px] font-mono uppercase tracking-[0.15em] text-muted-foreground mb-3">
-                    Bank
-                  </div>
-                  <div className="text-sm font-medium mb-0.5">
-                    Choice Financial Group
-                  </div>
-                  <div className="text-xs text-muted-foreground">
-                    4501 23rd Avenue S, Fargo, ND 58104
+        {/* Tab content panel */}
+        <div className="border border-border border-t-0 rounded-b-lg p-6">
+          {activeMethod === "card" ? (
+            <>
+              {stripeError ? (
+                <div className="flex flex-col items-center justify-center py-8 text-center">
+                  <p className="text-sm text-muted-foreground mb-1">
+                    Card payment is temporarily unavailable.
+                  </p>
+                  <p className="text-xs text-muted-foreground/60">
+                    Please use bank transfer or try again later.
+                  </p>
+                  <pre className="mt-4 w-full text-left text-xs text-destructive/80 bg-destructive/10 border border-destructive/20 rounded p-3 whitespace-pre-wrap break-all font-mono overflow-auto max-h-48">
+                    {stripeError}
+                  </pre>
+                </div>
+              ) : clientSecret && stripePromise && proposalId ? (
+                <Elements
+                  stripe={stripePromise}
+                  options={{ clientSecret, appearance: STRIPE_APPEARANCE }}
+                >
+                  <CheckoutForm proposalId={proposalId} />
+                </Elements>
+              ) : (
+                <div className="flex items-center justify-center py-8">
+                  <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                    <div className="w-3 h-3 rounded-full border-2 border-muted-foreground/30 border-t-muted-foreground animate-spin" />
+                    Loading payment form...
                   </div>
                 </div>
+              )}
+            </>
+          ) : (
+            <>
+              <p className="text-sm text-muted-foreground mb-5 leading-relaxed">
+                Send an ACH transfer using the details below. Typically arrives within
+                1&ndash;3 business days.
+              </p>
 
-                {/* Account details */}
-                <div className="space-y-0">
-                  {BANK_DETAILS.map((row, i) => (
-                    <div
-                      key={row.label}
-                      className={`flex items-center justify-between py-2.5 ${
-                        i < BANK_DETAILS.length - 1 ? "border-b border-border" : ""
-                      }`}
-                    >
-                      <span className="text-xs text-muted-foreground">{row.label}</span>
-                      <span className="text-xs font-medium font-mono flex items-center gap-2">
-                        {row.value}
-                        {row.copyable && (
-                          <button
-                            type="button"
-                            onClick={() => copyText(row.value, row.label)}
-                            className={`text-[10px] px-2 py-0.5 rounded border transition-all cursor-pointer font-mono ${
-                              copied === row.label
-                                ? "bg-primary/10 text-primary border-primary/20"
-                                : "bg-secondary/50 text-muted-foreground border-border hover:bg-secondary hover:text-foreground"
-                            }`}
-                          >
-                            {copied === row.label ? "Copied" : "Copy"}
-                          </button>
-                        )}
-                      </span>
-                    </div>
-                  ))}
+              {/* Bank info */}
+              <div className="border border-border rounded bg-secondary/20 p-4 mb-4">
+                <div className="text-[10px] font-mono uppercase tracking-[0.15em] text-muted-foreground mb-3">
+                  Bank
+                </div>
+                <div className="text-sm font-medium mb-0.5">
+                  Choice Financial Group
+                </div>
+                <div className="text-xs text-muted-foreground">
+                  4501 23rd Avenue S, Fargo, ND 58104
                 </div>
               </div>
-            </div>
-          </div>
+
+              {/* Account details */}
+              <div className="space-y-0">
+                {BANK_DETAILS.map((row, i) => (
+                  <div
+                    key={row.label}
+                    className={`flex items-center justify-between py-2.5 ${
+                      i < BANK_DETAILS.length - 1 ? "border-b border-border" : ""
+                    }`}
+                  >
+                    <span className="text-xs text-muted-foreground">{row.label}</span>
+                    <span className="text-xs font-medium font-mono flex items-center gap-2">
+                      {row.value}
+                      {row.copyable && (
+                        <button
+                          type="button"
+                          onClick={() => copyText(row.value, row.label)}
+                          className={`text-[10px] px-2 py-0.5 rounded border transition-all cursor-pointer font-mono ${
+                            copied === row.label
+                              ? "bg-primary/10 text-primary border-primary/20"
+                              : "bg-secondary/50 text-muted-foreground border-border hover:bg-secondary hover:text-foreground"
+                          }`}
+                        >
+                          {copied === row.label ? "Copied" : "Copy"}
+                        </button>
+                      )}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </>
+          )}
         </div>
       </div>
 
