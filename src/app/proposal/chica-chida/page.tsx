@@ -588,7 +588,7 @@ export default function ChicaChidaProposal() {
                 <Accordion>
                   {phase.workstreams.map((ws, i) => (
                     <AccordionItem key={i} value={i}>
-                      <AccordionTrigger className="text-sm font-medium text-foreground">
+                      <AccordionTrigger className="text-base font-medium text-foreground">
                         {ws.title}
                       </AccordionTrigger>
                       <AccordionContent>
@@ -795,7 +795,7 @@ export default function ChicaChidaProposal() {
               <Accordion>
                 {category.faqs.map((faq, i) => (
                   <AccordionItem key={i} value={i}>
-                    <AccordionTrigger className="text-sm text-foreground font-medium">
+                    <AccordionTrigger className="text-base text-foreground font-medium">
                       {faq.q}
                     </AccordionTrigger>
                     <AccordionContent>
