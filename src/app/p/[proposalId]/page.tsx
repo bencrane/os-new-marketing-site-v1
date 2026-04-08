@@ -541,7 +541,7 @@ export default function ProposalPage() {
                   <Accordion>
                     {phase.workstreams.map((ws, i) => (
                       <AccordionItem key={i} value={i}>
-                        <AccordionTrigger className="text-base font-medium text-foreground">
+                        <AccordionTrigger className="text-lg font-medium text-foreground">
                           {ws.title}
                         </AccordionTrigger>
                         <AccordionContent>
