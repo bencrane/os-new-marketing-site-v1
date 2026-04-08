@@ -777,18 +777,16 @@ function RoiCalculator() {
 
   return (
     <div className="space-y-8">
-      {/* Engagement cost */}
-      <div className="flex items-baseline gap-3">
-        <span className="font-mono text-3xl text-primary font-semibold">
-          {fmt(ENGAGEMENT_COST)}
-        </span>
-        <span className="text-sm text-muted-foreground">
-          total engagement &middot; {PILOT_MONTHS} months
-        </span>
-      </div>
-
       {/* Inputs */}
-      <div className="space-y-6">
+      <div className="border border-border rounded-lg p-6 space-y-6">
+        <div className="flex items-baseline gap-3">
+          <span className="font-mono text-2xl text-primary font-semibold">
+            {fmt(ENGAGEMENT_COST)}
+          </span>
+          <span className="text-sm text-muted-foreground">
+            total engagement &middot; {PILOT_MONTHS} months
+          </span>
+        </div>
         <div>
           <label className="block text-[10px] font-mono uppercase tracking-[0.2em] text-muted-foreground mb-3">
             Monthly Email Volume
