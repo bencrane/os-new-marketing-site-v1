@@ -83,8 +83,8 @@ const PHASES = [
 ];
 
 const PRICING = [
-  { name: "Build", price: "$5,000", frequency: "one-time" },
-  { name: "Launch & Optimize", price: "$7,500/mo", frequency: "for 3 months" },
+  { name: "One-time", price: "$5,000" },
+  { name: "Ongoing", price: "$7,500/mo" },
 ];
 
 const APPENDIX = [
@@ -566,10 +566,7 @@ export default function ProposalPage() {
             {PRICING.map((phase, i) => (
               <div key={i} className="flex items-baseline justify-between px-6 py-5 border-b border-border">
                 <h3 className="font-heading text-lg font-semibold">{phase.name}</h3>
-                <div className="flex items-baseline gap-2 shrink-0">
-                  <span className="font-mono text-lg text-primary font-medium">{phase.price}</span>
-                  <span className="text-xs font-mono text-muted-foreground">{phase.frequency}</span>
-                </div>
+                <span className="font-mono text-lg text-primary font-medium shrink-0">{phase.price}</span>
               </div>
             ))}
             <div className="flex items-center justify-between px-6 py-5 bg-primary/5">
@@ -577,7 +574,7 @@ export default function ProposalPage() {
               <span className="font-mono text-2xl text-primary font-medium">$27,500</span>
             </div>
             <div className="px-6 py-3 border-t border-border/50">
-              <p className="text-[13px] text-muted-foreground">The full amount is due at kickoff.</p>
+              <p className="text-[13px] text-muted-foreground">Payment is due in-full at proposal agreement.</p>
             </div>
           </div>
         </Section>
@@ -783,9 +780,6 @@ function RoiCalculator() {
           <span className="font-mono text-2xl text-primary font-semibold">
             {fmt(ENGAGEMENT_COST)}
           </span>
-          <span className="text-sm text-muted-foreground">
-            total engagement &middot; {PILOT_MONTHS} months
-          </span>
         </div>
         <div>
           <label className="block text-[10px] font-mono uppercase tracking-[0.2em] text-muted-foreground mb-3">
@@ -814,7 +808,7 @@ function RoiCalculator() {
           <div className="flex items-center gap-4">
             <input
               type="range"
-              min={1}
+              min={0.5}
               max={5}
               step={0.5}
               value={responseRate}
