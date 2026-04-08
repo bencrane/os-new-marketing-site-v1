@@ -358,7 +358,7 @@ export default function ChicaChidaProposal() {
       )}
 
       <div
-        className="max-w-5xl mx-auto px-6 py-16 md:py-24 transition-opacity duration-700"
+        className="max-w-3xl mx-auto px-6 py-16 md:py-24 transition-opacity duration-700"
         style={{ opacity: introPhase === "done" ? 1 : 0 }}
       >
       {/* ─── Hero ─── */}
@@ -471,13 +471,15 @@ export default function ChicaChidaProposal() {
           establishments in the United States.
         </p>
 
-        <div className="mt-10">
+        <div className="mt-10 w-[100vw] max-w-5xl relative left-1/2 -translate-x-1/2 px-6">
           <TamPreview />
         </div>
       </Section>
 
       {/* ─── TAM Dashboard ─── */}
-      <TAMDashboard />
+      <div className="my-4 w-[100vw] max-w-5xl relative left-1/2 -translate-x-1/2 px-6">
+        <TAMDashboard />
+      </div>
 
       {/* ─── 06 The Offer ─── */}
       <Section number="06" title="The Offer">
@@ -533,7 +535,7 @@ export default function ChicaChidaProposal() {
           If your team has the bandwidth to take more meetings, we turn it up.
         </p>
         {/* Projection grid */}
-        <div className="mt-8">
+        <div className="mt-8 w-[100vw] max-w-5xl relative left-1/2 -translate-x-1/2 px-6">
           <div className="text-[10px] font-mono uppercase tracking-[0.2em] text-muted-foreground mb-4">
             Pilot Projection &mdash; 3 Months
           </div>

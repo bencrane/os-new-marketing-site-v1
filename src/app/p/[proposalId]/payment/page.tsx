@@ -214,7 +214,7 @@ export default function ProposalPaymentPage() {
   );
 
   return (
-    <div className="max-w-5xl mx-auto px-6 py-16 md:py-24">
+    <div className="max-w-3xl mx-auto px-6 py-16 md:py-24">
       {/* ─── Signed confirmation ─── */}
       <div className="flex items-center justify-center gap-2.5 mb-10">
         <svg
