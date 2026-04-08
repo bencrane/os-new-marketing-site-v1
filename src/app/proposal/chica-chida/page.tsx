@@ -509,8 +509,8 @@ export default function ChicaChidaProposal() {
           Our infrastructure has capacity to reach{" "}
           <span className="font-mono font-medium">50,000+</span>{" "}
           contacts per month at no additional cost to you. Whether we scale to
-          that depends on one thing: whether your team can keep up with the
-          volume of conversations we generate. We start at 10,000 to calibrate.
+          that depends on one thing: your team&apos;s ability to handle the
+          volume of qualified leads we generate. We start at 10,000 to calibrate.
           If your team has the bandwidth to take more meetings, we turn it up.
         </p>
         {/* Projection grid */}
