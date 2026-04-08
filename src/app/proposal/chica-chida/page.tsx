@@ -631,44 +631,8 @@ export default function ChicaChidaProposal() {
         </div>
       </Section>
 
-      {/* ─── 09 Your Role ─── */}
-      <Section number="09" title="Your Role">
-        <p className="font-heading text-lg italic text-muted-foreground !-mt-2 mb-6">
-          Take the meetings. Send the samples. Build the relationships.
-        </p>
-        <p>
-          We handle everything upstream &mdash; infrastructure, data, list
-          building, validation, copy, sending, deliverability, reply triage.
-          Your team only sees warm leads. When a prospect responds positively,
-          we reply, confirm interest, and direct them to a landing page to
-          submit their information for a sample. Once submitted, your team is
-          notified and the lead is yours.
-        </p>
-        <p>
-          Your team needs to be ready to fulfill samples at volume. Have
-          inventory allocated and a process to ship within a few days of a
-          request coming in. Speed matters &mdash; a sample that arrives while
-          the conversation is fresh converts better than one that shows up
-          three weeks later.
-        </p>
-        <p>
-          After a sample ships, the lead is tagged in our platform with status
-          and timestamp. Your team can filter by leads who have been sent samples
-          and follow up accordingly &mdash; whether that is a check-in email, a
-          call, or looping in your distributor. We can also automate a follow-up
-          sequence after a sample ships, checking in with the prospect at a
-          cadence you define.
-        </p>
-        <div className="mt-6 border border-border rounded-lg p-5 bg-secondary/20 text-[15px] text-foreground/70 leading-relaxed">
-          In the event volume exceeds your capacity or budget for samples, we can
-          pause campaigns and tighten segmentation to narrow the funnel. If
-          campaigns are paused at your request, the monthly retainer remains in
-          effect.
-        </div>
-      </Section>
-
-      {/* ─── 10 Pricing & Terms ─── */}
-      <Section number="10" title="Pricing & Terms">
+      {/* ─── 09 Pricing & Terms ─── */}
+      <Section number="09" title="Pricing & Terms">
         <p>One flat investment. No per-lead fees. No hidden costs.</p>
 
         <div className="border border-border rounded-lg overflow-hidden">
@@ -709,6 +673,42 @@ export default function ChicaChidaProposal() {
               The full amount is due at kickoff.
             </p>
           </div>
+        </div>
+      </Section>
+
+      {/* ─── 10 Your Role ─── */}
+      <Section number="10" title="Your Role">
+        <p className="font-heading text-lg italic text-muted-foreground !-mt-2 mb-6">
+          Take the meetings. Send the samples. Build the relationships.
+        </p>
+        <p>
+          We handle everything upstream &mdash; infrastructure, data, list
+          building, validation, copy, sending, deliverability, reply triage.
+          Your team only sees warm leads. When a prospect responds positively,
+          we reply, confirm interest, and direct them to a landing page to
+          submit their information for a sample. Once submitted, your team is
+          notified and the lead is yours.
+        </p>
+        <p>
+          Your team needs to be ready to fulfill samples at volume. Have
+          inventory allocated and a process to ship within a few days of a
+          request coming in. Speed matters &mdash; a sample that arrives while
+          the conversation is fresh converts better than one that shows up
+          three weeks later.
+        </p>
+        <p>
+          After a sample ships, the lead is tagged in our platform with status
+          and timestamp. Your team can filter by leads who have been sent samples
+          and follow up accordingly &mdash; whether that is a check-in email, a
+          call, or looping in your distributor. We can also automate a follow-up
+          sequence after a sample ships, checking in with the prospect at a
+          cadence you define.
+        </p>
+        <div className="mt-6 border border-border rounded-lg p-5 bg-secondary/20 text-[15px] text-foreground/70 leading-relaxed">
+          In the event volume exceeds your capacity or budget for samples, we can
+          pause campaigns and tighten segmentation to narrow the funnel. If
+          campaigns are paused at your request, the monthly retainer remains in
+          effect.
         </div>
       </Section>
 
