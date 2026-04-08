@@ -344,7 +344,7 @@ export default function ProposalPage() {
 
       <div
         ref={contentRef}
-        className="max-w-3xl mx-auto px-6 py-16 md:py-24 transition-opacity duration-700"
+        className="max-w-5xl mx-auto px-6 py-16 md:py-24 transition-opacity duration-700"
         style={{ opacity: introPhase === "done" ? 1 : 0 }}
       >
         {/* ─── Hero ─── */}
