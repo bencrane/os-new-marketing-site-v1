@@ -486,19 +486,10 @@ export default function ChicaChidaProposal() {
           offer &mdash; what you are actually putting in front of the recipient.
           The best offers give something of value with no friction. The worst
           ones ask for time, commitment, or a decision the recipient is not ready
-          to make. The difference between a 1% response rate and a 10% response
-          rate is almost always the offer.
-        </p>
-        <p>
-          Today, an excellent cold email campaign generates a 1% positive
-          response rate. The best campaign we have ever run generated 12%. We do
-          not know where this lands yet, but{" "}
-          <strong className="font-semibold">
-            a free sample of a product that has gone viral, sent to someone whose
-            job is to evaluate new spirits, is among the strongest offers we have
-            seen.
-          </strong>{" "}
-          We expect this to outperform.
+          to make. A free sample of a product that has gone viral, sent directly
+          to someone whose job is to evaluate new spirits &mdash; that is one of
+          the strongest offers you can put in an outbound campaign. Most
+          campaigns do not have an offer this good. We expect strong performance.
         </p>
         <p>
           The system accommodates multiple campaign types running in parallel
