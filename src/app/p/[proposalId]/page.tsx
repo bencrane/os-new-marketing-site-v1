@@ -449,7 +449,7 @@ export default function ProposalPage() {
           </p>
           <p>
             There are approximately{" "}
-            <span className="text-primary font-mono font-medium">50,000</span>{" "}
+            <span className="font-mono font-medium">50,000</span>{" "}
             people working in roles with direct authority over beverage purchasing
             and menu selection at restaurants, bars, and hotel and hospitality
             establishments in the United States.
@@ -478,7 +478,7 @@ export default function ProposalPage() {
               "Targeting criteria — regions, account types, venue size, exclusions — are defined with your input at the start of the engagement.",
             ].map((note, i) => (
               <li key={i} className="flex gap-3">
-                <span className="text-primary shrink-0">&mdash;</span>
+                <span className="shrink-0">&mdash;</span>
                 <span>{note}</span>
               </li>
             ))}
@@ -519,7 +519,7 @@ export default function ProposalPage() {
           </p>
           <p>
             At{" "}
-            <span className="text-primary font-mono font-medium">$30 per box</span>
+            <span className="font-mono font-medium">$30 per box</span>
             , it is the most economical way to get the brand tasted by the people
             who decide what goes on the bar. No one knows in advance which
             accounts will order the most. The sample removes the guesswork.
@@ -539,7 +539,7 @@ export default function ProposalPage() {
           </p>
           <p>
             Our infrastructure has capacity to reach{" "}
-            <span className="text-primary font-mono font-medium">50,000+</span>{" "}
+            <span className="font-mono font-medium">50,000+</span>{" "}
             contacts per month at no additional cost to you. Whether we scale to
             that depends on one thing: whether your team can keep up with the
             volume of conversations we generate. We start at 10,000 to calibrate.
@@ -701,13 +701,13 @@ export default function ProposalPage() {
 
           <ul className="space-y-2 text-[15px] text-foreground/70">
             <li className="flex gap-3">
-              <span className="text-primary shrink-0">&mdash;</span>
+              <span className="shrink-0">&mdash;</span>
               All infrastructure costs &mdash; inboxes, domains, replacements,
               data providers &mdash; are included. There are no additional charges
               for infrastructure.
             </li>
             <li className="flex gap-3">
-              <span className="text-primary shrink-0">&mdash;</span>
+              <span className="shrink-0">&mdash;</span>
               The full amount is due at kickoff.
             </li>
           </ul>
