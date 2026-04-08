@@ -517,9 +517,7 @@ export default function ProposalPage() {
 
         {/* ─── 07 The Math ─── */}
         <Section number="07" title="The Math">
-          <div className="mt-4 w-[100vw] max-w-5xl relative left-1/2 -translate-x-1/2 px-6">
-            <RoiCalculator />
-          </div>
+          <RoiCalculator />
         </Section>
 
         {/* ─── 08 The Engagement ─── */}
@@ -650,8 +648,15 @@ export default function ProposalPage() {
               <span className="font-heading text-lg font-semibold">Total</span>
               <span className="font-mono text-2xl text-primary font-medium">$27,500</span>
             </div>
-            <div className="px-6 py-3 border-t border-border/50">
-              <p className="text-[13px] text-muted-foreground">The full amount is due at kickoff.</p>
+            {/* Footnotes */}
+            <div className="border-t border-border/50 px-6 py-4 space-y-1.5">
+              <p className="text-[13px] text-muted-foreground leading-relaxed">
+                All infrastructure costs &mdash; inboxes, domains, replacements,
+                data providers &mdash; are included. No additional charges.
+              </p>
+              <p className="text-[13px] text-muted-foreground leading-relaxed">
+                The full amount is due at kickoff.
+              </p>
             </div>
           </div>
         </Section>
@@ -792,146 +797,129 @@ export default function ProposalPage() {
 
 const ENGAGEMENT_COST = 27_500;
 const PILOT_MONTHS = 3;
-const DEFAULT_RESPONSE_RATE = 0.02;
-const DEFAULT_CLOSE_RATE = 0.15;
-const DEFAULT_REVENUE_PER_ACCOUNT = 2_000;
+const MONTHLY_VOLUME = 10_000;
+const RESPONSE_RATE = 0.01;
+const WARM_LEADS = MONTHLY_VOLUME * RESPONSE_RATE * PILOT_MONTHS;
 
 function RoiCalculator() {
-  const [emailVolume, setEmailVolume] = useState(30_000);
+  const [revenuePerAccount, setRevenuePerAccount] = useState(2000);
+  const [closeRate, setCloseRate] = useState(12);
 
-  const responseRate = DEFAULT_RESPONSE_RATE;
-  const closeRate = DEFAULT_CLOSE_RATE;
-  const revenuePerAccount = DEFAULT_REVENUE_PER_ACCOUNT;
-
-  const warmLeadsPerMonth = Math.round(emailVolume * responseRate);
-  const newAccountsPerMonth = Math.round(warmLeadsPerMonth * closeRate);
-  const firstYearRevenue = newAccountsPerMonth * PILOT_MONTHS * revenuePerAccount;
-  const costPerAccount =
-    newAccountsPerMonth > 0
-      ? ENGAGEMENT_COST / (newAccountsPerMonth * PILOT_MONTHS)
-      : 0;
-  const roiMultiple =
-    firstYearRevenue > 0 ? firstYearRevenue / ENGAGEMENT_COST : 0;
+  const newAccounts = Math.round(WARM_LEADS * (closeRate / 100));
+  const firstYearRevenue = newAccounts * revenuePerAccount;
+  const costPerAccount = newAccounts > 0 ? ENGAGEMENT_COST / newAccounts : 0;
+  const roiMultiple = firstYearRevenue > 0 ? firstYearRevenue / ENGAGEMENT_COST : 0;
 
   const fmt = (n: number) =>
-    "$" + n.toLocaleString("en-US", { maximumFractionDigits: 0 });
+    n >= 1000
+      ? "$" + n.toLocaleString("en-US", { maximumFractionDigits: 0 })
+      : "$" + n.toFixed(0);
 
   return (
-    <div className="space-y-0">
-      {/* ── Slider: the single lever ── */}
-      <div className="pb-8">
-        <label className="block text-[10px] font-mono uppercase tracking-[0.2em] text-muted-foreground mb-3">
-          Monthly Email Volume
-        </label>
-        <div className="flex items-center gap-5">
-          <input
-            type="range"
-            min={5000}
-            max={50000}
-            step={1000}
-            value={emailVolume}
-            onChange={(e) => setEmailVolume(Number(e.target.value))}
-            className="flex-1 h-2 bg-border rounded-full appearance-none cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-primary [&::-webkit-slider-thumb]:shadow-[0_0_8px_rgba(16,185,129,0.4)]"
-          />
-          <span className="font-mono text-2xl text-primary font-semibold w-28 text-right tabular-nums">
-            {emailVolume.toLocaleString()}
+    <div className="space-y-8">
+      {/* Fixed anchor */}
+      <div className="border border-border rounded-lg p-6 bg-secondary/20">
+        <div className="text-[10px] font-mono uppercase tracking-[0.2em] text-muted-foreground mb-4">
+          Your Investment
+        </div>
+        <div className="flex items-baseline gap-3 mb-6">
+          <span className="font-mono text-3xl text-primary font-semibold">
+            {fmt(ENGAGEMENT_COST)}
           </span>
+          <span className="text-sm text-muted-foreground">total engagement</span>
         </div>
-        <div className="flex justify-between text-[10px] font-mono text-muted-foreground/50 mt-1.5 px-0.5">
-          <span>5,000</span>
-          <span>50,000</span>
+        <div className="grid grid-cols-2 gap-4 text-sm text-muted-foreground">
+          <div>
+            <span className="block text-[10px] font-mono uppercase tracking-[0.15em] mb-1">
+              Pilot Duration
+            </span>
+            <span className="text-foreground font-medium">{PILOT_MONTHS} months</span>
+          </div>
+          <div>
+            <span className="block text-[10px] font-mono uppercase tracking-[0.15em] mb-1">
+              Monthly Email Volume
+            </span>
+            <span className="text-foreground font-medium">
+              {MONTHLY_VOLUME.toLocaleString()}
+            </span>
+          </div>
         </div>
       </div>
 
-      {/* ── Fixed assumptions ── */}
-      <div className="flex flex-wrap gap-x-6 gap-y-1 text-[11px] font-mono text-muted-foreground/60 pb-8">
-        <span>Response rate: 1&ndash;3% (est. 2%)</span>
-        <span>Close rate: {(closeRate * 100).toFixed(0)}%</span>
-        <span>Revenue/account: {fmt(revenuePerAccount)}/yr</span>
-        <span>Pilot: {PILOT_MONTHS} months</span>
-      </div>
-
-      {/* ── Vertical funnel ── */}
-      <div className="relative pl-6 border-l-2 border-primary/20 space-y-0">
-        {[
-          {
-            label: "Emails Sent / Month",
-            value: emailVolume.toLocaleString(),
-          },
-          {
-            label: "Warm Leads / Month",
-            value: warmLeadsPerMonth.toLocaleString(),
-          },
-          {
-            label: "New Accounts / Month",
-            value: newAccountsPerMonth.toLocaleString(),
-          },
-          {
-            label: "First-Year Revenue",
-            value: fmt(firstYearRevenue),
-            highlight: true,
-          },
-        ].map((step, i) => (
-          <div key={step.label} className="relative pb-8 last:pb-0">
-            {/* dot on the line */}
-            <div
-              className={`absolute -left-[calc(0.75rem+1px)] top-1 w-3 h-3 rounded-full border-2 ${
-                step.highlight
-                  ? "bg-primary border-primary shadow-[0_0_8px_rgba(16,185,129,0.4)]"
-                  : "bg-background border-primary/40"
-              }`}
+      {/* Prospect inputs */}
+      <div className="space-y-6">
+        <div>
+          <label className="block text-[10px] font-mono uppercase tracking-[0.2em] text-muted-foreground mb-3">
+            Avg. Annual Revenue per New Account
+          </label>
+          <div className="flex items-center gap-4">
+            <input
+              type="range"
+              min={500}
+              max={10000}
+              step={100}
+              value={revenuePerAccount}
+              onChange={(e) => setRevenuePerAccount(Number(e.target.value))}
+              className="flex-1 accent-primary h-1.5 bg-border rounded-full appearance-none cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-primary"
             />
-            {/* arrow between steps */}
-            {i < 3 && (
-              <div className="absolute -left-[calc(0.375rem+1px)] top-5 text-primary/30 text-[10px] leading-none">
-                ▼
-              </div>
-            )}
-            <div className="text-[10px] font-mono uppercase tracking-[0.15em] text-muted-foreground mb-1">
-              {step.label}
+            <span className="font-mono text-lg text-foreground font-medium w-24 text-right">
+              {fmt(revenuePerAccount)}
+            </span>
+          </div>
+        </div>
+
+        <div>
+          <label className="block text-[10px] font-mono uppercase tracking-[0.2em] text-muted-foreground mb-3">
+            Estimated Close Rate on Warm Leads
+          </label>
+          <div className="flex items-center gap-4">
+            <input
+              type="range"
+              min={5}
+              max={40}
+              step={1}
+              value={closeRate}
+              onChange={(e) => setCloseRate(Number(e.target.value))}
+              className="flex-1 accent-primary h-1.5 bg-border rounded-full appearance-none cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-primary"
+            />
+            <span className="font-mono text-lg text-foreground font-medium w-16 text-right">
+              {closeRate}%
+            </span>
+          </div>
+        </div>
+      </div>
+
+      {/* Scoreboard */}
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+        {[
+          { label: "Warm Leads", value: WARM_LEADS.toFixed(0) },
+          { label: "New Accounts", value: newAccounts.toString() },
+          { label: "First-Year Revenue", value: fmt(firstYearRevenue) },
+          { label: "Cost per Account", value: costPerAccount > 0 ? fmt(Math.round(costPerAccount)) : "—" },
+        ].map((m) => (
+          <div key={m.label} className="border border-border rounded-lg p-4">
+            <div className="text-[10px] font-mono uppercase tracking-[0.15em] text-muted-foreground mb-1.5">
+              {m.label}
             </div>
-            <div
-              className={`font-heading font-semibold tabular-nums ${
-                step.highlight ? "text-3xl text-primary" : "text-xl text-foreground"
-              }`}
-            >
-              {step.value}
-            </div>
+            <div className="text-xl font-heading font-semibold">{m.value}</div>
           </div>
         ))}
       </div>
 
-      {/* ── Bottom line ── */}
-      <div className="mt-10 border border-primary/20 rounded-lg overflow-hidden">
-        <div className="grid grid-cols-3 divide-x divide-primary/10">
-          <div className="p-5 text-center">
-            <div className="text-[10px] font-mono uppercase tracking-[0.15em] text-muted-foreground mb-1.5">
-              Engagement Cost
-            </div>
-            <div className="font-mono text-lg text-foreground font-medium">
-              {fmt(ENGAGEMENT_COST)}
-            </div>
-          </div>
-          <div className="p-5 text-center">
-            <div className="text-[10px] font-mono uppercase tracking-[0.15em] text-muted-foreground mb-1.5">
-              Cost / Account
-            </div>
-            <div className="font-mono text-lg text-foreground font-medium">
-              {costPerAccount > 0 ? fmt(Math.round(costPerAccount)) : "—"}
-            </div>
-          </div>
-          <div className="p-5 text-center bg-primary/5">
-            <div className="text-[10px] font-mono uppercase tracking-[0.15em] text-muted-foreground mb-1.5">
-              ROI Multiple
-            </div>
-            <div className="font-mono text-2xl text-primary font-bold">
-              {roiMultiple > 0 ? roiMultiple.toFixed(1) + "×" : "—"}
-            </div>
-          </div>
+      {/* ROI highlight */}
+      <div className="border border-primary/30 rounded-lg p-5 bg-primary/5 text-center">
+        <div className="text-[10px] font-mono uppercase tracking-[0.2em] text-muted-foreground mb-2">
+          ROI Multiple
+        </div>
+        <div className="font-mono text-4xl text-primary font-bold">
+          {roiMultiple > 0 ? roiMultiple.toFixed(1) + "×" : "—"}
+        </div>
+        <div className="text-sm text-muted-foreground mt-1">
+          estimated return on engagement cost
         </div>
       </div>
 
-      <p className="text-xs text-muted-foreground italic !mt-4">
+      <p className="text-xs text-muted-foreground italic">
         These projections are illustrative. Actual results depend on follow-up
         speed, sample fulfillment, and market conditions. The engagement cost is
         fixed regardless of campaign performance.

@@ -545,7 +545,7 @@ export default function ChicaChidaProposal() {
           If your team has the bandwidth to take more meetings, we turn it up.
         </p>
         {/* Projection grid */}
-        <div className="mt-8 w-[100vw] max-w-5xl relative left-1/2 -translate-x-1/2 px-6">
+        <div className="mt-8">
           <div className="text-[10px] font-mono uppercase tracking-[0.2em] text-muted-foreground mb-4">
             Pilot Projection &mdash; 3 Months
           </div>
@@ -699,8 +699,15 @@ export default function ChicaChidaProposal() {
             <span className="font-heading text-lg font-semibold">Total</span>
             <span className="font-mono text-2xl text-primary font-medium">$27,500</span>
           </div>
-          <div className="px-6 py-3 border-t border-border/50">
-            <p className="text-[13px] text-muted-foreground">The full amount is due at kickoff.</p>
+          {/* Footnotes */}
+          <div className="border-t border-border/50 px-6 py-4 space-y-1.5">
+            <p className="text-[13px] text-muted-foreground leading-relaxed">
+              All infrastructure costs &mdash; inboxes, domains, replacements,
+              data providers &mdash; are included. No additional charges.
+            </p>
+            <p className="text-[13px] text-muted-foreground leading-relaxed">
+              The full amount is due at kickoff.
+            </p>
           </div>
         </div>
       </Section>
