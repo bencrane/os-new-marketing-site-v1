@@ -239,22 +239,12 @@ export default function ProposalPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [signerName, setSignerName] = useState("");
   const [signerEmail, setSignerEmail] = useState("");
-  const [introPhase, setIntroPhase] = useState<"visible" | "fading" | "done">(
-    "visible",
-  );
+  const [introPhase, setIntroPhase] = useState<
+    "loading" | "visible" | "fading" | "done"
+  >("loading");
   const router = useRouter();
 
-  /* Intro splash timing */
-  useEffect(() => {
-    const fadeTimer = setTimeout(() => setIntroPhase("fading"), 1800);
-    const doneTimer = setTimeout(() => setIntroPhase("done"), 2600);
-    return () => {
-      clearTimeout(fadeTimer);
-      clearTimeout(doneTimer);
-    };
-  }, []);
-
-  /* Fetch account name from API */
+  /* Fetch account name from API, then start splash */
   useEffect(() => {
     if (!proposalId) return;
     fetch(
@@ -264,8 +254,22 @@ export default function ProposalPage() {
       .then((data) => {
         if (data?.account_name) setAccount(data.account_name);
       })
-      .catch(() => {});
+      .catch(() => {})
+      .finally(() => {
+        setIntroPhase("visible");
+      });
   }, [proposalId]);
+
+  /* Intro splash timing — starts after API responds */
+  useEffect(() => {
+    if (introPhase !== "visible") return;
+    const fadeTimer = setTimeout(() => setIntroPhase("fading"), 1800);
+    const doneTimer = setTimeout(() => setIntroPhase("done"), 2600);
+    return () => {
+      clearTimeout(fadeTimer);
+      clearTimeout(doneTimer);
+    };
+  }, [introPhase]);
 
   /* Canvas resize */
   useEffect(() => {
@@ -385,17 +389,19 @@ export default function ProposalPage() {
           className="fixed inset-0 z-50 flex items-center justify-center bg-background transition-opacity duration-700"
           style={{ opacity: introPhase === "fading" ? 0 : 1 }}
         >
-          <div className="flex flex-col items-center gap-3 px-6">
-            <span className="font-heading text-2xl md:text-4xl font-semibold tracking-tight">
-              Outbound Solutions
-            </span>
-            <span className="text-primary font-mono text-base md:text-lg">
-              x
-            </span>
-            <span className="font-heading text-2xl md:text-4xl font-semibold tracking-tight">
-              {account}
-            </span>
-          </div>
+          {introPhase !== "loading" && (
+            <div className="flex flex-col items-center gap-3 px-6">
+              <span className="font-heading text-2xl md:text-4xl font-semibold tracking-tight">
+                Outbound Solutions
+              </span>
+              <span className="text-primary font-mono text-base md:text-lg">
+                x
+              </span>
+              <span className="font-heading text-2xl md:text-4xl font-semibold tracking-tight">
+                {account}
+              </span>
+            </div>
+          )}
         </div>
       )}
 
