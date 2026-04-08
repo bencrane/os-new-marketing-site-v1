@@ -560,7 +560,7 @@ export default function ChicaChidaProposal() {
               {/* Phase header */}
               <div className="flex items-center justify-between px-6 py-4 border-b border-border bg-secondary/30">
                 <div className="flex items-center gap-3">
-                  <span className="text-primary font-mono text-base font-medium uppercase tracking-wider">
+                  <span className="text-primary font-mono text-lg font-medium uppercase tracking-wider">
                     {phase.title}
                   </span>
                 </div>
@@ -581,7 +581,7 @@ export default function ChicaChidaProposal() {
                 <Accordion>
                   {phase.workstreams.map((ws, i) => (
                     <AccordionItem key={i} value={i}>
-                      <AccordionTrigger className="text-lg font-medium text-foreground">
+                      <AccordionTrigger className="text-base font-medium text-foreground">
                         {ws.title}
                       </AccordionTrigger>
                       <AccordionContent>
@@ -782,13 +782,13 @@ export default function ChicaChidaProposal() {
         <div className="space-y-8">
           {APPENDIX.map((category) => (
             <div key={category.title}>
-              <h3 className="text-base font-mono font-medium uppercase tracking-wider text-foreground mb-4">
+              <h3 className="text-sm font-mono font-medium uppercase tracking-wider text-foreground mb-4">
                 {category.title}
               </h3>
               <Accordion>
                 {category.faqs.map((faq, i) => (
                   <AccordionItem key={i} value={i}>
-                    <AccordionTrigger className="text-lg text-foreground font-medium">
+                    <AccordionTrigger className="text-sm text-foreground font-medium">
                       {faq.q}
                     </AccordionTrigger>
                     <AccordionContent>
