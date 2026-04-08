@@ -326,7 +326,7 @@ export default function ChicaChidaProposal() {
         <div className="flex items-center justify-center gap-4 text-sm text-muted-foreground font-mono">
           <span>
             Prepared for{" "}
-            <span className="text-foreground font-medium">Chica Chida</span>
+            <span className="font-semibold">Chica Chida</span>
           </span>
           <span className="text-border">|</span>
           <span>April 2026</span>
@@ -340,7 +340,7 @@ export default function ChicaChidaProposal() {
           thousands of on-premise decision makers each month, growing the
           brand&apos;s footprint across net-new accounts in a way that is
           scaleable, cost-efficient, and difficult for competitors to imitate.{" "}
-          <strong className="text-foreground font-medium">
+          <strong className="font-semibold">
             The goal is to put Chica Chida on the bar in every market you enter.
           </strong>
         </p>
@@ -354,7 +354,7 @@ export default function ChicaChidaProposal() {
           martini made with Chica Chida has gone viral on TikTok and Instagram.
           Caleb Pressley gives the brand reach that most spirits companies at
           your stage do not have.{" "}
-          <strong className="text-foreground font-medium">
+          <strong className="font-semibold">
             The constraint is not demand. It is discovery.
           </strong>
         </p>
@@ -385,7 +385,7 @@ export default function ChicaChidaProposal() {
           month from engineered infrastructure with full visibility into what is
           working, what is not, and why. Paid advertising to generate booked B2B
           meetings runs $2&ndash;3K per meeting. Both are viable paths.{" "}
-          <strong className="text-foreground font-medium">
+          <strong className="font-semibold">
             Our system is built to generate more pipeline, at a lower cost per
             meeting, with full visibility into performance &mdash; and it scales
             without adding headcount.
@@ -465,7 +465,7 @@ export default function ChicaChidaProposal() {
           Today, an excellent cold email campaign generates a 1% positive
           response rate. The best campaign we have ever run generated 12%. We do
           not know where this lands yet, but{" "}
-          <strong className="text-foreground font-medium">
+          <strong className="font-semibold">
             a free sample of a product that has gone viral, sent to someone whose
             job is to evaluate new spirits, is among the strongest offers we have
             seen.
@@ -578,7 +578,7 @@ export default function ChicaChidaProposal() {
 
               {/* Phase description */}
               <div className="px-6 pt-4 pb-2">
-                <p className="text-sm text-muted-foreground leading-relaxed">
+                <p className="text-[15px] text-foreground/70 leading-relaxed">
                   {phase.description}
                 </p>
               </div>
@@ -592,7 +592,7 @@ export default function ChicaChidaProposal() {
                         {ws.title}
                       </AccordionTrigger>
                       <AccordionContent>
-                        <p className="text-sm text-muted-foreground leading-relaxed pr-6">
+                        <p className="text-[15px] text-foreground/70 leading-relaxed pr-6">
                           {ws.details}
                         </p>
                       </AccordionContent>
@@ -631,7 +631,7 @@ export default function ChicaChidaProposal() {
           call, or looping in your distributor. We surface the leads. Staying on
           top of them after handoff is on your team.
         </p>
-        <div className="mt-6 border border-border rounded-lg p-5 bg-secondary/20 text-sm text-muted-foreground leading-relaxed">
+        <div className="mt-6 border border-border rounded-lg p-5 bg-secondary/20 text-[15px] text-foreground/70 leading-relaxed">
           In the event volume exceeds your capacity or budget for samples, we can
           pause campaigns and tighten segmentation to narrow the funnel. Monthly
           retainer payments remain due regardless of whether campaigns are paused
@@ -649,7 +649,7 @@ export default function ChicaChidaProposal() {
             >
               <div className="flex-1">
                 <div className="font-medium text-foreground">{item.name}</div>
-                <div className="text-sm text-muted-foreground mt-0.5">
+                <div className="text-[15px] text-foreground/70 mt-0.5">
                   {item.description}
                 </div>
               </div>
@@ -672,7 +672,7 @@ export default function ChicaChidaProposal() {
           </div>
         </div>
 
-        <ul className="space-y-2 text-sm text-muted-foreground">
+        <ul className="space-y-2 text-[15px] text-foreground/70">
           <li className="flex gap-3">
             <span className="text-primary shrink-0">&mdash;</span>
             All infrastructure costs &mdash; inboxes, domains, replacements,
@@ -685,7 +685,7 @@ export default function ChicaChidaProposal() {
           </li>
         </ul>
 
-        <div className="mt-6 border border-border rounded-lg p-5 bg-secondary/20 text-sm text-muted-foreground leading-relaxed">
+        <div className="mt-6 border border-border rounded-lg p-5 bg-secondary/20 text-[15px] text-foreground/70 leading-relaxed">
           <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-muted-foreground block mb-2">
             Renewal
           </span>
@@ -701,7 +701,7 @@ export default function ChicaChidaProposal() {
         <span className="block text-[10px] font-mono text-primary tracking-[0.2em] uppercase mb-4">
           Agreement
         </span>
-        <h2 className="font-heading text-2xl md:text-3xl mb-8">Signature</h2>
+        <h2 className="font-heading font-bold text-2xl md:text-3xl mb-8">Signature</h2>
 
         {/* Signer details */}
         <div className="border border-border rounded-lg p-6 mb-4">
@@ -782,7 +782,7 @@ export default function ChicaChidaProposal() {
         <span className="block text-[10px] font-mono text-primary tracking-[0.2em] uppercase mb-4">
           Appendix
         </span>
-        <h2 className="font-heading text-2xl md:text-3xl mb-8">
+        <h2 className="font-heading font-bold text-2xl md:text-3xl mb-8">
           Technical Reference
         </h2>
 
@@ -831,8 +831,8 @@ function Section({
       <span className="block text-[10px] font-mono text-primary tracking-[0.2em] uppercase mb-4">
         {number}
       </span>
-      <h2 className="font-heading text-2xl md:text-3xl mb-6">{title}</h2>
-      <div className="space-y-5 text-[15px] text-muted-foreground leading-relaxed">
+      <h2 className="font-heading font-bold text-2xl md:text-3xl mb-6">{title}</h2>
+      <div className="space-y-5 text-base text-foreground leading-[1.85]">
         {children}
       </div>
     </section>
