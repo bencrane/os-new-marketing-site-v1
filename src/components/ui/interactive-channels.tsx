@@ -127,37 +127,37 @@ export function InteractiveChannels() {
                 Distributed Calling Subsystem
               </h3>
               <div className="space-y-4">
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-2">
                   <span className="text-muted-foreground min-w-[45px] shrink-0">15:04</span>
-                  <span className="text-foreground truncate min-w-0 flex-1">Sara Chen, Category Mgr, Atlas Beverage</span>
-                  <span className="text-muted-foreground hidden sm:inline">→</span>
+                  <span className="text-foreground truncate min-w-0 flex-1">R. Nava, Elgin Wines</span>
+                  <span className="text-muted-foreground hidden lg:inline">→</span>
                   <span className="text-primary shrink-0 whitespace-nowrap">CONNECTED 3:42</span>
-                  <span className="text-muted-foreground hidden sm:inline">→</span>
-                  <span className="text-foreground bg-primary/10 px-2 py-0.5 rounded shrink-0 whitespace-nowrap">CALLBACK FRIDAY 2PM</span>
+                  <span className="text-muted-foreground hidden lg:inline">→</span>
+                  <span className="text-foreground bg-primary/10 px-2 py-0.5 rounded shrink-0 whitespace-nowrap hidden md:inline">CALLBACK FRI 2PM</span>
                 </div>
-                <div className="flex items-center gap-3 opacity-70">
+                <div className="flex items-center gap-2 opacity-70">
                   <span className="text-muted-foreground min-w-[45px] shrink-0">14:51</span>
-                  <span className="text-foreground truncate min-w-0 flex-1">David Park, VP Purchasing, Meridian Dist</span>
-                  <span className="text-muted-foreground hidden sm:inline">→</span>
+                  <span className="text-foreground truncate min-w-0 flex-1">T. Marsh, Oak & Vine</span>
+                  <span className="text-muted-foreground hidden lg:inline">→</span>
                   <span className="text-yellow-500 shrink-0 whitespace-nowrap">VOICEMAIL</span>
-                  <span className="text-muted-foreground hidden sm:inline">→</span>
-                  <span className="text-muted-foreground shrink-0 whitespace-nowrap">RETRY QUEUED TUE</span>
+                  <span className="text-muted-foreground hidden lg:inline">→</span>
+                  <span className="text-muted-foreground shrink-0 whitespace-nowrap hidden md:inline">RETRY TUE</span>
                 </div>
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-2">
                   <span className="text-muted-foreground min-w-[45px] shrink-0">14:38</span>
-                  <span className="text-foreground truncate min-w-0 flex-1">Carlos Vega, Portfolio Mgr, Empire Spirits</span>
-                  <span className="text-muted-foreground hidden sm:inline">→</span>
-                  <span className="text-primary shrink-0 whitespace-nowrap">LIVE_TRANSFER_COMPLETED</span>
-                  <span className="text-muted-foreground hidden sm:inline">→</span>
-                  <span className="text-foreground shrink-0 whitespace-nowrap">4:18 duration</span>
+                  <span className="text-foreground truncate min-w-0 flex-1">J. Lam, Peak Spirits</span>
+                  <span className="text-muted-foreground hidden lg:inline">→</span>
+                  <span className="text-primary shrink-0 whitespace-nowrap">LIVE_TRANSFER</span>
+                  <span className="text-muted-foreground hidden lg:inline">→</span>
+                  <span className="text-foreground shrink-0 whitespace-nowrap hidden md:inline">4:18 call</span>
                 </div>
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-2">
                   <span className="text-muted-foreground min-w-[45px] shrink-0">14:22</span>
-                  <span className="text-foreground truncate min-w-0 flex-1">Lisa Monroe, Supplier Relations, Coastal Bev</span>
-                  <span className="text-muted-foreground hidden sm:inline">→</span>
+                  <span className="text-foreground truncate min-w-0 flex-1">M. Ortiz, Bayshore Bev</span>
+                  <span className="text-muted-foreground hidden lg:inline">→</span>
                   <span className="text-primary shrink-0 whitespace-nowrap">CONNECTED 2:05</span>
-                  <span className="text-muted-foreground hidden sm:inline">→</span>
-                  <span className="text-foreground bg-primary/10 px-2 py-0.5 rounded shrink-0 whitespace-nowrap">MEETING BOOKED THU 3PM</span>
+                  <span className="text-muted-foreground hidden lg:inline">→</span>
+                  <span className="text-foreground bg-primary/10 px-2 py-0.5 rounded shrink-0 whitespace-nowrap hidden md:inline">BOOKED THU 3PM</span>
                 </div>
               </div>
             </div>
