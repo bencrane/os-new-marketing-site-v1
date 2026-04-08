@@ -96,7 +96,7 @@ const PRICING = [
     price: "$5,000",
     frequency: "One-time",
     description:
-      "Infrastructure, data, list building, validation, campaign copy, landing page, warmup.",
+      "Data sourcing, list building, email validation, campaign copy, landing page, warmup, inbox rotation, deliverability monitoring, and technical setup.",
   },
   {
     name: "Launch & Optimize",
@@ -431,15 +431,15 @@ export default function ChicaChidaProposal() {
           fully loaded. That person still needs to source their own leads, set up
           their own email infrastructure, manage their own deliverability, and at
           best sends a few dozen emails a day manually. Whether they generate a
-          single meeting or not, you pay the same. We send [X,000] emails per
-          month from engineered infrastructure with full visibility into what is
-          working, what is not, and why. Paid advertising to generate booked B2B
-          meetings runs $2&ndash;3K per meeting. Both are viable paths.{" "}
-          <strong className="font-semibold">
-            Our system is built to generate more pipeline, at a lower cost per
-            meeting, with full visibility into performance &mdash; and it scales
-            without adding headcount.
-          </strong>
+          single meeting or not, you pay the same. Paid advertising to generate
+          booked B2B meetings runs $2&ndash;3K per meeting. Both are viable
+          paths.
+        </p>
+        <p>
+          Our system sends [X,000] emails per month from engineered
+          infrastructure with full visibility into what is working, what is not,
+          and why. More pipeline, lower cost per meeting, full performance
+          visibility &mdash; and this scales without adding headcount.
         </p>
       </Section>
 
@@ -575,8 +575,10 @@ export default function ChicaChidaProposal() {
         </p>
 
         <p className="!mb-10">
-          This is a 3-month pilot engagement. The first three weeks are the
-          Build phase. Campaigns launch after that.
+          This engagement begins with a 3-week build phase, followed by a
+          90-day campaign period. During the build phase, inboxes will be set
+          up, campaign copy will be approved, and creative assets will be
+          produced.
         </p>
 
         <div className="space-y-6">
@@ -633,10 +635,11 @@ export default function ChicaChidaProposal() {
         </p>
         <p>
           We handle everything upstream &mdash; infrastructure, data, list
-          building, validation, copy, sending, deliverability, reply triage. Your
-          team only sees warm leads. When a prospect responds positively, we
-          reply, cc your team, and the lead is yours. If the campaign drives to a
-          meeting, we book it and confirm with both sides.
+          building, validation, copy, sending, deliverability, reply triage.
+          Your team only sees warm leads. When a prospect responds positively,
+          we reply, confirm interest, and direct them to a landing page to
+          submit their information for a sample. Once submitted, your team is
+          notified and the lead is yours.
         </p>
         <p>
           At $30 per sample box, your team needs to be ready to fulfill at
