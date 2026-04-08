@@ -513,13 +513,6 @@ export default function ChicaChidaProposal() {
           volume of conversations we generate. We start at 10,000 to calibrate.
           If your team has the bandwidth to take more meetings, we turn it up.
         </p>
-        <p>
-          We realize every sample you send costs money, and every call you take
-          is time away from other areas of the business. We defer to you on how
-          much capacity you have to take meetings. We will generate as many as
-          you are able to handle.
-        </p>
-
         {/* Projection grid */}
         <div className="mt-8">
           <div className="text-[10px] font-mono uppercase tracking-[0.2em] text-muted-foreground mb-4">
