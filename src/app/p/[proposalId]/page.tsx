@@ -645,29 +645,16 @@ export default function ProposalPage() {
                 $27,500
               </span>
             </div>
-          </div>
-
-          <ul className="space-y-2 text-[15px] text-foreground/70">
-            <li className="flex gap-3">
-              <span className="shrink-0">&mdash;</span>
-              All infrastructure costs &mdash; inboxes, domains, replacements,
-              data providers &mdash; are included. There are no additional charges
-              for infrastructure.
-            </li>
-            <li className="flex gap-3">
-              <span className="shrink-0">&mdash;</span>
-              The full amount is due at kickoff.
-            </li>
-          </ul>
-
-          <div className="mt-6 border border-border rounded-lg p-5 bg-secondary/20 text-[15px] text-foreground/70 leading-relaxed">
-            <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-muted-foreground block mb-2">
-              Renewal
-            </span>
-            Renewal is confirmed no later than 2 weeks before the end of the
-            current term. If renewal is not confirmed by that date, infrastructure
-            is sunset and campaigns wind down. Restarting after a lapse requires a
-            new Build phase.
+            {/* Footnotes */}
+            <div className="border-t border-border/50 px-6 py-4 space-y-1.5">
+              <p className="text-[13px] text-muted-foreground leading-relaxed">
+                All infrastructure costs &mdash; inboxes, domains, replacements,
+                data providers &mdash; are included. No additional charges.
+              </p>
+              <p className="text-[13px] text-muted-foreground leading-relaxed">
+                The full amount is due at kickoff.
+              </p>
+            </div>
           </div>
         </Section>
 
@@ -677,6 +664,19 @@ export default function ProposalPage() {
             Agreement
           </span>
           <h2 className="font-heading font-bold text-2xl md:text-3xl mb-8">Signature</h2>
+
+          {/* Terms */}
+          <div className="mb-6 px-5 py-4 border-l-2 border-border bg-secondary/10 rounded-r-md">
+            <span className="block text-[10px] font-mono uppercase tracking-[0.2em] text-muted-foreground mb-2">
+              Terms
+            </span>
+            <p className="text-[13px] text-muted-foreground leading-relaxed">
+              Renewal is confirmed no later than 2 weeks before the end of the
+              current term. If renewal is not confirmed by that date,
+              infrastructure is sunset and campaigns wind down. Restarting after
+              a lapse requires a new Build phase.
+            </p>
+          </div>
 
           {/* Signer details */}
           <div className="border border-border rounded-lg p-6 mb-4">
