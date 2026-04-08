@@ -184,7 +184,7 @@ export default function ProposalPage() {
   const params = useParams<{ proposalId: string }>();
   const proposalId = params?.proposalId;
   const proposal = proposalId ? PROPOSALS[proposalId] : undefined;
-  const client = proposal?.client ?? "Client";
+  const [client, setClient] = useState(proposal?.client ?? "Client");
   const contentRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [drawing, setDrawing] = useState(false);
@@ -206,6 +206,19 @@ export default function ProposalPage() {
       clearTimeout(doneTimer);
     };
   }, []);
+
+  /* Fetch account name from API */
+  useEffect(() => {
+    if (!proposalId) return;
+    fetch(
+      `https://api.serviceengine.xyz/api/public/proposals/${proposalId}`,
+    )
+      .then((res) => (res.ok ? res.json() : null))
+      .then((data) => {
+        if (data?.account_name) setClient(data.account_name);
+      })
+      .catch(() => {});
+  }, [proposalId]);
 
   /* Canvas resize */
   useEffect(() => {
