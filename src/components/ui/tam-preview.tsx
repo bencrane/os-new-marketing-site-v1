@@ -6,63 +6,59 @@ interface Contact {
   name: string;
   title: string;
   company: string;
-  companySize: string;
+  industry: string;
   location: string;
 }
 
 const CONTACTS: Contact[] = [
-  { name: "Marcus Bell", title: "Beverage Director", company: "The Commodore Hotel", companySize: "51–200", location: "Nashville, TN" },
-  { name: "Jessica Tran", title: "Bar Manager", company: "Velvet Room Cocktail Lounge", companySize: "11–50", location: "Austin, TX" },
-  { name: "David Okonkwo", title: "Director of Food & Beverage", company: "Peachtree Hospitality Group", companySize: "201–500", location: "Atlanta, GA" },
-  { name: "Rachel Kim", title: "General Manager", company: "The Copper Still", companySize: "11–50", location: "Denver, CO" },
-  { name: "Brian Morales", title: "Owner / Proprietor", company: "Morales Restaurant Group", companySize: "51–200", location: "Miami, FL" },
-  { name: "Sarah Whitfield", title: "Beverage Director", company: "Ironside Hospitality", companySize: "201–500", location: "Chicago, IL" },
-  { name: "Tyler Nguyen", title: "Bar Manager", company: "The Jade Fox", companySize: "11–50", location: "Portland, OR" },
-  { name: "Amanda Foster", title: "Director of Food & Beverage", company: "Lakeshore Resort & Spa", companySize: "501–1000", location: "Scottsdale, AZ" },
-  { name: "James Patel", title: "General Manager", company: "Sage & Barrel", companySize: "11–50", location: "Charleston, SC" },
-  { name: "Catherine Reeves", title: "Owner / Proprietor", company: "Reeves Dining Co.", companySize: "51–200", location: "New Orleans, LA" },
-  { name: "Michael Brandt", title: "Beverage Director", company: "The Drifter Hotel", companySize: "51–200", location: "Los Angeles, CA" },
-  { name: "Lauren Casey", title: "Bar Manager", company: "Union Hall", companySize: "11–50", location: "Brooklyn, NY" },
-  { name: "Roberto Fuentes", title: "Director of Food & Beverage", company: "Paloma Hotel Group", companySize: "501–1000", location: "San Antonio, TX" },
-  { name: "Nicole Adams", title: "General Manager", company: "The Twisted Olive", companySize: "11–50", location: "Savannah, GA" },
-  { name: "Patrick Doyle", title: "Owner / Proprietor", company: "Doyle's On Main", companySize: "1–10", location: "Bozeman, MT" },
-  { name: "Stephanie Lowe", title: "Beverage Director", company: "Grandview Hospitality", companySize: "201–500", location: "Dallas, TX" },
-  { name: "Chris Nakamura", title: "Bar Manager", company: "Midnight Rambler", companySize: "11–50", location: "Minneapolis, MN" },
-  { name: "Monica Reyes", title: "Director of Food & Beverage", company: "Harborview Hotels", companySize: "501–1000", location: "San Diego, CA" },
-  { name: "Andrew Simmons", title: "General Manager", company: "The Green Lantern Tavern", companySize: "11–50", location: "Philadelphia, PA" },
-  { name: "Danielle Park", title: "Owner / Proprietor", company: "Park Avenue Kitchen & Bar", companySize: "51–200", location: "Asheville, NC" },
-  { name: "Eric Johansson", title: "Beverage Director", company: "The Standard Hotel", companySize: "201–500", location: "Seattle, WA" },
-  { name: "Megan Burke", title: "Bar Manager", company: "Lucky Strike Lounge", companySize: "11–50", location: "Las Vegas, NV" },
-  { name: "Anthony Russo", title: "General Manager", company: "Russo's Italian Kitchen", companySize: "51–200", location: "Boston, MA" },
-  { name: "Priya Sharma", title: "Director of Food & Beverage", company: "Meridian Club & Resort", companySize: "501–1000", location: "Scottsdale, AZ" },
-  { name: "Kevin O'Brien", title: "Owner / Proprietor", company: "O'Brien's Public House", companySize: "1–10", location: "Kansas City, MO" },
-  { name: "Tiffany Huang", title: "Beverage Director", company: "Citrine Restaurant Group", companySize: "201–500", location: "Houston, TX" },
-  { name: "Derek Washington", title: "Bar Manager", company: "The Whiskey Jar", companySize: "11–50", location: "Memphis, TN" },
-  { name: "Julia Sandoval", title: "General Manager", company: "Sandoval Family Restaurants", companySize: "51–200", location: "Phoenix, AZ" },
+  { name: "Marcus Bell", title: "Beverage Director", company: "The Commodore Hotel", industry: "Restaurants & Hospitality", location: "Nashville, TN" },
+  { name: "Jessica Tran", title: "Bar Manager", company: "Velvet Room Cocktail Lounge", industry: "Restaurants & Hospitality", location: "Austin, TX" },
+  { name: "David Okonkwo", title: "Director of Food & Beverage", company: "Peachtree Hospitality Group", industry: "Restaurants & Hospitality", location: "Atlanta, GA" },
+  { name: "Rachel Kim", title: "General Manager", company: "The Copper Still", industry: "Restaurants & Hospitality", location: "Denver, CO" },
+  { name: "Brian Morales", title: "Owner / Proprietor", company: "Morales Restaurant Group", industry: "Restaurants & Hospitality", location: "Miami, FL" },
+  { name: "Sarah Whitfield", title: "Beverage Director", company: "Ironside Hospitality", industry: "Restaurants & Hospitality", location: "Chicago, IL" },
+  { name: "Tyler Nguyen", title: "Bar Manager", company: "The Jade Fox", industry: "Restaurants & Hospitality", location: "Portland, OR" },
+  { name: "Amanda Foster", title: "Director of Food & Beverage", company: "Lakeshore Resort & Spa", industry: "Restaurants & Hospitality", location: "Scottsdale, AZ" },
+  { name: "James Patel", title: "General Manager", company: "Sage & Barrel", industry: "Restaurants & Hospitality", location: "Charleston, SC" },
+  { name: "Catherine Reeves", title: "Owner / Proprietor", company: "Reeves Dining Co.", industry: "Restaurants & Hospitality", location: "New Orleans, LA" },
+  { name: "Michael Brandt", title: "Beverage Director", company: "The Drifter Hotel", industry: "Restaurants & Hospitality", location: "Los Angeles, CA" },
+  { name: "Lauren Casey", title: "Bar Manager", company: "Union Hall", industry: "Restaurants & Hospitality", location: "Brooklyn, NY" },
+  { name: "Roberto Fuentes", title: "Director of Food & Beverage", company: "Paloma Hotel Group", industry: "Restaurants & Hospitality", location: "San Antonio, TX" },
+  { name: "Nicole Adams", title: "General Manager", company: "The Twisted Olive", industry: "Restaurants & Hospitality", location: "Savannah, GA" },
+  { name: "Patrick Doyle", title: "Owner / Proprietor", company: "Doyle's On Main", industry: "Restaurants & Hospitality", location: "Bozeman, MT" },
+  { name: "Stephanie Lowe", title: "Beverage Director", company: "Grandview Hospitality", industry: "Restaurants & Hospitality", location: "Dallas, TX" },
+  { name: "Chris Nakamura", title: "Bar Manager", company: "Midnight Rambler", industry: "Restaurants & Hospitality", location: "Minneapolis, MN" },
+  { name: "Monica Reyes", title: "Director of Food & Beverage", company: "Harborview Hotels", industry: "Restaurants & Hospitality", location: "San Diego, CA" },
+  { name: "Andrew Simmons", title: "General Manager", company: "The Green Lantern Tavern", industry: "Restaurants & Hospitality", location: "Philadelphia, PA" },
+  { name: "Danielle Park", title: "Owner / Proprietor", company: "Park Avenue Kitchen & Bar", industry: "Restaurants & Hospitality", location: "Asheville, NC" },
+  { name: "Eric Johansson", title: "Beverage Director", company: "The Standard Hotel", industry: "Restaurants & Hospitality", location: "Seattle, WA" },
+  { name: "Megan Burke", title: "Bar Manager", company: "Lucky Strike Lounge", industry: "Restaurants & Hospitality", location: "Las Vegas, NV" },
+  { name: "Anthony Russo", title: "General Manager", company: "Russo's Italian Kitchen", industry: "Restaurants & Hospitality", location: "Boston, MA" },
+  { name: "Priya Sharma", title: "Director of Food & Beverage", company: "Meridian Club & Resort", industry: "Restaurants & Hospitality", location: "Scottsdale, AZ" },
+  { name: "Kevin O'Brien", title: "Owner / Proprietor", company: "O'Brien's Public House", industry: "Restaurants & Hospitality", location: "Kansas City, MO" },
+  { name: "Tiffany Huang", title: "Beverage Director", company: "Citrine Restaurant Group", industry: "Restaurants & Hospitality", location: "Houston, TX" },
+  { name: "Derek Washington", title: "Bar Manager", company: "The Whiskey Jar", industry: "Restaurants & Hospitality", location: "Memphis, TN" },
+  { name: "Julia Sandoval", title: "General Manager", company: "Sandoval Family Restaurants", industry: "Restaurants & Hospitality", location: "Phoenix, AZ" },
 ];
 
-const SIZE_OPTIONS = [
-  { label: "All Sizes", value: "" },
-  { label: "1–10", value: "1–10" },
-  { label: "11–50", value: "11–50" },
-  { label: "51–200", value: "51–200" },
-  { label: "201–500", value: "201–500" },
-  { label: "501–1000", value: "501–1000" },
+const INDUSTRY_OPTIONS = [
+  { label: "All Industries", value: "" },
+  { label: "Restaurants & Hospitality", value: "Restaurants & Hospitality" },
 ];
 
 export function TamPreview() {
   const [titleSearch, setTitleSearch] = useState("");
-  const [sizeFilter, setSizeFilter] = useState("");
+  const [industryFilter, setIndustryFilter] = useState("");
   const [locationSearch, setLocationSearch] = useState("");
 
   const filtered = useMemo(() => {
     return CONTACTS.filter((c) => {
       if (titleSearch && !c.title.toLowerCase().includes(titleSearch.toLowerCase())) return false;
-      if (sizeFilter && c.companySize !== sizeFilter) return false;
+      if (industryFilter && c.industry !== industryFilter) return false;
       if (locationSearch && !c.location.toLowerCase().includes(locationSearch.toLowerCase())) return false;
       return true;
     });
-  }, [titleSearch, sizeFilter, locationSearch]);
+  }, [titleSearch, industryFilter, locationSearch]);
 
   return (
     <div className="w-full bg-[#0a0a0a] border border-border/60 rounded-sm font-mono text-xs shadow-[0_0_30px_rgba(16,185,129,0.03)]">
@@ -91,18 +87,6 @@ export function TamPreview() {
             className="w-full bg-transparent border border-border/50 rounded-sm px-3 py-1.5 text-xs font-mono text-foreground placeholder:text-muted-foreground/40 focus:outline-none focus:border-primary/50 transition-colors"
           />
         </div>
-        <div className="sm:w-40">
-          <label className="block text-[10px] uppercase tracking-[0.15em] text-muted-foreground/70 mb-1.5">Company Size</label>
-          <select
-            value={sizeFilter}
-            onChange={(e) => setSizeFilter(e.target.value)}
-            className="w-full bg-[#0a0a0a] border border-border/50 rounded-sm px-3 py-1.5 text-xs font-mono text-foreground focus:outline-none focus:border-primary/50 transition-colors appearance-none cursor-pointer"
-          >
-            {SIZE_OPTIONS.map((opt) => (
-              <option key={opt.value} value={opt.value}>{opt.label}</option>
-            ))}
-          </select>
-        </div>
         <div className="flex-1 min-w-0">
           <label className="block text-[10px] uppercase tracking-[0.15em] text-muted-foreground/70 mb-1.5">Location</label>
           <input
@@ -112,6 +96,18 @@ export function TamPreview() {
             placeholder="e.g. nashville, TX"
             className="w-full bg-transparent border border-border/50 rounded-sm px-3 py-1.5 text-xs font-mono text-foreground placeholder:text-muted-foreground/40 focus:outline-none focus:border-primary/50 transition-colors"
           />
+        </div>
+        <div className="sm:w-52">
+          <label className="block text-[10px] uppercase tracking-[0.15em] text-muted-foreground/70 mb-1.5">Industry</label>
+          <select
+            value={industryFilter}
+            onChange={(e) => setIndustryFilter(e.target.value)}
+            className="w-full bg-[#0a0a0a] border border-border/50 rounded-sm px-3 py-1.5 text-xs font-mono text-foreground focus:outline-none focus:border-primary/50 transition-colors appearance-none cursor-pointer"
+          >
+            {INDUSTRY_OPTIONS.map((opt) => (
+              <option key={opt.value} value={opt.value}>{opt.label}</option>
+            ))}
+          </select>
         </div>
       </div>
 
@@ -128,8 +124,8 @@ export function TamPreview() {
               <th className="text-left px-5 py-2.5 text-[10px] uppercase tracking-[0.15em] text-muted-foreground/70 font-medium">Name</th>
               <th className="text-left px-4 py-2.5 text-[10px] uppercase tracking-[0.15em] text-muted-foreground/70 font-medium">Title</th>
               <th className="text-left px-4 py-2.5 text-[10px] uppercase tracking-[0.15em] text-muted-foreground/70 font-medium">Company</th>
-              <th className="text-left px-4 py-2.5 text-[10px] uppercase tracking-[0.15em] text-muted-foreground/70 font-medium whitespace-nowrap">Company Size</th>
               <th className="text-left px-4 py-2.5 text-[10px] uppercase tracking-[0.15em] text-muted-foreground/70 font-medium">Location</th>
+              <th className="text-left px-4 py-2.5 text-[10px] uppercase tracking-[0.15em] text-muted-foreground/70 font-medium">Industry</th>
             </tr>
           </thead>
           <tbody>
@@ -141,8 +137,8 @@ export function TamPreview() {
                 <td className="px-5 py-2.5 text-foreground font-medium whitespace-nowrap">{contact.name}</td>
                 <td className="px-4 py-2.5 text-foreground/80 whitespace-nowrap">{contact.title}</td>
                 <td className="px-4 py-2.5 text-foreground/80 whitespace-nowrap">{contact.company}</td>
-                <td className="px-4 py-2.5 text-muted-foreground whitespace-nowrap">{contact.companySize}</td>
                 <td className="px-4 py-2.5 text-muted-foreground whitespace-nowrap">{contact.location}</td>
+                <td className="px-4 py-2.5 text-muted-foreground whitespace-nowrap">{contact.industry}</td>
               </tr>
             ))}
             {filtered.length === 0 && (
