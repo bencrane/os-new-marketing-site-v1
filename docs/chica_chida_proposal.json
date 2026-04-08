@@ -24,7 +24,8 @@
       "paragraphs": [
         "Three people, including two co-founders, are responsible for the bulk of new business development. In practice, that means flying to a new city, renting a car, and driving bar to bar trying to find places willing to carry the product. The hard costs of a single trip are in the low thousands. The opportunity cost of two founders spending days on the road instead of running the business is harder to measure but significantly higher.",
         "Reps at major distributors like Southern carry hundreds of brands and allocate their time accordingly. Your brand competes for their attention alongside every other bottle in their portfolio.",
-        "Hiring a full-time sales representative runs $8–10K per month fully loaded. That person still needs to source their own leads, set up their own email infrastructure, manage their own deliverability, and at best sends a few dozen emails a day manually. Whether they generate a single meeting or not, you pay the same. We send [X,000] emails per month from engineered infrastructure with full visibility into what is working, what is not, and why. Paid advertising to generate booked B2B meetings runs $2–3K per meeting. Both are viable paths. Our system is built to generate more pipeline, at a lower cost per meeting, with full visibility into performance — and it scales without adding headcount."
+        "Hiring a full-time sales representative runs $8–10K per month fully loaded. That person still needs to source their own leads, set up their own email infrastructure, manage their own deliverability, and at best sends a few dozen emails a day manually. Whether they generate a single meeting or not, you pay the same. Paid advertising to generate booked B2B meetings runs $2–3K per meeting. Both are viable paths.",
+        "Our system sends [X,000] emails per month from engineered infrastructure with full visibility into what is working, what is not, and why. More pipeline, lower cost per meeting, full performance visibility — and this scales without adding headcount."
       ]
     },
     {
@@ -146,7 +147,7 @@
       "title": "Your Role",
       "tagline": "Take the meetings. Close the deals. Handle sample fulfillment.",
       "paragraphs": [
-        "We handle everything upstream — infrastructure, data, list building, validation, copy, sending, deliverability, reply triage. Your team only sees warm leads. When a prospect responds positively, we reply, cc your team, and the lead is yours. If the campaign drives to a meeting, we book it and confirm with both sides.",
+        "We handle everything upstream — infrastructure, data, list building, validation, copy, sending, deliverability, reply triage. Your team only sees warm leads. When a prospect responds positively, we reply, confirm interest, and direct them to a landing page to submit their information for a sample. Once submitted, your team is notified and the lead is yours.",
         "At $30 per sample box, your team needs to be ready to fulfill at volume. Make sure you have inventory allocated and a process to ship within a few days of a request coming in. Speed matters — a sample that arrives while the conversation is fresh converts better than one that shows up three weeks later.",
         "After a sample ships, the lead is tagged in our platform with status and timestamp. Your team can filter by leads who have been sent samples and follow up accordingly — whether that is a check-in email, a call, or looping in your distributor. We surface the leads. Staying on top of them after handoff is on your team.",
         "In the event volume exceeds your capacity or budget for samples, we can pause campaigns and tighten segmentation to narrow the funnel. Monthly retainer payments remain due regardless of whether campaigns are paused at your request."
@@ -155,13 +156,13 @@
     {
       "id": "pricing-and-terms",
       "title": "Pricing & Terms",
-      "description": "This is a 3-month pilot engagement. The first three weeks are the Build phase. Campaigns launch after that.",
+      "description": "This engagement begins with a 3-week build phase, followed by a 90-day campaign period. During the build phase, inboxes will be set up, campaign copy will be approved, and creative assets will be produced.",
       "lineItems": [
         {
           "name": "Build",
           "price": "$5,000",
           "frequency": "One-time",
-          "description": "Infrastructure, data, list building, validation, campaign copy, landing page, warmup."
+          "description": "Data sourcing, list building, email validation, campaign copy, landing page, warmup, inbox rotation, deliverability monitoring, and technical setup."
         },
         {
           "name": "Launch & Optimize",
