@@ -525,8 +525,8 @@ export default function ChicaChidaProposal() {
       {/* ─── 07 The Math ─── */}
       <Section number="07" title="The Math">
         <p>
-          We start at 10,000 contacts per month. At a conservative 1% positive
-          response rate, that produces approximately 100 warm leads per month
+          We start at 30,000 contacts per month. At a 1&ndash;3% positive
+          response rate, that produces approximately 300&ndash;900 warm leads per month
           &mdash; prospects who have either requested a sample or agreed to a
           meeting. Even accounting for seasonality, purchasing cycles, and the
           realities of on-premise buying decisions, that translates to meaningful
@@ -631,7 +631,7 @@ export default function ChicaChidaProposal() {
       {/* ─── 09 Your Role ─── */}
       <Section number="09" title="Your Role">
         <p className="font-heading text-lg italic text-muted-foreground !-mt-2 mb-6">
-          Take the meetings. Close the deals. Handle sample fulfillment.
+          Take the meetings. Send the samples. Build the relationships.
         </p>
         <p>
           We handle everything upstream &mdash; infrastructure, data, list
@@ -642,24 +642,25 @@ export default function ChicaChidaProposal() {
           notified and the lead is yours.
         </p>
         <p>
-          At $30 per sample box, your team needs to be ready to fulfill at
-          volume. Make sure you have inventory allocated and a process to ship
-          within a few days of a request coming in. Speed matters &mdash; a
-          sample that arrives while the conversation is fresh converts better
-          than one that shows up three weeks later.
+          Your team needs to be ready to fulfill samples at volume. Have
+          inventory allocated and a process to ship within a few days of a
+          request coming in. Speed matters &mdash; a sample that arrives while
+          the conversation is fresh converts better than one that shows up
+          three weeks later.
         </p>
         <p>
           After a sample ships, the lead is tagged in our platform with status
           and timestamp. Your team can filter by leads who have been sent samples
           and follow up accordingly &mdash; whether that is a check-in email, a
-          call, or looping in your distributor. We surface the leads. Staying on
-          top of them after handoff is on your team.
+          call, or looping in your distributor. We can also automate a follow-up
+          sequence after a sample ships, checking in with the prospect at a
+          cadence you define.
         </p>
         <div className="mt-6 border border-border rounded-lg p-5 bg-secondary/20 text-[15px] text-foreground/70 leading-relaxed">
           In the event volume exceeds your capacity or budget for samples, we can
-          pause campaigns and tighten segmentation to narrow the funnel. Monthly
-          retainer payments remain due regardless of whether campaigns are paused
-          at your request.
+          pause campaigns and tighten segmentation to narrow the funnel. If
+          campaigns are paused at your request, the monthly retainer remains in
+          effect.
         </div>
       </Section>
 

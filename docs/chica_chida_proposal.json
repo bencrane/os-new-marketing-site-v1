@@ -67,7 +67,7 @@
       "id": "the-math",
       "title": "The Math",
       "paragraphs": [
-        "We start at 10,000 contacts per month. At a conservative 1% positive response rate, that produces approximately 100 warm leads per month — prospects who have either requested a sample or agreed to a meeting. Even accounting for seasonality, purchasing cycles, and the realities of on-premise buying decisions, that translates to [X] booked meetings per month at an effective cost per meeting well below what any comparable channel can deliver.",
+        "We start at 30,000 contacts per month. At a 1–3% positive response rate, that produces approximately 300–900 warm leads per month — prospects who have either requested a sample or agreed to a meeting. Even accounting for seasonality, purchasing cycles, and the realities of on-premise buying decisions, that translates to [X] booked meetings per month at an effective cost per meeting well below what any comparable channel can deliver.",
         "Our infrastructure has capacity to reach 50,000+ contacts per month at no additional cost to you. Whether we scale to that depends on one thing: your team's ability to handle the volume of qualified leads we generate. We start at 10,000 to calibrate. If your team has the bandwidth to take more meetings, we turn it up."
       ],
       "pilotProjection": {
@@ -145,12 +145,12 @@
     {
       "id": "your-role",
       "title": "Your Role",
-      "tagline": "Take the meetings. Close the deals. Handle sample fulfillment.",
+      "tagline": "Take the meetings. Send the samples. Build the relationships.",
       "paragraphs": [
         "We handle everything upstream — infrastructure, data, list building, validation, copy, sending, deliverability, reply triage. Your team only sees warm leads. When a prospect responds positively, we reply, confirm interest, and direct them to a landing page to submit their information for a sample. Once submitted, your team is notified and the lead is yours.",
-        "At $30 per sample box, your team needs to be ready to fulfill at volume. Make sure you have inventory allocated and a process to ship within a few days of a request coming in. Speed matters — a sample that arrives while the conversation is fresh converts better than one that shows up three weeks later.",
-        "After a sample ships, the lead is tagged in our platform with status and timestamp. Your team can filter by leads who have been sent samples and follow up accordingly — whether that is a check-in email, a call, or looping in your distributor. We surface the leads. Staying on top of them after handoff is on your team.",
-        "In the event volume exceeds your capacity or budget for samples, we can pause campaigns and tighten segmentation to narrow the funnel. Monthly retainer payments remain due regardless of whether campaigns are paused at your request."
+        "Your team needs to be ready to fulfill samples at volume. Have inventory allocated and a process to ship within a few days of a request coming in. Speed matters — a sample that arrives while the conversation is fresh converts better than one that shows up three weeks later.",
+        "After a sample ships, the lead is tagged in our platform with status and timestamp. Your team can filter by leads who have been sent samples and follow up accordingly — whether that is a check-in email, a call, or looping in your distributor. We can also automate a follow-up sequence after a sample ships, checking in with the prospect at a cadence you define.",
+        "In the event volume exceeds your capacity or budget for samples, we can pause campaigns and tighten segmentation to narrow the funnel. If campaigns are paused at your request, the monthly retainer remains in effect."
       ]
     },
     {
