@@ -204,15 +204,17 @@ export default function ProposalPage() {
       });
   }, [proposalId]);
 
-  /* Intro splash timing — starts after API responds */
+  /* Intro splash timing — fade after visible, done after fading */
   useEffect(() => {
     if (introPhase !== "visible") return;
-    const fadeTimer = setTimeout(() => setIntroPhase("fading"), 1800);
-    const doneTimer = setTimeout(() => setIntroPhase("done"), 2600);
-    return () => {
-      clearTimeout(fadeTimer);
-      clearTimeout(doneTimer);
-    };
+    const t = setTimeout(() => setIntroPhase("fading"), 1800);
+    return () => clearTimeout(t);
+  }, [introPhase]);
+
+  useEffect(() => {
+    if (introPhase !== "fading") return;
+    const t = setTimeout(() => setIntroPhase("done"), 800);
+    return () => clearTimeout(t);
   }, [introPhase]);
 
   /* Canvas resize */
