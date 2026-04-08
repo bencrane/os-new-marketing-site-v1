@@ -754,15 +754,15 @@ export default function ProposalPage() {
 
 const ENGAGEMENT_COST = 27_500;
 const PILOT_MONTHS = 3;
-const MONTHLY_VOLUME = 10_000;
-const RESPONSE_RATE = 0.01;
-const WARM_LEADS = MONTHLY_VOLUME * RESPONSE_RATE * PILOT_MONTHS;
 
 function RoiCalculator() {
+  const [monthlyVolume, setMonthlyVolume] = useState(30_000);
+  const [responseRate, setResponseRate] = useState(2);
+  const [closeRate, setCloseRate] = useState(15);
   const [revenuePerAccount, setRevenuePerAccount] = useState(2000);
-  const [closeRate, setCloseRate] = useState(12);
 
-  const newAccounts = Math.round(WARM_LEADS * (closeRate / 100));
+  const warmLeads = Math.round(monthlyVolume * (responseRate / 100) * PILOT_MONTHS);
+  const newAccounts = Math.round(warmLeads * (closeRate / 100));
   const firstYearRevenue = newAccounts * revenuePerAccount;
   const costPerAccount = newAccounts > 0 ? ENGAGEMENT_COST / newAccounts : 0;
   const roiMultiple = firstYearRevenue > 0 ? firstYearRevenue / ENGAGEMENT_COST : 0;
@@ -772,39 +772,83 @@ function RoiCalculator() {
       ? "$" + n.toLocaleString("en-US", { maximumFractionDigits: 0 })
       : "$" + n.toFixed(0);
 
+  const sliderClass =
+    "flex-1 accent-primary h-1.5 bg-border rounded-full appearance-none cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-primary";
+
   return (
     <div className="space-y-8">
-      {/* Fixed anchor */}
-      <div className="border border-border rounded-lg p-6 bg-secondary/20">
-        <div className="text-[10px] font-mono uppercase tracking-[0.2em] text-muted-foreground mb-4">
-          Your Investment
-        </div>
-        <div className="flex items-baseline gap-3 mb-6">
-          <span className="font-mono text-3xl text-primary font-semibold">
-            {fmt(ENGAGEMENT_COST)}
-          </span>
-          <span className="text-sm text-muted-foreground">total engagement</span>
-        </div>
-        <div className="grid grid-cols-2 gap-4 text-sm text-muted-foreground">
-          <div>
-            <span className="block text-[10px] font-mono uppercase tracking-[0.15em] mb-1">
-              Pilot Duration
-            </span>
-            <span className="text-foreground font-medium">{PILOT_MONTHS} months</span>
-          </div>
-          <div>
-            <span className="block text-[10px] font-mono uppercase tracking-[0.15em] mb-1">
-              Monthly Email Volume
-            </span>
-            <span className="text-foreground font-medium">
-              {MONTHLY_VOLUME.toLocaleString()}
-            </span>
-          </div>
-        </div>
+      {/* Engagement cost */}
+      <div className="flex items-baseline gap-3">
+        <span className="font-mono text-3xl text-primary font-semibold">
+          {fmt(ENGAGEMENT_COST)}
+        </span>
+        <span className="text-sm text-muted-foreground">
+          total engagement &middot; {PILOT_MONTHS} months
+        </span>
       </div>
 
-      {/* Prospect inputs */}
+      {/* Inputs */}
       <div className="space-y-6">
+        <div>
+          <label className="block text-[10px] font-mono uppercase tracking-[0.2em] text-muted-foreground mb-3">
+            Monthly Email Volume
+          </label>
+          <div className="flex items-center gap-4">
+            <input
+              type="range"
+              min={5000}
+              max={50000}
+              step={1000}
+              value={monthlyVolume}
+              onChange={(e) => setMonthlyVolume(Number(e.target.value))}
+              className={sliderClass}
+            />
+            <span className="font-mono text-lg text-foreground font-medium w-24 text-right">
+              {monthlyVolume.toLocaleString()}
+            </span>
+          </div>
+        </div>
+
+        <div>
+          <label className="block text-[10px] font-mono uppercase tracking-[0.2em] text-muted-foreground mb-3">
+            Response Rate
+          </label>
+          <div className="flex items-center gap-4">
+            <input
+              type="range"
+              min={1}
+              max={5}
+              step={0.5}
+              value={responseRate}
+              onChange={(e) => setResponseRate(Number(e.target.value))}
+              className={sliderClass}
+            />
+            <span className="font-mono text-lg text-foreground font-medium w-16 text-right">
+              {responseRate}%
+            </span>
+          </div>
+        </div>
+
+        <div>
+          <label className="block text-[10px] font-mono uppercase tracking-[0.2em] text-muted-foreground mb-3">
+            Close Rate on Warm Leads
+          </label>
+          <div className="flex items-center gap-4">
+            <input
+              type="range"
+              min={5}
+              max={30}
+              step={1}
+              value={closeRate}
+              onChange={(e) => setCloseRate(Number(e.target.value))}
+              className={sliderClass}
+            />
+            <span className="font-mono text-lg text-foreground font-medium w-16 text-right">
+              {closeRate}%
+            </span>
+          </div>
+        </div>
+
         <div>
           <label className="block text-[10px] font-mono uppercase tracking-[0.2em] text-muted-foreground mb-3">
             Avg. Annual Revenue per New Account
@@ -817,30 +861,10 @@ function RoiCalculator() {
               step={100}
               value={revenuePerAccount}
               onChange={(e) => setRevenuePerAccount(Number(e.target.value))}
-              className="flex-1 accent-primary h-1.5 bg-border rounded-full appearance-none cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-primary"
+              className={sliderClass}
             />
             <span className="font-mono text-lg text-foreground font-medium w-24 text-right">
               {fmt(revenuePerAccount)}
-            </span>
-          </div>
-        </div>
-
-        <div>
-          <label className="block text-[10px] font-mono uppercase tracking-[0.2em] text-muted-foreground mb-3">
-            Estimated Close Rate on Warm Leads
-          </label>
-          <div className="flex items-center gap-4">
-            <input
-              type="range"
-              min={5}
-              max={40}
-              step={1}
-              value={closeRate}
-              onChange={(e) => setCloseRate(Number(e.target.value))}
-              className="flex-1 accent-primary h-1.5 bg-border rounded-full appearance-none cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-primary"
-            />
-            <span className="font-mono text-lg text-foreground font-medium w-16 text-right">
-              {closeRate}%
             </span>
           </div>
         </div>
@@ -849,7 +873,7 @@ function RoiCalculator() {
       {/* Scoreboard */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
         {[
-          { label: "Warm Leads", value: WARM_LEADS.toFixed(0) },
+          { label: "Warm Leads", value: warmLeads.toString() },
           { label: "New Accounts", value: newAccounts.toString() },
           { label: "First-Year Revenue", value: fmt(firstYearRevenue) },
           { label: "Cost per Account", value: costPerAccount > 0 ? fmt(Math.round(costPerAccount)) : "—" },
