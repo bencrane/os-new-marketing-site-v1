@@ -94,16 +94,26 @@ const PRICING = [
   {
     name: "Build",
     price: "$5,000",
-    frequency: "One-time",
-    description:
-      "Data sourcing, list building, email validation, campaign copy, landing page, warmup, inbox rotation, deliverability monitoring, and technical setup.",
+    frequency: "one-time",
+    items: [
+      { label: "Data sourcing & list building", desc: "Targeted contacts matched to your ICP from multiple data providers" },
+      { label: "Email validation", desc: "Every address verified before send to protect deliverability" },
+      { label: "Campaign copy & landing page", desc: "Custom sequences and a dedicated sample request page" },
+      { label: "Inbox warmup & technical setup", desc: "Domains, inboxes, DNS, and warmup to establish sender reputation" },
+      { label: "Deliverability monitoring", desc: "Ongoing tracking of inbox placement and domain health" },
+    ],
   },
   {
     name: "Launch & Optimize",
-    price: "$7,500",
-    frequency: "Per month \u00d7 3",
-    description:
-      "Campaign execution, reply management, lead handoff, deliverability management, infrastructure rotation and replacement, copy iteration, pipeline reporting.",
+    price: "$7,500/mo",
+    frequency: "for 3 months",
+    items: [
+      { label: "Campaign execution & sending", desc: "30,000+ emails per month across rotating infrastructure" },
+      { label: "Reply management & lead handoff", desc: "Every response triaged — positive leads forwarded, objections handled" },
+      { label: "Copy iteration & A/B testing", desc: "Subject lines, body copy, and sequences refined based on live data" },
+      { label: "Infrastructure rotation & replacement", desc: "Domains and inboxes cycled to maintain deliverability at scale" },
+      { label: "Pipeline reporting", desc: "Weekly visibility into volume, response rates, and lead status" },
+    ],
   },
 ];
 
@@ -659,44 +669,38 @@ export default function ChicaChidaProposal() {
 
       {/* ─── 10 Pricing & Terms ─── */}
       <Section number="10" title="Pricing & Terms">
-        <div className="border border-border rounded-lg overflow-hidden mb-6">
-          {PRICING.map((item, i) => (
-            <div
-              key={i}
-              className="flex flex-col md:flex-row md:items-center gap-2 md:gap-6 px-6 py-5 border-b border-border"
-            >
-              <div className="flex-1">
-                <div className="font-medium text-foreground">{item.name}</div>
-                <div className="text-[15px] text-foreground/70 mt-0.5">
-                  {item.description}
+        <p>One flat investment. No per-lead fees. No hidden costs.</p>
+
+        <div className="border border-border rounded-lg overflow-hidden">
+          {PRICING.map((phase, i) => (
+            <div key={i} className="border-b border-border px-6 py-6">
+              <div className="flex items-baseline justify-between mb-4">
+                <h3 className="font-heading text-lg font-semibold">{phase.name}</h3>
+                <div className="flex items-baseline gap-2 shrink-0">
+                  <span className="font-mono text-lg text-primary font-medium">{phase.price}</span>
+                  <span className="text-xs font-mono text-muted-foreground">{phase.frequency}</span>
                 </div>
               </div>
-              <div className="flex items-baseline gap-3 shrink-0">
-                <span className="font-mono text-lg text-primary font-medium">
-                  {item.price}
-                </span>
-                <span className="text-xs font-mono text-muted-foreground uppercase tracking-wider">
-                  {item.frequency}
-                </span>
-              </div>
+              <ul className="space-y-2.5">
+                {phase.items.map((item, j) => (
+                  <li key={j} className="flex items-start gap-2.5 text-[14px] leading-relaxed">
+                    <span className="mt-1.5 w-1 h-1 rounded-full bg-primary shrink-0" />
+                    <span>
+                      <span className="font-medium text-foreground">{item.label}</span>
+                      <span className="text-muted-foreground"> &mdash; {item.desc}</span>
+                    </span>
+                  </li>
+                ))}
+              </ul>
             </div>
           ))}
           {/* Total */}
           <div className="flex items-center justify-between px-6 py-5 bg-primary/5">
             <span className="font-heading text-lg font-semibold">Total</span>
-            <span className="font-mono text-2xl text-primary font-medium">
-              $27,500
-            </span>
+            <span className="font-mono text-2xl text-primary font-medium">$27,500</span>
           </div>
-          {/* Footnotes */}
-          <div className="border-t border-border/50 px-6 py-4 space-y-1.5">
-            <p className="text-[13px] text-muted-foreground leading-relaxed">
-              All infrastructure costs &mdash; inboxes, domains, replacements,
-              data providers &mdash; are included. No additional charges.
-            </p>
-            <p className="text-[13px] text-muted-foreground leading-relaxed">
-              The full amount is due at kickoff.
-            </p>
+          <div className="px-6 py-3 border-t border-border/50">
+            <p className="text-[13px] text-muted-foreground">The full amount is due at kickoff.</p>
           </div>
         </div>
       </Section>
