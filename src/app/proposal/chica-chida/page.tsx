@@ -8,6 +8,7 @@ import {
   AccordionTrigger,
   AccordionContent,
 } from "@/components/ui/accordion";
+import { TamPreview } from "@/components/ui/tam-preview";
 
 // ─── Static data ──────────────────────────────────────
 
@@ -470,34 +471,9 @@ export default function ChicaChidaProposal() {
           establishments in the United States.
         </p>
 
-        <div className="mt-8 mb-6">
-          <div className="text-[10px] font-mono uppercase tracking-[0.2em] text-muted-foreground mb-3">
-            Target Roles
-          </div>
-          <div className="flex flex-wrap gap-2">
-            {TARGET_ROLES.map((role) => (
-              <span
-                key={role}
-                className="text-xs font-mono px-3 py-1.5 rounded border border-primary/20 bg-primary/5 text-primary"
-              >
-                {role}
-              </span>
-            ))}
-          </div>
+        <div className="mt-10">
+          <TamPreview />
         </div>
-
-        <ul className="space-y-2 text-sm">
-          {[
-            "We prioritize regional accounts with local buying autonomy.",
-            "National chains that route purchasing through intermediary agencies are included but deprioritized.",
-            "Targeting criteria \u2014 regions, account types, venue size, exclusions \u2014 are defined with your input at the start of the engagement.",
-          ].map((note, i) => (
-            <li key={i} className="flex gap-3">
-              <span className="shrink-0">&mdash;</span>
-              <span>{note}</span>
-            </li>
-          ))}
-        </ul>
       </Section>
 
       {/* ─── TAM Dashboard ─── */}
