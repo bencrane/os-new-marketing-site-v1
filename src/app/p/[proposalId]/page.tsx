@@ -344,7 +344,7 @@ export default function ProposalPage() {
 
       <div
         ref={contentRef}
-        className="max-w-5xl mx-auto px-6 py-16 md:py-24 transition-opacity duration-700"
+        className="max-w-3xl mx-auto px-6 py-16 md:py-24 transition-opacity duration-700"
         style={{ opacity: introPhase === "done" ? 1 : 0 }}
       >
         {/* ─── Hero ─── */}
@@ -467,7 +467,7 @@ export default function ProposalPage() {
             Restaurant Operations, VP Menu Operations, and VP Procurement.
           </p>
 
-          <div className="mt-10">
+          <div className="mt-10 w-[100vw] max-w-5xl relative left-1/2 -translate-x-1/2 px-6">
             <TamPreview />
           </div>
         </Section>
@@ -507,7 +507,9 @@ export default function ProposalPage() {
 
         {/* ─── 07 The Math ─── */}
         <Section number="07" title="The Math">
-          <RoiCalculator />
+          <div className="mt-4 w-[100vw] max-w-5xl relative left-1/2 -translate-x-1/2 px-6">
+            <RoiCalculator />
+          </div>
         </Section>
 
         {/* ─── 08 The Engagement ─── */}
