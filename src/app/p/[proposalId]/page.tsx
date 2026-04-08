@@ -161,15 +161,6 @@ const APPENDIX = [
   },
 ];
 
-const PROJECTION = [
-  { label: "Meetings / Month", value: "30" },
-  { label: "Pilot Duration", value: "3 months" },
-  { label: "Total Conversations", value: "90" },
-  { label: "Close Rate", value: "20–30%" },
-  { label: "New Accounts", value: "18–27" },
-  { label: "New Revenue", value: "$13K–$39K" },
-];
-
 // ─── Page component ───────────────────────────────────
 
 export default function ProposalPage() {
@@ -431,11 +422,11 @@ export default function ProposalPage() {
             per meeting. Both are viable paths.
           </p>
           <p>
-            Our system sends [X,000] emails per month from engineered
-            infrastructure with full visibility into what is working, what is
-            not, and why. More pipeline, lower cost per meeting, full
-            performance visibility &mdash; and this scales without adding
-            headcount.
+            Our outbound infrastructure is engineered to send up to 50,000
+            emails per month, including followups, to a client&apos;s ideal
+            target market with full performance visibility. We generate more
+            booked meetings, at lower cost per meeting than hiring in-house and
+            at greater efficacy than alternative agency options.
           </p>
         </Section>
 
@@ -465,6 +456,15 @@ export default function ProposalPage() {
             people working in roles with direct authority over beverage purchasing
             and menu selection at restaurants, bars, and hotel and hospitality
             establishments in the United States.
+          </p>
+
+          <p>
+            During the Build phase, we align on the exact titles and account
+            types that fit your market. Below is a preview of what that list
+            looks like &mdash; filtered to on-premise decision makers in roles
+            like Beverage Director, Beverage Manager, SVP Marketing, Director
+            of Food and Beverage, VP Culinary &amp; Beverage, Director of
+            Restaurant Operations, VP Menu Operations, and VP Procurement.
           </p>
 
           <div className="mt-10">
@@ -515,43 +515,7 @@ export default function ProposalPage() {
 
         {/* ─── 07 The Math ─── */}
         <Section number="07" title="The Math">
-          <p>
-            We start at 10,000 contacts per month. At a conservative 1% positive
-            response rate, that produces approximately 100 warm leads per month
-            &mdash; prospects who have either requested a sample or agreed to a
-            meeting. Even accounting for seasonality, purchasing cycles, and the
-            realities of on-premise buying decisions, that translates to
-            meaningful booked meetings per month at an effective cost per meeting
-            well below what any comparable channel can deliver.
-          </p>
-          <p>
-            Our infrastructure has capacity to reach{" "}
-            <span className="font-mono font-medium">50,000+</span>{" "}
-            contacts per month at no additional cost to you. Whether we scale to
-            that depends on one thing: your team&apos;s ability to handle the
-            volume of qualified leads we generate. We start at 10,000 to calibrate.
-            If your team has the bandwidth to take more meetings, we turn it up.
-          </p>
-          {/* Projection grid */}
-          <div className="mt-8">
-            <div className="text-[10px] font-mono uppercase tracking-[0.2em] text-muted-foreground mb-4">
-              Pilot Projection &mdash; 3 Months
-            </div>
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-              {PROJECTION.map((m) => (
-                <div key={m.label} className="border border-border rounded-lg p-4">
-                  <div className="text-[10px] font-mono uppercase tracking-[0.15em] text-muted-foreground mb-1.5">
-                    {m.label}
-                  </div>
-                  <div className="text-xl font-heading font-semibold">{m.value}</div>
-                </div>
-              ))}
-            </div>
-            <p className="text-xs text-muted-foreground mt-3 italic">
-              These numbers depend entirely on your team&apos;s ability to follow
-              up quickly, take the calls, and close.
-            </p>
-          </div>
+          <RoiCalculator />
         </Section>
 
         {/* ─── 08 The Engagement ─── */}
@@ -617,7 +581,7 @@ export default function ProposalPage() {
         {/* ─── 09 Your Role ─── */}
         <Section number="09" title="Your Role">
           <p className="font-heading text-lg italic text-muted-foreground !-mt-2 mb-6">
-            Take the meetings. Close the deals. Handle sample fulfillment.
+            Take the meetings. Send the samples. Build the relationships.
           </p>
           <p>
             We handle everything upstream &mdash; infrastructure, data, list
@@ -628,24 +592,25 @@ export default function ProposalPage() {
             notified and the lead is yours.
           </p>
           <p>
-            At $30 per sample box, your team needs to be ready to fulfill at
-            volume. Make sure you have inventory allocated and a process to ship
-            within a few days of a request coming in. Speed matters &mdash; a
-            sample that arrives while the conversation is fresh converts better
-            than one that shows up three weeks later.
+            Your team needs to be ready to fulfill samples at volume. Have
+            inventory allocated and a process to ship within a few days of a
+            request coming in. Speed matters &mdash; a sample that arrives while
+            the conversation is fresh converts better than one that shows up
+            three weeks later.
           </p>
           <p>
             After a sample ships, the lead is tagged in our platform with status
             and timestamp. Your team can filter by leads who have been sent
             samples and follow up accordingly &mdash; whether that is a check-in
-            email, a call, or looping in your distributor. We surface the leads.
-            Staying on top of them after handoff is on your team.
+            email, a call, or looping in your distributor. We can also automate
+            a follow-up sequence after a sample ships, checking in with the
+            prospect at a cadence you define.
           </p>
           <div className="mt-6 border border-border rounded-lg p-5 bg-secondary/20 text-[15px] text-foreground/70 leading-relaxed">
             In the event volume exceeds your capacity or budget for samples, we
             can pause campaigns and tighten segmentation to narrow the funnel.
-            Monthly retainer payments remain due regardless of whether campaigns
-            are paused at your request.
+            If campaigns are paused at your request, the monthly retainer
+            remains in effect.
           </div>
         </Section>
 
@@ -787,8 +752,8 @@ export default function ProposalPage() {
           </p>
         </section>
 
-        {/* ─── Appendix ─── */}
-        <section className="pb-16">
+        {/* ─── Appendix (hidden — set false to show) ─── */}
+        {false && <section className="pb-16">
           <span className="block text-[10px] font-mono text-primary tracking-[0.2em] uppercase mb-4">
             Appendix
           </span>
@@ -819,9 +784,144 @@ export default function ProposalPage() {
               </div>
             ))}
           </div>
-        </section>
+        </section>}
       </div>
     </>
+  );
+}
+
+// ─── ROI Calculator ──────────────────────────────────
+
+const ENGAGEMENT_COST = 27_500;
+const PILOT_MONTHS = 3;
+const MONTHLY_VOLUME = 10_000;
+const RESPONSE_RATE = 0.01;
+const WARM_LEADS = MONTHLY_VOLUME * RESPONSE_RATE * PILOT_MONTHS;
+
+function RoiCalculator() {
+  const [revenuePerAccount, setRevenuePerAccount] = useState(2000);
+  const [closeRate, setCloseRate] = useState(12);
+
+  const newAccounts = Math.round(WARM_LEADS * (closeRate / 100));
+  const firstYearRevenue = newAccounts * revenuePerAccount;
+  const costPerAccount = newAccounts > 0 ? ENGAGEMENT_COST / newAccounts : 0;
+  const roiMultiple = firstYearRevenue > 0 ? firstYearRevenue / ENGAGEMENT_COST : 0;
+
+  const fmt = (n: number) =>
+    n >= 1000
+      ? "$" + n.toLocaleString("en-US", { maximumFractionDigits: 0 })
+      : "$" + n.toFixed(0);
+
+  return (
+    <div className="space-y-8">
+      {/* Fixed anchor */}
+      <div className="border border-border rounded-lg p-6 bg-secondary/20">
+        <div className="text-[10px] font-mono uppercase tracking-[0.2em] text-muted-foreground mb-4">
+          Your Investment
+        </div>
+        <div className="flex items-baseline gap-3 mb-6">
+          <span className="font-mono text-3xl text-primary font-semibold">
+            {fmt(ENGAGEMENT_COST)}
+          </span>
+          <span className="text-sm text-muted-foreground">total engagement</span>
+        </div>
+        <div className="grid grid-cols-2 gap-4 text-sm text-muted-foreground">
+          <div>
+            <span className="block text-[10px] font-mono uppercase tracking-[0.15em] mb-1">
+              Pilot Duration
+            </span>
+            <span className="text-foreground font-medium">{PILOT_MONTHS} months</span>
+          </div>
+          <div>
+            <span className="block text-[10px] font-mono uppercase tracking-[0.15em] mb-1">
+              Monthly Email Volume
+            </span>
+            <span className="text-foreground font-medium">
+              {MONTHLY_VOLUME.toLocaleString()}
+            </span>
+          </div>
+        </div>
+      </div>
+
+      {/* Prospect inputs */}
+      <div className="space-y-6">
+        <div>
+          <label className="block text-[10px] font-mono uppercase tracking-[0.2em] text-muted-foreground mb-3">
+            Avg. Annual Revenue per New Account
+          </label>
+          <div className="flex items-center gap-4">
+            <input
+              type="range"
+              min={500}
+              max={10000}
+              step={100}
+              value={revenuePerAccount}
+              onChange={(e) => setRevenuePerAccount(Number(e.target.value))}
+              className="flex-1 accent-primary h-1.5 bg-border rounded-full appearance-none cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-primary"
+            />
+            <span className="font-mono text-lg text-foreground font-medium w-24 text-right">
+              {fmt(revenuePerAccount)}
+            </span>
+          </div>
+        </div>
+
+        <div>
+          <label className="block text-[10px] font-mono uppercase tracking-[0.2em] text-muted-foreground mb-3">
+            Estimated Close Rate on Warm Leads
+          </label>
+          <div className="flex items-center gap-4">
+            <input
+              type="range"
+              min={5}
+              max={40}
+              step={1}
+              value={closeRate}
+              onChange={(e) => setCloseRate(Number(e.target.value))}
+              className="flex-1 accent-primary h-1.5 bg-border rounded-full appearance-none cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-primary"
+            />
+            <span className="font-mono text-lg text-foreground font-medium w-16 text-right">
+              {closeRate}%
+            </span>
+          </div>
+        </div>
+      </div>
+
+      {/* Scoreboard */}
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+        {[
+          { label: "Warm Leads", value: WARM_LEADS.toFixed(0) },
+          { label: "New Accounts", value: newAccounts.toString() },
+          { label: "First-Year Revenue", value: fmt(firstYearRevenue) },
+          { label: "Cost per Account", value: costPerAccount > 0 ? fmt(Math.round(costPerAccount)) : "—" },
+        ].map((m) => (
+          <div key={m.label} className="border border-border rounded-lg p-4">
+            <div className="text-[10px] font-mono uppercase tracking-[0.15em] text-muted-foreground mb-1.5">
+              {m.label}
+            </div>
+            <div className="text-xl font-heading font-semibold">{m.value}</div>
+          </div>
+        ))}
+      </div>
+
+      {/* ROI highlight */}
+      <div className="border border-primary/30 rounded-lg p-5 bg-primary/5 text-center">
+        <div className="text-[10px] font-mono uppercase tracking-[0.2em] text-muted-foreground mb-2">
+          ROI Multiple
+        </div>
+        <div className="font-mono text-4xl text-primary font-bold">
+          {roiMultiple > 0 ? roiMultiple.toFixed(1) + "×" : "—"}
+        </div>
+        <div className="text-sm text-muted-foreground mt-1">
+          estimated return on engagement cost
+        </div>
+      </div>
+
+      <p className="text-xs text-muted-foreground italic">
+        These projections are illustrative. Actual results depend on follow-up
+        speed, sample fulfillment, and market conditions. The engagement cost is
+        fixed regardless of campaign performance.
+      </p>
+    </div>
   );
 }
 
