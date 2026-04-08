@@ -723,42 +723,8 @@ export default function ProposalPage() {
           </div>
         </Section>
 
-        {/* ─── Appendix ─── */}
-        <section className="pb-16 mb-16 border-b border-border/50">
-          <span className="block text-[10px] font-mono text-primary tracking-[0.2em] uppercase mb-4">
-            Appendix
-          </span>
-          <h2 className="font-heading text-2xl md:text-3xl mb-8">
-            Technical Reference
-          </h2>
-
-          <div className="space-y-8">
-            {APPENDIX.map((category) => (
-              <div key={category.title}>
-                <h3 className="text-sm font-mono font-medium uppercase tracking-wider text-foreground mb-4">
-                  {category.title}
-                </h3>
-                <Accordion>
-                  {category.faqs.map((faq, i) => (
-                    <AccordionItem key={i} value={i}>
-                      <AccordionTrigger className="text-sm text-foreground font-medium">
-                        {faq.q}
-                      </AccordionTrigger>
-                      <AccordionContent>
-                        <p className="text-sm text-muted-foreground leading-relaxed pr-6">
-                          {faq.a}
-                        </p>
-                      </AccordionContent>
-                    </AccordionItem>
-                  ))}
-                </Accordion>
-              </div>
-            ))}
-          </div>
-        </section>
-
         {/* ─── Signature ─── */}
-        <section className="pb-16">
+        <section className="pb-16 mb-16 border-b border-border/50">
           <span className="block text-[10px] font-mono text-primary tracking-[0.2em] uppercase mb-4">
             Agreement
           </span>
@@ -836,6 +802,40 @@ export default function ProposalPage() {
           <p className="text-center text-sm text-muted-foreground mt-6">
             Payment instructions will be presented on the next page.
           </p>
+        </section>
+
+        {/* ─── Appendix ─── */}
+        <section className="pb-16">
+          <span className="block text-[10px] font-mono text-primary tracking-[0.2em] uppercase mb-4">
+            Appendix
+          </span>
+          <h2 className="font-heading text-2xl md:text-3xl mb-8">
+            Technical Reference
+          </h2>
+
+          <div className="space-y-8">
+            {APPENDIX.map((category) => (
+              <div key={category.title}>
+                <h3 className="text-sm font-mono font-medium uppercase tracking-wider text-foreground mb-4">
+                  {category.title}
+                </h3>
+                <Accordion>
+                  {category.faqs.map((faq, i) => (
+                    <AccordionItem key={i} value={i}>
+                      <AccordionTrigger className="text-sm text-foreground font-medium">
+                        {faq.q}
+                      </AccordionTrigger>
+                      <AccordionContent>
+                        <p className="text-sm text-muted-foreground leading-relaxed pr-6">
+                          {faq.a}
+                        </p>
+                      </AccordionContent>
+                    </AccordionItem>
+                  ))}
+                </Accordion>
+              </div>
+            ))}
+          </div>
         </section>
       </div>
     </>
