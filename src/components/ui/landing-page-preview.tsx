@@ -1,97 +1,37 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useRef, useState, useEffect } from "react";
 
-export function LandingPagePreviewModal() {
-  const [open, setOpen] = useState(false);
+export function LandingPagePreview() {
+  const ref = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(false);
 
-  const close = useCallback(() => setOpen(false), []);
-
-  // Lock body scroll when open
   useEffect(() => {
-    if (open) {
-      document.body.style.overflow = "hidden";
-      return () => { document.body.style.overflow = ""; };
-    }
-  }, [open]);
-
-  // Close on Escape
-  useEffect(() => {
-    if (!open) return;
-    const handler = (e: KeyboardEvent) => { if (e.key === "Escape") close(); };
-    window.addEventListener("keydown", handler);
-    return () => window.removeEventListener("keydown", handler);
-  }, [open, close]);
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) setVisible(true); },
+      { threshold: 0.15 },
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   return (
-    <>
-      {/* ── Trigger button ── */}
-      <button
-        type="button"
-        onClick={() => setOpen(true)}
-        className="group inline-flex items-center gap-2.5 border border-primary/40 bg-primary/[0.06] hover:bg-primary/[0.12] hover:border-primary/60 rounded px-5 py-3 transition-all duration-200 cursor-pointer"
-      >
-        <span className="text-sm font-mono font-medium text-primary tracking-wide">
-          Preview Landing Page
-        </span>
-        <span className="text-primary/70 group-hover:translate-x-0.5 transition-transform duration-200">
-          &rarr;
-        </span>
-      </button>
-
-      {/* ── Modal overlay ── */}
-      {open && (
-        <div
-          className="fixed inset-0 z-50 flex flex-col items-center justify-center p-6"
-          style={{ animation: "lp-fade-in 250ms ease-out" }}
-        >
-          {/* Backdrop */}
-          <div
-            className="absolute inset-0 bg-black/80 backdrop-blur-sm"
-            onClick={close}
-          />
-
-          {/* Close button */}
-          <button
-            type="button"
-            onClick={close}
-            className="absolute top-6 right-6 z-10 w-10 h-10 flex items-center justify-center rounded-full border border-border/40 bg-black/60 hover:bg-black/80 text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
-          >
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
-              <path d="M4 4l8 8M12 4l-8 8" />
-            </svg>
-          </button>
-
-          {/* Content */}
-          <div
-            className="relative z-10 flex flex-col items-center"
-            style={{ animation: "lp-slide-up 300ms ease-out" }}
-          >
-            <PhoneMockup />
-            <p className="text-[10px] text-muted-foreground/50 italic text-center mt-5 tracking-wide">
-              Custom landing page &mdash; built during the Build phase, branded
-              to Chica Chida, optimized for conversion.
-            </p>
-          </div>
-
-          {/* Animations */}
-          <style>{`
-            @keyframes lp-fade-in {
-              from { opacity: 0; }
-              to { opacity: 1; }
-            }
-            @keyframes lp-slide-up {
-              from { opacity: 0; transform: translateY(24px) scale(0.97); }
-              to { opacity: 1; transform: translateY(0) scale(1); }
-            }
-          `}</style>
-        </div>
-      )}
-    </>
+    <div
+      ref={ref}
+      className="transition-all duration-700 ease-out"
+      style={{
+        opacity: visible ? 1 : 0,
+        transform: visible ? "translateY(0) scale(1)" : "translateY(40px) scale(0.97)",
+      }}
+    >
+      <PhoneMockup />
+    </div>
   );
 }
 
-/* ─── Phone mockup (reused inside modal) ─── */
+/* ─── Phone mockup ─── */
 
 function PhoneMockup() {
   return (
