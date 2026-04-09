@@ -698,14 +698,13 @@ export default function ProposalPage() {
                 disabled={!canSubmit || isSubmitting}
                 className="bg-primary text-primary-foreground font-mono text-sm font-medium px-6 py-2.5 rounded hover:bg-primary/90 transition-colors disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer"
               >
-                {isSubmitting ? "Submitting..." : "Submit Agreement"}
+                {isSubmitting ? "Submitting..." : "Submit"}
               </button>
             </div>
           </div>
 
           <p className="text-center text-sm text-muted-foreground mt-6">
             Payment instructions will be presented on the next page.
-            A copy of this signed agreement will be sent to the email provided.
           </p>
         </Section>
 
