@@ -20,7 +20,7 @@ const STRIPE_APPEARANCE = {
     colorBackground: "#18181b",
     colorText: "#f4f4f5",
     colorTextSecondary: "#a1a1aa",
-    colorDanger: "#ef4444",
+    colorDanger: "#d4956a",
     fontFamily: "'JetBrains Mono', monospace",
     borderRadius: "4px",
     spacingUnit: "4px",
@@ -35,9 +35,16 @@ const STRIPE_APPEARANCE = {
       boxShadow: "none",
     },
     ".Label": {
-      fontSize: "12px",
+      fontSize: "14px",
       textTransform: "uppercase" as const,
       letterSpacing: "0.05em",
+    },
+    ".Error": {
+      fontSize: "11px",
+    },
+    ".Input--invalid": {
+      border: "1px solid #27272a",
+      boxShadow: "none",
     },
   },
 };
@@ -112,7 +119,7 @@ function CheckoutForm() {
     <form onSubmit={handleSubmit}>
       <PaymentElement />
       {error && (
-        <p className="text-xs text-destructive mt-3">{error}</p>
+        <p className="text-[11px] text-[#d4956a] mt-3">{error}</p>
       )}
       <button
         type="submit"
