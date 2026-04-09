@@ -433,12 +433,12 @@ export default function ProposalPaymentPage() {
 
       {/* ─── Contact line ─── */}
       <p className="text-center text-sm text-muted-foreground">
-        Questions about payment?{" "}
+        Questions about payment? Contact{" "}
         <a
-          href="mailto:ben@outboundsolutions.com"
+          href="mailto:team@outboundsolutions.com"
           className="text-foreground hover:text-primary transition-colors"
         >
-          Reach out to Ben
+          team@outboundsolutions.com
         </a>
       </p>
     </div>
