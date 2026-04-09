@@ -8,9 +8,6 @@ export default function TermsOfService() {
   return (
     <div className="flex flex-col min-h-screen text-foreground bg-background selection:bg-primary/30 py-24 px-6 md:px-12 items-center">
       <div className="w-full max-w-[720px] flex flex-col items-center text-center">
-        <span className="font-mono text-primary text-xs tracking-widest uppercase mb-4 border border-primary/30 bg-primary/10 w-fit px-3 py-1 rounded inline-block">
-          LEGAL // TERMS OF SERVICE
-        </span>
         <h1 className="text-4xl md:text-5xl font-heading mb-4 text-foreground">
           Terms of Service
         </h1>
