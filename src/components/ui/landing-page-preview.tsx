@@ -17,7 +17,7 @@ const FIELDS = [
   { label: "First Name", value: "Maria" },
   { label: "Last Name", value: "Gonzalez" },
   { label: "Work Email", value: "maria@yourvenue.com" },
-  { label: "Phone", value: "(555) 000-0000" },
+  { label: "Phone", value: "(312) 847-2190" },
 ];
 
 const FIELD_DELAYS = [800, 1400, 2000, 2800];
@@ -382,7 +382,7 @@ function ConfirmationPage() {
           <div className="space-y-2">
             <SummaryRow label="Name" value="Maria Gonzalez" />
             <SummaryRow label="Email" value="maria@yourvenue.com" />
-            <SummaryRow label="Phone" value="(555) 000-0000" />
+            <SummaryRow label="Phone" value="(312) 847-2190" />
           </div>
         </div>
 
