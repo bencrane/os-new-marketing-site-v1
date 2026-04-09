@@ -592,7 +592,7 @@ export default function ChicaChidaProposal() {
                 <Accordion>
                   {phase.workstreams.map((ws, i) => (
                     <AccordionItem key={i} value={i}>
-                      <AccordionTrigger className="text-base font-medium text-foreground">
+                      <AccordionTrigger className="text-lg font-medium text-foreground">
                         {ws.title}
                       </AccordionTrigger>
                       <AccordionContent>
@@ -675,19 +675,6 @@ export default function ChicaChidaProposal() {
           Agreement
         </span>
         <h2 className="font-heading font-bold text-2xl md:text-3xl mb-8">Signature</h2>
-
-        {/* Terms */}
-        <div className="mb-6 px-5 py-4 border-l-2 border-border bg-secondary/10 rounded-r-md">
-          <span className="block text-[10px] font-mono uppercase tracking-[0.2em] text-muted-foreground mb-2">
-            Terms
-          </span>
-          <p className="text-[13px] text-muted-foreground leading-relaxed">
-            Renewal is confirmed no later than 2 weeks before the end of the
-            current term. If renewal is not confirmed by that date,
-            infrastructure is sunset and campaigns wind down. Restarting after
-            a lapse requires a new Build phase.
-          </p>
-        </div>
 
         {/* Signer details */}
         <div className="border border-border rounded-lg p-6 mb-4">
