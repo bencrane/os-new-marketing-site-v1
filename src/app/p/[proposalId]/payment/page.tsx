@@ -216,30 +216,25 @@ export default function ProposalPaymentPage() {
   return (
     <div className="max-w-3xl mx-auto px-6 py-16 md:py-24">
       {/* ─── Signed confirmation ─── */}
-      <div className="flex items-center justify-center gap-2.5 mb-10">
-        <svg
-          className="text-primary shrink-0"
-          width="20"
-          height="20"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-          <polyline points="22 4 12 14.01 9 11.01" />
-        </svg>
-        <span className="text-sm font-mono text-primary font-medium uppercase tracking-wider">
-          Agreement Signed
-        </span>
-      </div>
-
-      {/* ─── Amount ─── */}
       <div className="text-center mb-12">
-        <div className="text-[10px] font-mono uppercase tracking-[0.2em] text-muted-foreground mb-3">
-          Amount Due
+        <div className="flex items-center justify-center gap-2 mb-4">
+          <svg
+            className="text-primary shrink-0"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+            <polyline points="22 4 12 14.01 9 11.01" />
+          </svg>
+          <span className="text-xs font-mono text-primary font-medium uppercase tracking-wider">
+            Agreement Signed
+          </span>
         </div>
         <div className="font-mono text-5xl md:text-6xl font-medium tracking-tight">
           $27,500
@@ -361,8 +356,7 @@ export default function ProposalPaymentPage() {
 
               <div className={`col-start-1 row-start-1 ${activeMethod !== "bank" ? "invisible" : ""}`}>
                 <p className="text-sm text-muted-foreground mb-5 leading-relaxed">
-                  Send an ACH transfer using the details below. Typically arrives within
-                  1&ndash;3 business days.
+                  ACH transfers typically arrive within 1&ndash;3 business days. Work will begin upon receipt of funds.
                 </p>
 
                 <div className="space-y-0 mb-4">
@@ -373,8 +367,8 @@ export default function ProposalPaymentPage() {
                         i < BANK_DETAILS.length - 1 ? "border-b border-border" : ""
                       }`}
                     >
-                      <span className="text-xs text-muted-foreground">{row.label}</span>
-                      <span className="text-xs font-medium font-mono flex items-center gap-2">
+                      <span className="text-sm text-muted-foreground">{row.label}</span>
+                      <span className="text-sm font-medium font-mono flex items-center gap-2">
                         {row.value}
                         {row.copyable && (
                           <button
