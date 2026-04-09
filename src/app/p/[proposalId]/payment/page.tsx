@@ -57,6 +57,21 @@ interface BankDetails {
   iban: string | null;
 }
 
+const FALLBACK_BANK_DETAILS: BankDetails = {
+  account_name: "Modern Full, LLC",
+  account_number: "202314840766",
+  routing_number: "091311229",
+  bank_name: "Choice Financial Group",
+  bank_address_line1: "4501 23rd Avenue S",
+  bank_address_line2: null,
+  bank_city: "Fargo",
+  bank_state: "ND",
+  bank_postal_code: "58104",
+  bank_country: "US",
+  swift_code: null,
+  iban: null,
+};
+
 // ─── Checkout form (inside Elements provider) ─────────
 
 function CheckoutForm({ proposalId }: { proposalId: string }) {
@@ -172,6 +187,10 @@ export default function ProposalPaymentPage() {
         }
         const proposal = await proposalRes.json();
 
+        if (proposal.bank_details) {
+          setBankDetails(proposal.bank_details);
+        }
+
         if (!proposal.stripe_publishable_key) {
           setStripeError(
             `GET /api/public/proposals/${proposalId} succeeded but stripe_publishable_key is missing\nResponse: ${JSON.stringify(proposal, null, 2)}`,
@@ -179,9 +198,6 @@ export default function ProposalPaymentPage() {
           return;
         }
         setPublishableKey(proposal.stripe_publishable_key);
-        if (proposal.bank_details) {
-          setBankDetails(proposal.bank_details);
-        }
 
         // Step 2: POST to create the PaymentIntent
         const intentRes = await fetch(
@@ -229,25 +245,30 @@ export default function ProposalPaymentPage() {
   return (
     <div className="max-w-3xl mx-auto px-6 py-16 md:py-24">
       {/* ─── Signed confirmation ─── */}
+      <div className="flex items-center justify-center gap-2.5 mb-10">
+        <svg
+          className="text-primary shrink-0"
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+          <polyline points="22 4 12 14.01 9 11.01" />
+        </svg>
+        <span className="text-sm font-mono text-primary font-medium uppercase tracking-wider">
+          Agreement Signed
+        </span>
+      </div>
+
+      {/* ─── Amount ─── */}
       <div className="text-center mb-12">
-        <div className="flex items-center justify-center gap-2 mb-4">
-          <svg
-            className="text-primary shrink-0"
-            width="16"
-            height="16"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-            <polyline points="22 4 12 14.01 9 11.01" />
-          </svg>
-          <span className="text-xs font-mono text-primary font-medium uppercase tracking-wider">
-            Agreement Signed
-          </span>
+        <div className="text-[10px] font-mono uppercase tracking-[0.2em] text-muted-foreground mb-3">
+          Amount Due
         </div>
         <div className="font-mono text-5xl md:text-6xl font-medium tracking-tight">
           $27,500
