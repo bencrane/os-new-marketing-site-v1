@@ -574,10 +574,6 @@ export default function ProposalPage() {
               <span className="font-mono text-2xl text-primary font-medium">$27,500</span>
             </div>
           </div>
-
-          <p className="text-center text-sm text-muted-foreground mt-6">
-            Payment is due in-full at proposal agreement.
-          </p>
         </Section>
 
         {/* ─── 10 Your Role ─── */}
