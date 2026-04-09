@@ -24,7 +24,7 @@ const PHASES = [
       {
         title: "Infrastructure Setup",
         details:
-          "We purchase and configure all email sending infrastructure. This includes [X] active inboxes hosted on Google and Microsoft, each on its own dedicated domain, with all DNS records (SPF, DKIM, DMARC) configured and manually verified. A full duplicate set of [X] backup inboxes is purchased, configured, and warmed simultaneously so they are ready to swap in immediately. Every inbox goes through a minimum two-week warmup period to build sender reputation before sending. Total domains under management: [X] across active and backup sets. All infrastructure costs are borne by us.",
+          "We purchase and configure all email sending infrastructure. This includes active inboxes hosted on Google and Microsoft, each on its own dedicated domain, with all DNS records (SPF, DKIM, DMARC) configured and manually verified. A full duplicate set of [X] backup inboxes is purchased, configured, and warmed simultaneously so they are ready to swap in immediately. Every inbox goes through a minimum two-week warmup period to build sender reputation before sending. Total domains under management: [X] across active and backup sets. All infrastructure costs are borne by us.",
       },
       {
         title: "Data Sourcing & List Building",
