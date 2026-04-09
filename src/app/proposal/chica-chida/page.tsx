@@ -697,9 +697,6 @@ export default function ChicaChidaProposal() {
             onChange={(e) => setSignerEmail(e.target.value)}
             className="w-full bg-secondary/50 border border-border rounded px-3.5 py-2.5 text-sm font-mono text-foreground placeholder:text-muted-foreground/50 outline-none focus:border-primary/50 transition-colors"
           />
-          <p className="text-xs text-muted-foreground mt-3">
-            A copy of this signed agreement will be sent to the email provided.
-          </p>
         </div>
 
         {/* Signature pad */}
@@ -740,7 +737,7 @@ export default function ChicaChidaProposal() {
               disabled={!canSubmit || isSubmitting}
               className="bg-primary text-primary-foreground font-mono text-sm font-medium px-6 py-2.5 rounded hover:bg-primary/90 transition-colors disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer"
             >
-              {isSubmitting ? "Submitting..." : "Submit Agreement"}
+              {isSubmitting ? "Submitting..." : "Submit"}
             </button>
           </div>
         </div>
