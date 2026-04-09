@@ -889,7 +889,7 @@ function Section({
 }) {
   return (
     <section className="pb-16 mb-16 border-b border-border/50">
-      <span className="block text-[10px] font-mono text-primary tracking-[0.2em] uppercase mb-4">
+      <span className="block text-sm font-mono font-bold text-primary tracking-[0.2em] uppercase mb-4">
         {number}
       </span>
       <h2 className="font-heading font-bold text-2xl md:text-3xl mb-6">{title}</h2>
