@@ -9,7 +9,7 @@ import {
   AccordionContent,
 } from "@/components/ui/accordion";
 import { TamPreview } from "@/components/ui/tam-preview";
-import { LandingPagePreview } from "@/components/ui/landing-page-preview";
+import { LandingPagePreviewModal } from "@/components/ui/landing-page-preview";
 
 // ─── Static data ──────────────────────────────────────
 
@@ -503,15 +503,12 @@ export default function ProposalPage() {
             The page is built during the Build phase and can be refined based on
             performance data as the campaign runs.
           </p>
-          <p className="font-heading text-lg italic text-muted-foreground">
-            This is what your prospects see when they respond.
+          <p>
+            We build a dedicated landing page for every engagement.
+            Here&rsquo;s the one we built for Chica Chida.
           </p>
-          <div className="mt-6 w-[100vw] max-w-5xl relative left-1/2 -translate-x-1/2 px-6">
-            <LandingPagePreview />
-            <p className="text-[10px] text-muted-foreground/50 italic text-center mt-4 tracking-wide">
-              Custom landing page &mdash; built during the Build phase, branded
-              to Chica Chida, optimized for conversion.
-            </p>
+          <div className="mt-2">
+            <LandingPagePreviewModal />
           </div>
         </Section>
 
