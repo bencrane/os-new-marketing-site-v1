@@ -573,6 +573,9 @@ export default function ProposalPage() {
               <span className="font-heading text-lg font-semibold">Total</span>
               <span className="font-mono text-2xl text-primary font-medium">$27,500</span>
             </div>
+            <div className="px-6 py-3 border-t border-border/50">
+              <p className="text-[13px] text-muted-foreground">Payment is due in-full upon proposal signature.</p>
+            </div>
           </div>
 
           <p className="text-center text-sm text-muted-foreground mt-6">
