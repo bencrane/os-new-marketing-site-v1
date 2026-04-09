@@ -577,10 +577,6 @@ export default function ProposalPage() {
               <p className="text-[13px] text-muted-foreground">Payment is due in-full upon proposal signature.</p>
             </div>
           </div>
-
-          <p className="text-center text-sm text-muted-foreground mt-6">
-            Payment is due in-full at proposal agreement.
-          </p>
         </Section>
 
         {/* ─── 10 Your Role ─── */}
