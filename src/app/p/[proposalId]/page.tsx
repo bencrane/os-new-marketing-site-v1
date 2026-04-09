@@ -642,9 +642,6 @@ export default function ProposalPage() {
               onChange={(e) => setSignerEmail(e.target.value)}
               className="w-full bg-secondary/50 border border-border rounded px-3.5 py-2.5 text-sm font-mono text-foreground placeholder:text-muted-foreground/50 outline-none focus:border-primary/50 transition-colors"
             />
-            <p className="text-xs text-muted-foreground mt-3">
-              A copy of this signed agreement will be sent to the email provided.
-            </p>
           </div>
 
           {/* Signature pad */}
@@ -692,6 +689,7 @@ export default function ProposalPage() {
 
           <p className="text-center text-sm text-muted-foreground mt-6">
             Payment instructions will be presented on the next page.
+            A copy of this signed agreement will be sent to the email provided.
           </p>
         </section>
 
