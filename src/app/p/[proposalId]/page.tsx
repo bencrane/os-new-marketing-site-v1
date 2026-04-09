@@ -573,10 +573,11 @@ export default function ProposalPage() {
               <span className="font-heading text-lg font-semibold">Total</span>
               <span className="font-mono text-2xl text-primary font-medium">$27,500</span>
             </div>
-            <div className="px-6 py-3 border-t border-border/50">
-              <p className="text-[13px] text-muted-foreground">Payment is due in-full at proposal agreement.</p>
-            </div>
           </div>
+
+          <p className="text-center text-sm text-muted-foreground mt-6">
+            Payment is due in-full at proposal agreement.
+          </p>
         </Section>
 
         {/* ─── 10 Your Role ─── */}
@@ -603,9 +604,7 @@ export default function ProposalPage() {
             After a sample ships, the lead is tagged in our platform with status
             and timestamp. Your team can filter by leads who have been sent
             samples and follow up accordingly &mdash; whether that is a check-in
-            email, a call, or looping in your distributor. We can also automate
-            a follow-up sequence after a sample ships, checking in with the
-            prospect at a cadence you define.
+            email, a call, or looping in your distributor.
           </p>
           <div className="mt-6 border border-border rounded-lg p-5 bg-secondary/20 text-[15px] text-foreground/70 leading-relaxed">
             In the event volume exceeds your capacity or budget for samples, we
@@ -763,11 +762,6 @@ function RoiCalculator() {
     <div className="space-y-8">
       {/* Inputs */}
       <div className="border border-border rounded-lg p-6 space-y-6">
-        <div className="flex items-baseline gap-3">
-          <span className="font-mono text-2xl text-primary font-semibold">
-            {fmt(ENGAGEMENT_COST)}
-          </span>
-        </div>
         <div>
           <label className="block text-[10px] font-mono uppercase tracking-[0.2em] text-muted-foreground mb-3">
             Monthly Email Volume
