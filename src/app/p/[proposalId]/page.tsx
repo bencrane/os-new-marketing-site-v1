@@ -609,17 +609,15 @@ export default function ProposalPage() {
           <div className="mt-6 border border-border rounded-lg p-5 bg-secondary/20 text-[15px] text-foreground/70 leading-relaxed">
             In the event volume exceeds your capacity or budget for samples, we
             can pause campaigns and tighten segmentation to narrow the funnel.
-            If campaigns are paused at your request, the monthly retainer
-            remains in effect.
+            If campaigns are paused at your request, the engagement timeline
+            continues as scheduled. Pausing does not extend the engagement
+            period or entitle the client to a refund of any portion of the
+            engagement fee.
           </div>
         </Section>
 
-        {/* ─── Signature ─── */}
-        <section className="pb-16 mb-16 border-b border-border/50">
-          <span className="block text-[10px] font-mono text-primary tracking-[0.2em] uppercase mb-4">
-            Agreement
-          </span>
-          <h2 className="font-heading font-bold text-2xl md:text-3xl mb-8">Signature</h2>
+        {/* ─── 11 Next Steps ─── */}
+        <Section number="11" title="Next Steps">
 
           {/* Signer details */}
           <div className="border border-border rounded-lg p-6 mb-4">
@@ -693,7 +691,7 @@ export default function ProposalPage() {
           <p className="text-center text-sm text-muted-foreground mt-6">
             Payment instructions will be presented on the next page.
           </p>
-        </section>
+        </Section>
 
         {/* ─── Appendix (hidden — set false to show) ─── */}
         {false && <section className="pb-16">
