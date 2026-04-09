@@ -42,11 +42,20 @@ const STRIPE_APPEARANCE = {
   },
 };
 
-const BANK_DETAILS = [
-  { label: "Account Name", value: "Modern Full, LLC", copyable: false },
-  { label: "Routing Number", value: "091311229", copyable: true },
-  { label: "Account Number", value: "202314840766", copyable: true },
-];
+interface BankDetails {
+  account_name: string;
+  account_number: string;
+  routing_number: string;
+  bank_name: string;
+  bank_address_line1: string;
+  bank_address_line2: string | null;
+  bank_city: string;
+  bank_state: string;
+  bank_postal_code: string;
+  bank_country: string;
+  swift_code: string | null;
+  iban: string | null;
+}
 
 // ─── Checkout form (inside Elements provider) ─────────
 
@@ -133,6 +142,7 @@ export default function ProposalPaymentPage() {
   const [clientSecret, setClientSecret] = useState<string | null>(null);
   const [publishableKey, setPublishableKey] = useState<string | null>(null);
   const [stripeError, setStripeError] = useState<string | null>(null);
+  const [bankDetails, setBankDetails] = useState<BankDetails | null>(null);
 
   const copyText = (text: string, label: string) => {
     navigator.clipboard.writeText(text).then(() => {
@@ -169,6 +179,9 @@ export default function ProposalPaymentPage() {
           return;
         }
         setPublishableKey(proposal.stripe_publishable_key);
+        if (proposal.bank_details) {
+          setBankDetails(proposal.bank_details);
+        }
 
         // Step 2: POST to create the PaymentIntent
         const intentRes = await fetch(
@@ -253,7 +266,7 @@ export default function ProposalPaymentPage() {
         </div>
 
         {/* Option cards */}
-        <div className="grid grid-cols-2 gap-3 mb-0">
+        <div className={`grid gap-3 mb-0 ${bankDetails ? "grid-cols-2" : "grid-cols-1"}`}>
           <button
             type="button"
             onClick={() => setActiveMethod("card")}
@@ -289,6 +302,7 @@ export default function ProposalPaymentPage() {
             </span>
           </button>
 
+          {bankDetails && (
           <button
             type="button"
             onClick={() => setActiveMethod("bank")}
@@ -324,6 +338,7 @@ export default function ProposalPaymentPage() {
               Bank Transfer
             </span>
           </button>
+          )}
         </div>
 
         {/* Content panel — always visible, fixed height */}
@@ -359,6 +374,7 @@ export default function ProposalPaymentPage() {
                 )}
               </div>
 
+              {bankDetails && (
               <div className={`col-start-1 row-start-1 ${activeMethod !== "bank" ? "invisible" : ""}`}>
                 <p className="text-sm text-muted-foreground mb-5 leading-relaxed">
                   Send an ACH transfer using the details below. Typically arrives within
@@ -366,11 +382,15 @@ export default function ProposalPaymentPage() {
                 </p>
 
                 <div className="space-y-0 mb-4">
-                  {BANK_DETAILS.map((row, i) => (
+                  {[
+                    { label: "Account Name", value: bankDetails.account_name, copyable: false },
+                    { label: "Routing Number", value: bankDetails.routing_number, copyable: true },
+                    { label: "Account Number", value: bankDetails.account_number, copyable: true },
+                  ].map((row, i, arr) => (
                     <div
                       key={row.label}
                       className={`flex items-center justify-between py-2.5 ${
-                        i < BANK_DETAILS.length - 1 ? "border-b border-border" : ""
+                        i < arr.length - 1 ? "border-b border-border" : ""
                       }`}
                     >
                       <span className="text-xs text-muted-foreground">{row.label}</span>
@@ -399,13 +419,20 @@ export default function ProposalPaymentPage() {
                     Bank
                   </div>
                   <div className="text-sm font-medium mb-0.5">
-                    Choice Financial Group
+                    {bankDetails.bank_name}
                   </div>
                   <div className="text-xs text-muted-foreground">
-                    4501 23rd Avenue S, Fargo, ND 58104
+                    {[
+                      bankDetails.bank_address_line1,
+                      bankDetails.bank_address_line2,
+                      bankDetails.bank_city,
+                      bankDetails.bank_state,
+                      bankDetails.bank_postal_code,
+                    ].filter(Boolean).join(", ")}
                   </div>
                 </div>
               </div>
+              )}
             </div>
         </div>
       </div>
