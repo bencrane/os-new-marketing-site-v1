@@ -1,16 +1,18 @@
 "use client";
 
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect, useCallback } from "react";
 
 /*
-  Animation timeline (starts after scroll-reveal):
-  0.0s  – form visible, fields empty
-  0.8s  – First Name types in
-  1.4s  – Last Name types in
-  2.0s  – Email types in
-  2.8s  – Phone types in
-  3.6s  – button pulses / "pressed"
-  4.2s  – screen transitions to confirmation page
+  Scroll-driven animation. Progress 0→1 maps to:
+  0.00–0.10  mockup pops in (scale + opacity)
+  0.10–0.25  First Name fills
+  0.25–0.40  Last Name fills
+  0.40–0.60  Email fills
+  0.60–0.75  Phone fills
+  0.75–0.85  button press
+  0.85–1.00  crossfade to confirmation
+
+  Scrolling back up reverses everything.
 */
 
 const FIELDS = [
@@ -20,70 +22,76 @@ const FIELDS = [
   { label: "Phone", value: "(312) 847-2190" },
 ];
 
-const FIELD_DELAYS = [800, 1400, 2000, 2800];
-const BUTTON_PRESS_AT = 3600;
-const TRANSITION_AT = 4200;
+// Each field's [start, end] in the 0–1 progress range
+const FIELD_RANGES: [number, number][] = [
+  [0.10, 0.25],
+  [0.25, 0.40],
+  [0.40, 0.60],
+  [0.60, 0.75],
+];
+const BUTTON_PRESS = 0.75;
+const CONFIRM_START = 0.85;
+
+function useScrollProgress(ref: React.RefObject<HTMLDivElement | null>) {
+  const [progress, setProgress] = useState(0);
+
+  const update = useCallback(() => {
+    const el = ref.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    const vh = window.innerHeight;
+
+    // Progress goes 0→1 as the element travels from entering the
+    // bottom of the viewport to its top edge reaching ~30% from top.
+    // This gives a generous scroll range to scrub through the animation.
+    const start = vh;          // element top enters bottom of viewport
+    const end = vh * 0.15;     // element top reaches 15% from top
+    const raw = (start - rect.top) / (start - end);
+    setProgress(Math.max(0, Math.min(1, raw)));
+  }, [ref]);
+
+  useEffect(() => {
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", update);
+      window.removeEventListener("resize", update);
+    };
+  }, [update]);
+
+  return progress;
+}
 
 export function LandingPagePreview() {
   const ref = useRef<HTMLDivElement>(null);
-  const [visible, setVisible] = useState(false);
+  const progress = useScrollProgress(ref);
 
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) setVisible(true); },
-      { threshold: 0.15 },
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
+  // Pop-in: progress 0–0.10
+  const popIn = Math.min(progress / 0.10, 1);
 
   return (
     <div
       ref={ref}
-      className="transition-all duration-700 ease-out"
       style={{
-        opacity: visible ? 1 : 0,
-        transform: visible ? "translateY(0) scale(1)" : "translateY(40px) scale(0.97)",
+        opacity: popIn,
+        transform: `translateY(${(1 - popIn) * 40}px) scale(${0.97 + popIn * 0.03})`,
+        transition: "transform 0.1s ease-out, opacity 0.1s ease-out",
       }}
     >
-      <PhoneMockup animate={visible} />
+      <PhoneMockup progress={progress} />
     </div>
   );
 }
 
-/* ─── Phone mockup with animated form ─── */
+/* ─── Phone mockup ─── */
 
-function PhoneMockup({ animate }: { animate: boolean }) {
-  // Track which fields have been "typed"
-  const [filledCount, setFilledCount] = useState(0);
-  const [buttonPressed, setButtonPressed] = useState(false);
-  const [showConfirmation, setShowConfirmation] = useState(false);
-  const timersRef = useRef<ReturnType<typeof setTimeout>[]>([]);
-
-  useEffect(() => {
-    if (!animate) return;
-
-    // Schedule each field fill
-    FIELD_DELAYS.forEach((delay, i) => {
-      timersRef.current.push(
-        setTimeout(() => setFilledCount(i + 1), delay),
-      );
-    });
-
-    // Button press
-    timersRef.current.push(
-      setTimeout(() => setButtonPressed(true), BUTTON_PRESS_AT),
-    );
-
-    // Transition to confirmation
-    timersRef.current.push(
-      setTimeout(() => setShowConfirmation(true), TRANSITION_AT),
-    );
-
-    return () => timersRef.current.forEach(clearTimeout);
-  }, [animate]);
+function PhoneMockup({ progress }: { progress: number }) {
+  const buttonPressed = progress >= BUTTON_PRESS;
+  const confirmProgress = progress >= CONFIRM_START
+    ? Math.min((progress - CONFIRM_START) / (1 - CONFIRM_START), 1)
+    : 0;
+  const showConfirmation = confirmProgress > 0;
 
   return (
     <div className="flex justify-center">
@@ -95,28 +103,28 @@ function PhoneMockup({ animate }: { animate: boolean }) {
         <div className="relative rounded-[32px] overflow-hidden bg-black">
           <StatusBar />
 
-          {/* Page content area — crossfade between form and confirmation */}
           <div className="relative" style={{ minHeight: 520 }}>
             {/* Form page */}
             <div
-              className="transition-all duration-500 ease-in-out"
               style={{
-                opacity: showConfirmation ? 0 : 1,
-                transform: showConfirmation ? "translateY(-12px)" : "translateY(0)",
-                pointerEvents: showConfirmation ? "none" : "auto",
+                opacity: 1 - confirmProgress,
+                transform: `translateY(${-confirmProgress * 12}px)`,
+                transition: "opacity 0.15s, transform 0.15s",
                 position: showConfirmation ? "absolute" : "relative",
                 inset: showConfirmation ? 0 : undefined,
+                pointerEvents: showConfirmation ? "none" : "auto",
               }}
             >
-              <FormPage filledCount={filledCount} buttonPressed={buttonPressed} />
+              <FormPage progress={progress} buttonPressed={buttonPressed} />
             </div>
 
             {/* Confirmation page */}
             {showConfirmation && (
               <div
-                className="transition-all duration-500 ease-out"
                 style={{
-                  animation: "lp-confirm-in 500ms ease-out",
+                  opacity: confirmProgress,
+                  transform: `translateY(${(1 - confirmProgress) * 12}px)`,
+                  transition: "opacity 0.15s, transform 0.15s",
                 }}
               >
                 <ConfirmationPage />
@@ -132,10 +140,6 @@ function PhoneMockup({ animate }: { animate: boolean }) {
       </div>
 
       <style>{`
-        @keyframes lp-confirm-in {
-          from { opacity: 0; transform: translateY(12px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
         @keyframes lp-cursor-blink {
           0%, 100% { opacity: 1; }
           50% { opacity: 0; }
@@ -171,10 +175,10 @@ function StatusBar() {
 /* ─── Form page ─── */
 
 function FormPage({
-  filledCount,
+  progress,
   buttonPressed,
 }: {
-  filledCount: number;
+  progress: number;
   buttonPressed: boolean;
 }) {
   return (
@@ -265,45 +269,48 @@ function FormPage({
         </p>
 
         <div className="space-y-3">
-          {/* First / Last name row */}
           <div className="grid grid-cols-2 gap-2.5">
-            <AnimatedField
+            <ScrollField
               label={FIELDS[0].label}
               value={FIELDS[0].value}
-              filled={filledCount >= 1}
-              active={filledCount === 0}
+              progress={progress}
+              range={FIELD_RANGES[0]}
+              nextRange={FIELD_RANGES[1]}
             />
-            <AnimatedField
+            <ScrollField
               label={FIELDS[1].label}
               value={FIELDS[1].value}
-              filled={filledCount >= 2}
-              active={filledCount === 1}
+              progress={progress}
+              range={FIELD_RANGES[1]}
+              nextRange={FIELD_RANGES[2]}
             />
           </div>
-          <AnimatedField
+          <ScrollField
             label={FIELDS[2].label}
             value={FIELDS[2].value}
-            filled={filledCount >= 3}
-            active={filledCount === 2}
+            progress={progress}
+            range={FIELD_RANGES[2]}
+            nextRange={FIELD_RANGES[3]}
           />
-          <AnimatedField
+          <ScrollField
             label={FIELDS[3].label}
             value={FIELDS[3].value}
-            filled={filledCount >= 4}
-            active={filledCount === 3}
+            progress={progress}
+            range={FIELD_RANGES[3]}
           />
         </div>
 
         {/* CTA */}
         <button
           type="button"
-          className="w-full mt-5 py-3 rounded text-[10px] font-bold tracking-[0.15em] uppercase cursor-default transition-all duration-150"
+          className="w-full mt-5 py-3 rounded text-[10px] font-bold tracking-[0.15em] uppercase cursor-default"
           style={{
             background: buttonPressed
               ? "linear-gradient(135deg, #b8922e 0%, #9a7a22 100%)"
               : "linear-gradient(135deg, #d4a843 0%, #b8922e 100%)",
             color: "#000",
             transform: buttonPressed ? "scale(0.97)" : "scale(1)",
+            transition: "transform 0.15s, background 0.15s",
           }}
         >
           Send Me A Free Sample &rarr;
@@ -340,11 +347,21 @@ function ConfirmationPage() {
         <div
           className="w-16 h-16 rounded-full flex items-center justify-center mb-6"
           style={{
-            background: "linear-gradient(135deg, rgba(212,168,67,0.15) 0%, rgba(212,168,67,0.05) 100%)",
+            background:
+              "linear-gradient(135deg, rgba(212,168,67,0.15) 0%, rgba(212,168,67,0.05) 100%)",
             border: "1.5px solid rgba(212,168,67,0.3)",
           }}
         >
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#d4a843" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+          <svg
+            width="28"
+            height="28"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="#d4a843"
+            strokeWidth="2.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
             <polyline points="20 6 9 17 4 12" />
           </svg>
         </div>
@@ -364,8 +381,8 @@ function ConfirmationPage() {
           MARIA.
         </h1>
         <p className="text-[9px] text-white/50 leading-relaxed max-w-[240px] mx-auto mb-8">
-          Your free sample of Chica Chida is on its way. We&rsquo;ll reach
-          out within 48 hours to confirm shipping details.
+          Your free sample of Chica Chida is on its way. We&rsquo;ll reach out
+          within 48 hours to confirm shipping details.
         </p>
 
         {/* Summary card */}
@@ -386,7 +403,6 @@ function ConfirmationPage() {
           </div>
         </div>
 
-        {/* Timestamp */}
         <p className="text-[7px] text-white/20 mt-5">
           Submitted April 8, 2026 at 2:14 PM
         </p>
@@ -407,42 +423,35 @@ function ConfirmationPage() {
   );
 }
 
-/* ─── Animated form field ─── */
+/* ─── Scroll-driven form field ─── */
 
-function AnimatedField({
+function ScrollField({
   label,
   value,
-  filled,
-  active,
+  progress,
+  range,
+  nextRange,
 }: {
   label: string;
   value: string;
-  filled: boolean;
-  active: boolean;
+  progress: number;
+  range: [number, number];
+  nextRange?: [number, number];
 }) {
-  const [displayText, setDisplayText] = useState("");
-  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const [start, end] = range;
+  const fieldProgress = Math.max(0, Math.min(1, (progress - start) / (end - start)));
+  const charsToShow = Math.round(fieldProgress * value.length);
+  const displayText = value.slice(0, charsToShow);
+  const isFilling = fieldProgress > 0 && fieldProgress < 1;
+  const isFilled = fieldProgress >= 1;
 
-  useEffect(() => {
-    if (!filled) {
-      setDisplayText("");
-      return;
-    }
+  // Active = we're in range for this field, or we're between previous end
+  // and this field's start (cursor waiting)
+  const isActive = isFilling || (progress >= start && progress < (nextRange ? nextRange[0] : BUTTON_PRESS) && !isFilled)
+    || (progress < start && progress >= start - 0.02);
 
-    // Type out the value character by character
-    let i = 0;
-    intervalRef.current = setInterval(() => {
-      i++;
-      setDisplayText(value.slice(0, i));
-      if (i >= value.length && intervalRef.current) {
-        clearInterval(intervalRef.current);
-      }
-    }, 35);
-
-    return () => {
-      if (intervalRef.current) clearInterval(intervalRef.current);
-    };
-  }, [filled, value]);
+  // Show cursor if actively being filled OR waiting to be filled and is next
+  const showCursor = isFilling || (progress >= start - 0.02 && progress < start);
 
   return (
     <div>
@@ -453,33 +462,25 @@ function AnimatedField({
         {label}
       </label>
       <div
-        className="w-full rounded px-3 py-2 text-[10px] transition-all duration-200"
+        className="w-full rounded px-3 py-2 text-[10px]"
         style={{
-          backgroundColor: active
+          backgroundColor: isActive || isFilling
             ? "rgba(255,255,255,0.06)"
             : "rgba(255,255,255,0.04)",
-          border: active
+          border: isActive || isFilling
             ? "1px solid rgba(212,168,67,0.4)"
             : "1px solid rgba(255,255,255,0.1)",
-          color: filled ? "rgba(255,255,255,0.85)" : "rgba(255,255,255,0.15)",
+          color: charsToShow > 0
+            ? "rgba(255,255,255,0.85)"
+            : "rgba(255,255,255,0.15)",
           minHeight: "28px",
+          transition: "background-color 0.2s, border-color 0.2s, color 0.15s",
         }}
       >
         {displayText || "\u00A0"}
-        {/* Blinking cursor while typing */}
-        {filled && displayText.length < value.length && (
+        {showCursor && (
           <span
             className="inline-block w-[1px] h-[10px] ml-px align-middle"
-            style={{
-              backgroundColor: "#d4a843",
-              animation: "lp-cursor-blink 600ms step-end infinite",
-            }}
-          />
-        )}
-        {/* Cursor on active empty field */}
-        {active && !filled && (
-          <span
-            className="inline-block w-[1px] h-[10px] align-middle"
             style={{
               backgroundColor: "#d4a843",
               animation: "lp-cursor-blink 600ms step-end infinite",
