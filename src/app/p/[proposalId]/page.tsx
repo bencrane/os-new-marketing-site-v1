@@ -634,8 +634,69 @@ export default function ProposalPage() {
           </div>
         </Section>
 
-        {/* ─── 11 Next Steps ─── */}
-        <Section number="11" title="Next Steps">
+        {/* ─── 10 Pricing & Terms ─── */}
+        <Section number="10" title="Pricing & Terms">
+          <div className="border border-border rounded-lg overflow-hidden mb-6">
+            {PRICING.map((item, i) => (
+              <div
+                key={i}
+                className="flex flex-col md:flex-row md:items-center gap-2 md:gap-6 px-6 py-5 border-b border-border"
+              >
+                <div className="flex-1">
+                  <div className="font-medium text-foreground">{item.name}</div>
+                  <div className="text-sm text-muted-foreground mt-0.5">
+                    {item.description}
+                  </div>
+                </div>
+                <div className="flex items-baseline gap-3 shrink-0">
+                  <span className="font-mono text-lg text-primary font-medium">
+                    {item.price}
+                  </span>
+                  <span className="text-xs font-mono text-muted-foreground uppercase tracking-wider">
+                    {item.frequency}
+                  </span>
+                </div>
+              </div>
+            ))}
+            {/* Total */}
+            <div className="flex items-center justify-between px-6 py-5 bg-primary/5">
+              <span className="font-heading text-lg font-semibold">Total</span>
+              <span className="font-mono text-2xl text-primary font-medium">
+                $27,500
+              </span>
+            </div>
+          </div>
+
+          <ul className="space-y-2 text-sm text-muted-foreground">
+            <li className="flex gap-3">
+              <span className="text-primary shrink-0">&mdash;</span>
+              All infrastructure costs &mdash; inboxes, domains, replacements,
+              data providers &mdash; are included. There are no additional charges
+              for infrastructure.
+            </li>
+            <li className="flex gap-3">
+              <span className="text-primary shrink-0">&mdash;</span>
+              The full amount is due at kickoff.
+            </li>
+          </ul>
+
+          <div className="mt-6 border border-border rounded-lg p-5 bg-secondary/20 text-sm text-muted-foreground leading-relaxed">
+            <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-muted-foreground block mb-2">
+              Renewal
+            </span>
+            Renewal is confirmed no later than 2 weeks before the end of the
+            current term. If renewal is not confirmed by that date, infrastructure
+            is sunset and campaigns wind down. Restarting after a lapse requires a
+            new Build phase.
+          </div>
+        </Section>
+
+        {/* ─── Signature ─── */}
+        <section className="pb-16">
+          <span className="block text-[10px] font-mono text-primary tracking-[0.2em] uppercase mb-4">
+            Agreement
+          </span>
+          <h2 className="font-heading text-2xl md:text-3xl mb-8">Signature</h2>
 
           {/* Signer details */}
           <div className="border border-border rounded-lg p-6 mb-4">
@@ -706,14 +767,14 @@ export default function ProposalPage() {
           <p className="text-center text-sm text-muted-foreground mt-6">
             Payment instructions will be presented on the next page.
           </p>
-        </Section>
+        </section>
 
-        {/* ─── Appendix (hidden — set false to show) ─── */}
-        {false && <section className="pb-16">
+        {/* ─── Appendix ─── */}
+        <section className="pb-16 mb-16 border-b border-border/50">
           <span className="block text-[10px] font-mono text-primary tracking-[0.2em] uppercase mb-4">
             Appendix
           </span>
-          <h2 className="font-heading font-bold text-2xl md:text-3xl mb-8">
+          <h2 className="font-heading text-2xl md:text-3xl mb-8">
             Technical Reference
           </h2>
 
@@ -740,7 +801,7 @@ export default function ProposalPage() {
               </div>
             ))}
           </div>
-        </section>}
+        </section>
       </div>
     </>
   );
