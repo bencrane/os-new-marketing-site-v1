@@ -318,7 +318,7 @@ export default function ProposalPage() {
           {introPhase !== "loading" && (
             <div className="flex flex-col items-center gap-3 px-6">
               <span className="font-heading text-2xl md:text-4xl font-semibold tracking-tight">
-                Outbound Solutions
+                Acquisition Engineering
               </span>
               <span className="text-primary font-mono text-base md:text-lg">
                 x

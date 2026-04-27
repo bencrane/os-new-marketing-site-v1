@@ -3,7 +3,7 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   reactCompiler: true,
   turbopack: {
-    root: __dirname,
+    root: import.meta.dirname,
   },
 };
 
