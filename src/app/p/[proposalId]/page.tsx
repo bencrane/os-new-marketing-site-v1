@@ -84,8 +84,8 @@ const PHASES = [
 ];
 
 const PRICING = [
-  { name: "One-time", price: "$5,000" },
-  { name: "Ongoing", price: "$7,500/mo" },
+  { name: "One-time", price: "$5,000", description: "Build phase", frequency: "one-time" },
+  { name: "Ongoing", price: "$7,500/mo", description: "Launch & optimize", frequency: "monthly" },
 ];
 
 const APPENDIX = [
