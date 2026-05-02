@@ -13,7 +13,7 @@ A client-facing proposal and payment flow built as static Next.js pages within t
 | `/proposal/chica-chida` | `src/app/proposal/chica-chida/page.tsx` | Full proposal with signature pad |
 | `/proposal/chica-chida/confirmed` | `src/app/proposal/chica-chida/confirmed/page.tsx` | Payment page (Stripe Elements + ACH) |
 
-Both are `"use client"` components. They live under the root layout, which means the main marketing site nav (Outbound Solutions brand + vertical links) is visible at the top. This was a conscious "good enough for now" decision — a dedicated proposal layout that hides the nav could be added later.
+Both are `"use client"` components. They live under the root layout, which means the main marketing site nav (Engineered Demand brand + vertical links) is visible at the top. This was a conscious "good enough for now" decision — a dedicated proposal layout that hides the nav could be added later.
 
 ### Tech stack (within oslo)
 
@@ -45,7 +45,7 @@ The JSON contains `[X,000]` and `[X]` placeholders in several places (assessment
 
 ### Page structure
 
-1. **Intro splash** — "Outbound Solutions x Chica Chida" displayed vertically (name / x / name), each line centered independently. The "x" is emerald green, lowercase, mono font. Holds for ~1.8s, fades out over 0.7s, then the proposal fades in. No staggered animation — everything appears together.
+1. **Intro splash** — "Engineered Demand x Chica Chida" displayed vertically (name / x / name), each line centered independently. The "x" is emerald green, lowercase, mono font. Holds for ~1.8s, fades out over 0.7s, then the proposal fades in. No staggered animation — everything appears together.
 
 2. **Hero** — Confidential badge, title ("Outbound Partnership Proposal"), italic subtitle, "Prepared for Chica Chida | April 2026" meta line.
 
@@ -64,7 +64,7 @@ The JSON contains `[X,000]` and `[X]` placeholders in several places (assessment
 
 - **Vertical splash layout** chosen because variable company name lengths break horizontal centering (the "x" drifts off-center when one name is longer than the other). Vertical stacking with independent line centering keeps the "x" dead-center regardless of name length.
 - **No staggered entrance animation** — the sequential name-then-x-then-name reveal was considered too performative. Simple fade in/out.
-- **Name order**: "Outbound Solutions" first, then client name. Maker-first convention (like Nike x Off-White).
+- **Name order**: "Engineered Demand" first, then client name. Maker-first convention (like Nike x Off-White).
 - **Section body text** uses `text-[15px]` with `leading-relaxed` for comfortable reading at the narrower `max-w-3xl` container width.
 - **Workstream details are in accordions** because the full text is dense. Titles are always visible; details expand on click.
 

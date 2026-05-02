@@ -23,7 +23,7 @@ export function Nav() {
       <Link href="/" className="flex items-center gap-2 group z-10">
         <div className="w-3 h-3 bg-primary" />
         <span className="font-heading font-semibold text-lg tracking-tight group-hover:text-primary transition-colors duration-300">
-          Acquisition Engineering
+          Engineered Demand
         </span>
       </Link>
       
