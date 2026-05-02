@@ -12,7 +12,7 @@ export function VerticalGate({ data }: { data: VerticalConfig["gate"] }) {
         {data.scarcityText}
       </p>
       <a 
-        href="mailto:team@outboundsolutions.com"
+        href="mailto:team@engineereddemand.com"
         className="inline-flex items-center justify-center font-medium whitespace-nowrap h-14 px-8 font-mono text-sm uppercase tracking-widest bg-foreground text-background hover:bg-primary hover:text-black transition-all duration-300 rounded-none shadow-[0_0_0_rgba(16,185,129,0)] hover:shadow-[0_0_20px_rgba(16,185,129,0.4)]"
       >
         Request Access

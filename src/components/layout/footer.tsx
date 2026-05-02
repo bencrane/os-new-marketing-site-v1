@@ -5,7 +5,7 @@ export function Footer() {
     <footer className="px-6 md:px-12 py-8 border-t border-border grid grid-cols-1 lg:grid-cols-3 gap-6 items-center font-mono text-xs text-muted-foreground uppercase tracking-widest bg-[#050505] mt-auto">
       <div className="flex items-center justify-center lg:justify-start gap-3">
         <div className="w-2 h-2 bg-primary rounded-full" />
-        <span>© {new Date().getFullYear()} OUTBOUND SOLUTIONS</span>
+        <span>© {new Date().getFullYear()} ENGINEERED DEMAND</span>
       </div>
       
       <div className="hidden lg:block text-center text-primary/80">

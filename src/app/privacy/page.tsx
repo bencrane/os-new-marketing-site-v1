@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "GTM Command Center | Privacy Policy",
+  title: "Engineered Demand | Privacy Policy",
 };
 
 export default function PrivacyPolicy() {
@@ -29,7 +29,7 @@ export default function PrivacyPolicy() {
 
         <section>
           <h2 className="text-white font-bold mb-4 uppercase tracking-wider">Data We Process on Behalf of Clients</h2>
-          <p>GTM Command Center processes business contact data (names, titles, emails, phone numbers, company information) as part of operating outbound campaigns on behalf of clients. This data is sourced from publicly available records, licensed data providers, and client-provided lists. We act as a data processor on behalf of our clients, who remain the data controllers.</p>
+          <p>Engineered Demand processes business contact data (names, titles, emails, phone numbers, company information) as part of operating outbound campaigns on behalf of clients. This data is sourced from publicly available records, licensed data providers, and client-provided lists. We act as a data processor on behalf of our clients, who remain the data controllers.</p>
         </section>
 
         <section>
@@ -49,12 +49,12 @@ export default function PrivacyPolicy() {
 
         <section>
           <h2 className="text-white font-bold mb-4 uppercase tracking-wider">Your Rights</h2>
-          <p>You may request deletion of your personal data by contacting us at privacy@outboundsolutions.com. We will respond within 30 days.</p>
+          <p>You may request deletion of your personal data by contacting us at privacy@engineereddemand.com. We will respond within 30 days.</p>
         </section>
 
         <section>
           <h2 className="text-white font-bold mb-4 uppercase tracking-wider">Contact</h2>
-          <p>For privacy-related inquiries: privacy@gtmcommandcenter.com</p>
+          <p>For privacy-related inquiries: privacy@engineereddemand.com</p>
         </section>
       </div>
     </div>

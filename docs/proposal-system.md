@@ -77,7 +77,7 @@ The JSON contains `[X,000]` and `[X]` placeholders in several places (assessment
 3. **Two equal-weight payment cards** side by side on desktop, stacked on mobile:
    - **Pay by Card** — embedded Stripe Elements (Payment Element)
    - **Pay by Bank Transfer** — ACH details with copy-to-clipboard buttons
-4. **Contact line** — "Questions about payment? Reach out to Ben" with mailto link (currently `ben@outboundsolutions.com`, update if needed).
+4. **Contact line** — "Questions about payment? Reach out to Ben" with mailto link (currently `ben@engineereddemand.com`, update if needed).
 
 ### Design decisions
 
@@ -160,7 +160,7 @@ The original proposal system in modern-full-portal had a signing endpoint at `PO
 3. **Signature backend** — currently no API call on sign. Decide whether to POST the signature data somewhere (service-engine-x?) and what payload shape.
 4. **Email on sign** — the signature section says "A copy of this signed agreement will be sent to the email provided." This doesn't happen yet.
 5. **Proposal layout** — the marketing site nav is visible on proposal pages. Consider a `/proposal` layout that hides it for a cleaner client-facing presentation.
-6. **Contact email** — `ben@outboundsolutions.com` on the payment page needs to be verified as the correct address.
+6. **Contact email** — `ben@engineereddemand.com` on the payment page needs to be verified as the correct address.
 7. **Turbopack config** — `next.config.ts` was updated with `turbopack: { root: __dirname }` to fix a workspace root resolution issue caused by multiple lockfiles. This is a build infrastructure fix, not proposal-specific.
 
 ## Adapting for future proposals

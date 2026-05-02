@@ -67,7 +67,7 @@ export interface VerticalConfig {
 // ------------------------------------------
 export const wineAndSpiritsConfig: VerticalConfig = {
   slug: "wine-and-spirits",
-  metaTitle: "GTM Command Center | Target: Wine & Spirits",
+  metaTitle: "Engineered Demand | Target: Wine & Spirits",
   metaDescription: "Proprietary pipeline infrastructure configured for the US Wine & Spirits wholesale distribution market.",
   
   hero: {
@@ -186,7 +186,7 @@ export const wineAndSpiritsConfig: VerticalConfig = {
 // ------------------------------------------
 export const insuranceConfig: VerticalConfig = {
   slug: "insurance",
-  metaTitle: "GTM Command Center | Target: Insurance",
+  metaTitle: "Engineered Demand | Target: Insurance",
   metaDescription: "Proprietary pipeline infrastructure configured for the commercial insurance agency market.",
   
   hero: {
@@ -305,7 +305,7 @@ export const insuranceConfig: VerticalConfig = {
 // ------------------------------------------
 export const factoringConfig: VerticalConfig = {
   slug: "factoring",
-  metaTitle: "GTM Command Center | Target: Factoring",
+  metaTitle: "Engineered Demand | Target: Factoring",
   metaDescription: "Proprietary pipeline infrastructure configured for the commercial factoring and alternative lending market.",
   
   hero: {
@@ -425,7 +425,7 @@ export const factoringConfig: VerticalConfig = {
 // ------------------------------------------
 export const softwareConfig: VerticalConfig = {
   slug: "software",
-  metaTitle: "GTM Command Center | Target: Software",
+  metaTitle: "Engineered Demand | Target: Software",
   metaDescription: "Proprietary pipeline infrastructure configured for high-velocity Software outbound sales.",
   
   hero: {
@@ -545,7 +545,7 @@ export const softwareConfig: VerticalConfig = {
 // ------------------------------------------
 export const privateEquityConfig: VerticalConfig = {
   slug: "private-equity",
-  metaTitle: "GTM Command Center | Target: Private Equity",
+  metaTitle: "Engineered Demand | Target: Private Equity",
   metaDescription: "Proprietary pipeline infrastructure configured for Private Equity deal sourcing.",
   
   hero: {
@@ -663,7 +663,7 @@ export const privateEquityConfig: VerticalConfig = {
 
 export const realEstateConfig: VerticalConfig = {
   slug: "real-estate",
-  metaTitle: "GTM Command Center | Target: Real Estate Development",
+  metaTitle: "Engineered Demand | Target: Real Estate Development",
   metaDescription: "Proprietary pipeline infrastructure configured for the US Real Estate Development market.",
   
   hero: {
@@ -807,7 +807,7 @@ export const realEstateConfig: VerticalConfig = {
 // ------------------------------------------
 export const verticalSaasConfig: VerticalConfig = {
   slug: "vertical-saas",
-  metaTitle: "GTM Command Center | Target: Vertical SaaS",
+  metaTitle: "Engineered Demand | Target: Vertical SaaS",
   metaDescription: "Proprietary pipeline infrastructure configured for Vertical SaaS companies selling to SMBs.",
   
   hero: {

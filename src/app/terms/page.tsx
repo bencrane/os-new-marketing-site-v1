@@ -109,7 +109,7 @@ export default function TermsOfService() {
 
         <section>
           <h2 className="text-white font-bold mb-4 uppercase tracking-wider">Contact</h2>
-          <p>For questions about these terms: legal@outboundsolutions.com</p>
+          <p>For questions about these terms: legal@engineereddemand.com</p>
         </section>
       </div>
     </div>

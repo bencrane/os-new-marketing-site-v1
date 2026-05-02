@@ -380,10 +380,10 @@ export default function ProposalConfirmed() {
       <p className="text-center text-sm text-muted-foreground">
         Questions about payment? Contact{" "}
         <a
-          href="mailto:team@outboundsolutions.com"
+          href="mailto:team@engineereddemand.com"
           className="text-foreground hover:text-primary transition-colors"
         >
-          team@outboundsolutions.com
+          team@engineereddemand.com
         </a>
       </p>
     </div>
